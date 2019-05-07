@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.28803.352
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseLayer", "DatabaseLayer\DatabaseLayer.csproj", "{7B82E258-1CE6-4722-BC22-0E15CE5D4D35}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DatabaseTest", "DatabaseTest\DatabaseTest.csproj", "{29EB1837-F59D-4A24-B694-754E126E7FDD}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Entities", "Entities\Entities.csproj", "{A6FDD68F-DFB0-4CF1-BBD6-04C220C111C4}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfokioskDesktopApplication", "InfokioskDesktopApplication\InfokioskDesktopApplication.csproj", "{B9FCF6BA-221C-4333-BAE9-DF4AB3948406}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfokioskAdministrationDesktopApplication", "InfokioskAdministrationDesktopApplication\InfokioskAdministrationDesktopApplication.csproj", "{40173BFE-D976-4D5B-A8AD-F205C6128B1E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlLibrary", "CustomControlLibrary\CustomControlLibrary.csproj", "{8F905450-6D7C-4DDB-A10F-B9AAB6846093}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7B82E258-1CE6-4722-BC22-0E15CE5D4D35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B82E258-1CE6-4722-BC22-0E15CE5D4D35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B82E258-1CE6-4722-BC22-0E15CE5D4D35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B82E258-1CE6-4722-BC22-0E15CE5D4D35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{29EB1837-F59D-4A24-B694-754E126E7FDD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{29EB1837-F59D-4A24-B694-754E126E7FDD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{29EB1837-F59D-4A24-B694-754E126E7FDD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{29EB1837-F59D-4A24-B694-754E126E7FDD}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A6FDD68F-DFB0-4CF1-BBD6-04C220C111C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A6FDD68F-DFB0-4CF1-BBD6-04C220C111C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A6FDD68F-DFB0-4CF1-BBD6-04C220C111C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A6FDD68F-DFB0-4CF1-BBD6-04C220C111C4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B9FCF6BA-221C-4333-BAE9-DF4AB3948406}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B9FCF6BA-221C-4333-BAE9-DF4AB3948406}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B9FCF6BA-221C-4333-BAE9-DF4AB3948406}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B9FCF6BA-221C-4333-BAE9-DF4AB3948406}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40173BFE-D976-4D5B-A8AD-F205C6128B1E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40173BFE-D976-4D5B-A8AD-F205C6128B1E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40173BFE-D976-4D5B-A8AD-F205C6128B1E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40173BFE-D976-4D5B-A8AD-F205C6128B1E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8F905450-6D7C-4DDB-A10F-B9AAB6846093}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8F905450-6D7C-4DDB-A10F-B9AAB6846093}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8F905450-6D7C-4DDB-A10F-B9AAB6846093}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8F905450-6D7C-4DDB-A10F-B9AAB6846093}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {995CA453-71B6-4F3D-87A5-40882CB99184}
+	EndGlobalSection
+EndGlobal
