@@ -28,21 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.lblLogin = new System.Windows.Forms.Label();
+            this.imageBox1 = new CustomControlLibrary.ImageBox();
             this.SuspendLayout();
             // 
-            // lblLogin
+            // imageBox1
             // 
-            this.lblLogin.AutoSize = true;
-            this.lblLogin.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.lblLogin.Font = new System.Drawing.Font("FontAwesome", 22.0578F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblLogin.ForeColor = System.Drawing.Color.Yellow;
-            this.lblLogin.Location = new System.Drawing.Point(1129, 9);
-            this.lblLogin.Name = "lblLogin";
-            this.lblLogin.Size = new System.Drawing.Size(61, 53);
-            this.lblLogin.TabIndex = 1;
-            this.lblLogin.Text = "";
-            this.lblLogin.Click += new System.EventHandler(this.LblLogin_Click);
+            this.imageBox1.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.imageBox1.Location = new System.Drawing.Point(13, 22);
+            this.imageBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.imageBox1.Name = "imageBox1";
+            this.imageBox1.Size = new System.Drawing.Size(320, 150);
+            this.imageBox1.TabIndex = 0;
             // 
             // InfokioskMainForm
             // 
@@ -50,19 +46,19 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1176, 737);
-            this.Controls.Add(this.lblLogin);
+            this.Controls.Add(this.imageBox1);
             this.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InfokioskMainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Инфокиоск";
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
-        private System.Windows.Forms.Label lblLogin;
+        private CustomControlLibrary.ImageBox imageBox1;
     }
 }
 
