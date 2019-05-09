@@ -28,17 +28,23 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.imageBox1 = new CustomControlLibrary.ImageBox();
+            this.lblExit = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // imageBox1
+            // lblExit
             // 
-            this.imageBox1.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.imageBox1.Location = new System.Drawing.Point(13, 22);
-            this.imageBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
-            this.imageBox1.Name = "imageBox1";
-            this.imageBox1.Size = new System.Drawing.Size(320, 150);
-            this.imageBox1.TabIndex = 0;
+            this.lblExit.BackColor = System.Drawing.Color.Transparent;
+            this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.lblExit.Dock = System.Windows.Forms.DockStyle.Right;
+            this.lblExit.ForeColor = System.Drawing.Color.Yellow;
+            this.lblExit.Location = new System.Drawing.Point(1126, 0);
+            this.lblExit.Margin = new System.Windows.Forms.Padding(0);
+            this.lblExit.Name = "lblExit";
+            this.lblExit.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
+            this.lblExit.Size = new System.Drawing.Size(50, 737);
+            this.lblExit.TabIndex = 0;
+            this.lblExit.Text = "";
+            this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
             // InfokioskMainForm
             // 
@@ -46,19 +52,20 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1176, 737);
-            this.Controls.Add(this.imageBox1);
+            this.Controls.Add(this.lblExit);
             this.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "InfokioskMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Инфокиоск";
+            this.Load += new System.EventHandler(this.InfokioskMainForm_Load);
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private CustomControlLibrary.ImageBox imageBox1;
+        private System.Windows.Forms.Label lblExit;
     }
 }
 

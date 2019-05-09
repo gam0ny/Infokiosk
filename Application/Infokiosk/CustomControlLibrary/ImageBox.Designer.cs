@@ -1,4 +1,6 @@
-﻿namespace CustomControlLibrary
+﻿using System.Drawing;
+
+namespace CustomControlLibrary
 {
     partial class ImageBox
     {
@@ -33,6 +35,7 @@
             this.lblCategory = new System.Windows.Forms.Label();
             this.lblHasVideo = new System.Windows.Forms.Label();
             this.lblHasDocuments = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).BeginInit();
             this.SuspendLayout();
             // 
@@ -80,7 +83,7 @@
             this.lblHasDocuments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.lblHasDocuments.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHasDocuments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(85)))));
-            this.lblHasDocuments.Location = new System.Drawing.Point(84, 103);
+            this.lblHasDocuments.Location = new System.Drawing.Point(265, 15);
             this.lblHasDocuments.Name = "lblHasDocuments";
             this.lblHasDocuments.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.lblHasDocuments.Size = new System.Drawing.Size(52, 35);
@@ -88,10 +91,23 @@
             this.lblHasDocuments.Text = "";
             this.lblHasDocuments.Visible = false;
             // 
+            // lblTitle
+            // 
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
+            this.lblTitle.Font = new System.Drawing.Font("FontAwesome", 17.89595F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.Location = new System.Drawing.Point(24, 64);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(104, 44);
+            this.lblTitle.TabIndex = 4;
+            this.lblTitle.Text = "Тема";
+            // 
             // ImageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblHasDocuments);
             this.Controls.Add(this.lblHasVideo);
             this.Controls.Add(this.lblCategory);
@@ -107,9 +123,11 @@
 
         #endregion
 
+
         private System.Windows.Forms.PictureBox pbCover;
         private System.Windows.Forms.Label lblCategory;
         private System.Windows.Forms.Label lblHasVideo;
         private System.Windows.Forms.Label lblHasDocuments;
+        private System.Windows.Forms.Label lblTitle;
     }
 }

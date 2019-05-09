@@ -12,9 +12,14 @@ namespace CustomControlLibrary
 
         public Image Image { get; set; }
 
+        public string Title { get; set; }
+
+        public string Category { get; set; }
+
         public ImageBox()
         {
             InitializeComponent();
+            this.lblTitle.Parent = this.pbCover;
         }
 
         private void ImageBox_Load(object sender, EventArgs e)
@@ -22,6 +27,8 @@ namespace CustomControlLibrary
             if (HasVideo) lblHasVideo.Show();
             if (HasDocuments) lblHasDocuments.Show();
             if (Image != null) pbCover.Image = Image;
+            this.lblTitle.Text = this.Title;
+            if(!string.IsNullOrWhiteSpace(this.Category)) this.lblCategory.Text = this.Category;
         }
     }
 }
