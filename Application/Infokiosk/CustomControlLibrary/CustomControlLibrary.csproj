@@ -54,11 +54,18 @@
     <Compile Include="CustomTextbox.Designer.cs">
       <DependentUpon>CustomTextbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ImageBoxItem.cs" />
     <Compile Include="ImageBox.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="ImageBox.Designer.cs">
       <DependentUpon>ImageBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ImageBoxListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ImageBoxListView.Designer.cs">
+      <DependentUpon>ImageBoxListView.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Properties\Resources.Designer.cs">
@@ -77,6 +84,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ImageBox.resx">
       <DependentUpon>ImageBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ImageBoxListView.resx">
+      <DependentUpon>ImageBoxListView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
