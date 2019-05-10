@@ -60,11 +60,19 @@ namespace CustomControlLibrary
                     imageBox.Location = new Point(xPoint, yPoint);
                     xPoint += imageBox.Size.Width;
                     imageBox.Cursor = Cursors.Hand;
+
+                    imageBox.Click += ImageBox_Click;
+
                     this.Controls.Add(imageBox);
                 }
             }
 
 
+        }
+
+        private void ImageBox_Click(object sender, System.EventArgs e)
+        {
+            MessageBox.Show("Click");
         }
     }
 }

@@ -20,6 +20,10 @@ namespace CustomControlLibrary
         {
             InitializeComponent();
             this.lblTitle.Parent = this.pbCover;
+            foreach(Control control in this.Controls)
+            {
+                control.Click += ImageBox_Click;
+            }
         }
 
         private void ImageBox_Load(object sender, EventArgs e)
@@ -29,6 +33,11 @@ namespace CustomControlLibrary
             if (Image != null) pbCover.Image = Image;
             this.lblTitle.Text = this.Title;
             if(!string.IsNullOrWhiteSpace(this.Category)) this.lblCategory.Text = this.Category;
+        }
+
+        private void ImageBox_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Base click");
         }
     }
 }

@@ -99,7 +99,7 @@ namespace CustomControlLibrary
             this.lblTitle.ForeColor = System.Drawing.Color.White;
             this.lblTitle.Location = new System.Drawing.Point(24, 64);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(104, 44);
+            this.lblTitle.Size = new System.Drawing.Size(100, 43);
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "Тема";
             // 
@@ -115,6 +115,7 @@ namespace CustomControlLibrary
             this.Name = "ImageBox";
             this.Size = new System.Drawing.Size(320, 150);
             this.Load += new System.EventHandler(this.ImageBox_Load);
+            this.Click += new System.EventHandler(this.ImageBox_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
