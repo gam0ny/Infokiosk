@@ -47,6 +47,7 @@ namespace InfokioskDesktopApplication
             InfokioskArticleForm = new InfokioskArticleForm(this);
             InfokioskArticleForm.ArticleId = ImageBox.Id;
             InfokioskArticleForm.Title = ImageBox.Title;
+            InfokioskArticleForm.Category = ImageBox.Category;
             InfokioskArticleForm.Show();
             this.Hide();
         }

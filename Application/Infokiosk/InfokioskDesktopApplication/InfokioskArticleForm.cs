@@ -11,6 +11,8 @@ namespace InfokioskDesktopApplication
         public string ArticleId { get; set; }
 
         public string Title { get; set; }
+
+        public string Category { get; set; }
         public InfokioskArticleForm()
         {
             InitializeComponent();
@@ -30,7 +32,8 @@ namespace InfokioskDesktopApplication
 
         private void InfokioskArticleForm_Load(object sender, EventArgs e)
         {
-            this.lblTitle.Text = "Архантропы (Homo erectus)";
+            this.lblTitle.Text = this.Title;
+            this.lblCategory.Text = this.Category;
             //this.webBrowser1.DocumentText ="<html><body bgcolor='#696969'></body></html>";
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
             this.webBrowser1.Url = new Uri(string.Format("{0}Articles/Архантропы (Homo erectus).html", contentPath));

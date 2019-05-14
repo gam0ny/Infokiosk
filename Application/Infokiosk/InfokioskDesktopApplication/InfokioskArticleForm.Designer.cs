@@ -32,6 +32,7 @@
             this.lblTitle = new System.Windows.Forms.Label();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.lblBack = new System.Windows.Forms.Label();
+            this.lblCategory = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // lblExit
@@ -86,12 +87,26 @@
             this.lblBack.Text = "";
             this.lblBack.Click += new System.EventHandler(this.LblBack_Click);
             // 
+            // lblCategory
+            // 
+            this.lblCategory.AutoSize = true;
+            this.lblCategory.BackColor = System.Drawing.Color.Yellow;
+            this.lblCategory.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.Location = new System.Drawing.Point(252, 34);
+            this.lblCategory.Margin = new System.Windows.Forms.Padding(0);
+            this.lblCategory.Name = "lblCategory";
+            this.lblCategory.Padding = new System.Windows.Forms.Padding(10);
+            this.lblCategory.Size = new System.Drawing.Size(148, 45);
+            this.lblCategory.TabIndex = 5;
+            this.lblCategory.Text = "КАТЕГОРИЯ";
+            // 
             // InfokioskArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblBack);
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.lblTitle);
@@ -112,5 +127,6 @@
         private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Label lblBack;
+        private System.Windows.Forms.Label lblCategory;
     }
 }
