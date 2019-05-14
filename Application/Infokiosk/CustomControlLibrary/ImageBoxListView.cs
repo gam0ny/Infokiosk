@@ -1,4 +1,5 @@
 ﻿using CustomControlLibrary.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
@@ -15,6 +16,8 @@ namespace CustomControlLibrary
         public int CountItemsToDisplay { get; set; }
 
         public List<ImageBoxItem> ImageBoxItemList { get; set; }
+
+        public event EventHandler ImageBoxItemClick;
 
         public ImageBoxListView()
         {
@@ -61,7 +64,7 @@ namespace CustomControlLibrary
                     xPoint += imageBox.Size.Width;
                     imageBox.Cursor = Cursors.Hand;
 
-                    imageBox.Click += ImageBox_Click;
+                    imageBox.CustomClick += ImageBox_Click;
 
                     this.Controls.Add(imageBox);
                 }
@@ -72,7 +75,7 @@ namespace CustomControlLibrary
 
         private void ImageBox_Click(object sender, System.EventArgs e)
         {
-            MessageBox.Show("Click");
+            if (ImageBoxItemClick != null) ImageBoxItemClick(sender, e);
         }
     }
 }

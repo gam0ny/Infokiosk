@@ -74,7 +74,7 @@
             this.iblvPerCategory.Location = new System.Drawing.Point(10, 379);
             this.iblvPerCategory.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.iblvPerCategory.Name = "iblvPerCategory";
-            this.iblvPerCategory.Size = new System.Drawing.Size(0, 0);
+            this.iblvPerCategory.Size = new System.Drawing.Size(196, 78);
             this.iblvPerCategory.TabIndex = 2;
             this.iblvPerCategory.Title = "IXX ВЕК";
             // 

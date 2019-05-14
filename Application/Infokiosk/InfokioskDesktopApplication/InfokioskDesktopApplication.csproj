@@ -47,6 +47,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="ArticlePreview.cs" />
+    <Compile Include="InfokioskArticleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="InfokioskArticleForm.Designer.cs">
+      <DependentUpon>InfokioskArticleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="InfokioskMainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +61,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="InfokioskArticleForm.resx">
+      <DependentUpon>InfokioskArticleForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="InfokioskMainForm.resx">
       <DependentUpon>InfokioskMainForm.cs</DependentUpon>
     </EmbeddedResource>

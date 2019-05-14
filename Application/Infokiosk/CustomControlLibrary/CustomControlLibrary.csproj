@@ -54,6 +54,7 @@
     <Compile Include="CustomTextbox.Designer.cs">
       <DependentUpon>CustomTextbox.cs</DependentUpon>
     </Compile>
+    <Compile Include="Entities\ImageBoxClickEventArgs.cs" />
     <Compile Include="Entities\ImageBoxItem.cs" />
     <Compile Include="ImageBox.cs">
       <SubType>UserControl</SubType>
