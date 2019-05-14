@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ArticleByCategory.cs" />
     <Compile Include="ArticlePreview.cs" />
     <Compile Include="InfokioskArticleForm.cs">
       <SubType>Form</SubType>
