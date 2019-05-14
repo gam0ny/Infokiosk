@@ -38,7 +38,7 @@ namespace InfokioskDesktopApplication
 
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            webBrowser1.Size = new Size(this.Width - 100, this.Height);
+            webBrowser1.Size = new Size(this.Width - 100, this.webBrowser1.Document.Body.ScrollRectangle.Height);
             this.webBrowser1.Visible = true;
 
         }
