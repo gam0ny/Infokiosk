@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Configuration;
+using System.Drawing;
 using System.Windows.Forms;
 
 namespace InfokioskDesktopApplication
@@ -30,15 +32,13 @@ namespace InfokioskDesktopApplication
         {
             this.lblTitle.Text = "Архантропы (Homo erectus)";
             //this.webBrowser1.DocumentText ="<html><body bgcolor='#696969'></body></html>";
-            this.webBrowser1.Url = new Uri("c:/Users/ruslan/Desktop/Инфокиоск для выстовочного отдела/_Content/Articles/Архантропы (Homo erectus).html");
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+            this.webBrowser1.Url = new Uri(string.Format("{0}Articles/Архантропы (Homo erectus).html", contentPath));
         }
 
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            //If dockstyle = fill
-            this.Width = webBrowser1.Document.Body.ScrollRectangle.Width + 40;
-            this.Height = webBrowser1.Document.Body.ScrollRectangle.Height + 40;
-            webBrowser1.Size = webBrowser1.Document.Body.ScrollRectangle.Size;
+            webBrowser1.Size = new Size(this.Width - 100, this.Height);
             this.webBrowser1.Visible = true;
 
         }
