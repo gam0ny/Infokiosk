@@ -38,17 +38,18 @@
             this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblExit.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblExit.ForeColor = System.Drawing.Color.Yellow;
-            this.lblExit.Location = new System.Drawing.Point(1126, 0);
+            this.lblExit.Location = new System.Drawing.Point(1096, 0);
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
             this.lblExit.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.lblExit.Size = new System.Drawing.Size(50, 737);
+            this.lblExit.Size = new System.Drawing.Size(50, 756);
             this.lblExit.TabIndex = 0;
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
             // flowLayoutPanel
             // 
+            this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.AutoSize = true;
             this.flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
             this.flowLayoutPanel.Location = new System.Drawing.Point(2, 0);
@@ -61,7 +62,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(1176, 737);
+            this.ClientSize = new System.Drawing.Size(1146, 756);
             this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.lblExit);
             this.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));

@@ -64,7 +64,7 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(1, 80);
+            this.webBrowser1.Location = new System.Drawing.Point(-1, 86);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(250, 250);
@@ -106,9 +106,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblBack);
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblExit);
             this.Name = "InfokioskArticleForm";

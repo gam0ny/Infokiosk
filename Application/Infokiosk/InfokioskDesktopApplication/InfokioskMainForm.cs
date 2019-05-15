@@ -64,7 +64,7 @@ namespace InfokioskDesktopApplication
                 },
             };
 
-            foreach(var category in ArticleByCategoriesCollection)
+            foreach (var category in ArticleByCategoriesCollection)
             {
                 ImageBoxListView imageBoxListView = new ImageBoxListView();
                 imageBoxListView.Title = category.Category;
@@ -89,13 +89,10 @@ namespace InfokioskDesktopApplication
 
         private void InfokioskMainForm_Load(object sender, EventArgs e)
         {
-            //this.TopMost = true;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
             this.AutoSize = true;
             this.AutoScroll = true;
-            ///this.flowLayoutPanel.Size = new Size(this.Width - 50, this.flowLayoutPanel.Height);
-            //this.Height = this.flowLayoutPanel.Height;
         }
 
         private void LblExit_Click(object sender, EventArgs e)
