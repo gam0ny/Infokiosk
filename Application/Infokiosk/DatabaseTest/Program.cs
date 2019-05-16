@@ -1,4 +1,4 @@
-﻿using DatabaseLayer;
+﻿using DatabaseLayer.Repositories;
 using System;
 
 namespace DatabaseTest
@@ -11,6 +11,12 @@ namespace DatabaseTest
             UserRepository userRepository = new UserRepository();
 
             TryUserAuthenication(userRepository, "admin", "sa");
+
+            ArticleRepository articleRepository = new ArticleRepository();
+
+            GetLatestArticles(articleRepository);
+
+            GetArticlesByCategoryId(articleRepository, 1);
 
             Console.ReadKey();
         }
@@ -36,6 +42,20 @@ namespace DatabaseTest
             {
                 Console.WriteLine(ex.ToString());
             }
+        }
+
+        public static void GetLatestArticles(ArticleRepository articleRepository)
+        {
+            Console.WriteLine("Retrieving Latest Articles ...");
+
+            var articles = articleRepository.GetLatestArticles();
+        }
+
+        public static void GetArticlesByCategoryId(ArticleRepository articleRepository, int categoryId)
+        {
+            Console.WriteLine("Retrieving Latest Articles ...");
+
+            var articles = articleRepository.GetArticlesByCategoryId(categoryId);
         }
     }
 }

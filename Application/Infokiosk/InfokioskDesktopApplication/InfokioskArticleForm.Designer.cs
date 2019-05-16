@@ -42,11 +42,11 @@
             this.lblExit.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblExit.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblExit.ForeColor = System.Drawing.Color.Yellow;
-            this.lblExit.Location = new System.Drawing.Point(750, 0);
+            this.lblExit.Location = new System.Drawing.Point(1076, 0);
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
-            this.lblExit.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.lblExit.Size = new System.Drawing.Size(50, 450);
+            this.lblExit.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
+            this.lblExit.Size = new System.Drawing.Size(50, 737);
             this.lblExit.TabIndex = 1;
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
@@ -56,7 +56,7 @@
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("FontAwesome", 24.13873F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(4, 24);
+            this.lblTitle.Location = new System.Drawing.Point(14, 24);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(245, 59);
             this.lblTitle.TabIndex = 2;
@@ -64,7 +64,7 @@
             // 
             // webBrowser1
             // 
-            this.webBrowser1.Location = new System.Drawing.Point(1, 80);
+            this.webBrowser1.Location = new System.Drawing.Point(10, 86);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(250, 250);
@@ -78,11 +78,11 @@
             this.lblBack.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblBack.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblBack.ForeColor = System.Drawing.Color.Yellow;
-            this.lblBack.Location = new System.Drawing.Point(700, 0);
+            this.lblBack.Location = new System.Drawing.Point(1026, 0);
             this.lblBack.Margin = new System.Windows.Forms.Padding(0);
             this.lblBack.Name = "lblBack";
-            this.lblBack.Padding = new System.Windows.Forms.Padding(0, 20, 0, 0);
-            this.lblBack.Size = new System.Drawing.Size(50, 450);
+            this.lblBack.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
+            this.lblBack.Size = new System.Drawing.Size(50, 737);
             this.lblBack.TabIndex = 4;
             this.lblBack.Text = "";
             this.lblBack.Click += new System.EventHandler(this.LblBack_Click);
@@ -92,7 +92,7 @@
             this.lblCategory.AutoSize = true;
             this.lblCategory.BackColor = System.Drawing.Color.Yellow;
             this.lblCategory.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblCategory.Location = new System.Drawing.Point(252, 34);
+            this.lblCategory.Location = new System.Drawing.Point(262, 34);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(0);
             this.lblCategory.Name = "lblCategory";
             this.lblCategory.Padding = new System.Windows.Forms.Padding(10);
@@ -105,13 +105,14 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1176, 737);
+            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.lblBack);
-            this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.lblTitle);
             this.Controls.Add(this.lblExit);
             this.Name = "InfokioskArticleForm";
+            this.Padding = new System.Windows.Forms.Padding(10, 0, 50, 0);
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Статья";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;

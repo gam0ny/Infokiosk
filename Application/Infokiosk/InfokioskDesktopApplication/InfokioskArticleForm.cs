@@ -16,7 +16,6 @@ namespace InfokioskDesktopApplication
         public InfokioskArticleForm()
         {
             InitializeComponent();
-            this.webBrowser1.ScrollBarsEnabled = false;
             this.webBrowser1.Visible = false;
         }
 
@@ -32,17 +31,20 @@ namespace InfokioskDesktopApplication
 
         private void InfokioskArticleForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.lblTitle.Text = this.Title;
             this.lblCategory.Text = this.Category;
             //this.webBrowser1.DocumentText ="<html><body bgcolor='#696969'></body></html>";
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
-            this.webBrowser1.Url = new Uri(string.Format("{0}Articles/Архантропы (Homo erectus).html", contentPath));
+            this.webBrowser1.Url = new Uri(string.Format("{0}Articles/Древнейшие люди на белорусской земле.html", contentPath));
         }
 
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
-            webBrowser1.Size = new Size(this.Width - 100, this.webBrowser1.Document.Body.ScrollRectangle.Height);
+            webBrowser1.Size = new Size(this.Width - 100, this.Height - 100);
             this.webBrowser1.Visible = true;
+            this.webBrowser1.Focus();
 
         }
 

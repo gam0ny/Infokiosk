@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.0</TargetFramework>
@@ -10,21 +10,6 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Entities\Entities.csproj" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Compile Update="ImageBoxListView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ImageBoxListView.Designer.cs">
-      <DependentUpon>ImageBoxListView.cs</DependentUpon>
-    </Compile>
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Update="ImageBoxListView.resx">
-      <DependentUpon>ImageBoxListView.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
 
 </Project>
