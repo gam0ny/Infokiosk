@@ -12,17 +12,26 @@ namespace InfokioskDesktopApplication
     {
         public List<ImageBoxItem> NewArticles { get; set; }
         public List<ArticleByCategory> ArticleByCategoriesCollection { get; set; }
-        public InfokioskArticleForm InfokioskArticleForm { get; set; }
+
+        #region Dynamic controls
+        private InfokioskArticleForm infokioskArticleForm { get; set; }
 
         private ImageBoxListView newArticlesImageBoxView;
+
         private FlowLayoutPanel flowLayoutPanel;
+        #endregion
 
         public InfokioskMainForm()
         {
+            InitializeComponent();
+
+            InitializeDynamicComponents();
+        }
+
+        private void InitializeDynamicComponents()
+        {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
 
-            InitializeComponent();
-       
             this.NewArticles = new List<ImageBoxItem> {
                         new ImageBoxItem { Id="1", Category="IXX Век", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
                         new ImageBoxItem { Id="2", Category="Золотой Век", Title = "Тема 2", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = true },
@@ -67,16 +76,21 @@ namespace InfokioskDesktopApplication
                 },
             };
 
-            newArticlesImageBoxView = new ImageBoxListView {
+            this.newArticlesImageBoxView = new ImageBoxListView
+            {
                 Title = "Новое",
                 CountItemsPerLine = 5,
                 ImageBoxItemList = NewArticles
             };
 
-            newArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
+            this.newArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
             this.Controls.Add(newArticlesImageBoxView);
 
-            flowLayoutPanel = new FlowLayoutPanel();
+            this.flowLayoutPanel = new FlowLayoutPanel();
+            this.flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
+            this.flowLayoutPanel.AutoSizeMode = AutoSizeMode.GrowOnly;
+            this.flowLayoutPanel.WrapContents = false;
+            this.flowLayoutPanel.AutoScroll = true;
             this.Controls.Add(flowLayoutPanel);
 
             foreach (var category in ArticleByCategoriesCollection)
@@ -94,11 +108,11 @@ namespace InfokioskDesktopApplication
         {
             var args = (CustomClickEventArgs)e;
             var ImageBox = args.ImageBox;
-            InfokioskArticleForm = new InfokioskArticleForm(this);
-            InfokioskArticleForm.ArticleId = ImageBox.Id;
-            InfokioskArticleForm.Title = ImageBox.Title;
-            InfokioskArticleForm.Category = ImageBox.Category;
-            InfokioskArticleForm.Show();
+            infokioskArticleForm = new InfokioskArticleForm(this);
+            infokioskArticleForm.ArticleId = ImageBox.Id;
+            infokioskArticleForm.Title = ImageBox.Title;
+            infokioskArticleForm.Category = ImageBox.Category;
+            infokioskArticleForm.Show();
             this.Hide();
         }
 
@@ -106,11 +120,6 @@ namespace InfokioskDesktopApplication
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            //this.AutoScroll = true;
-            this.flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
-            this.flowLayoutPanel.AutoSizeMode = AutoSizeMode.GrowOnly;
-            this.flowLayoutPanel.WrapContents = false;
-            this.flowLayoutPanel.AutoScroll = true;
             this.flowLayoutPanel.MinimumSize = new Size(this.Width - 80, this.Height - this.newArticlesImageBoxView.Height - 80);
             this.flowLayoutPanel.Location = new Point(-3, this.newArticlesImageBoxView.Height);
             this.flowLayoutPanel.Focus();

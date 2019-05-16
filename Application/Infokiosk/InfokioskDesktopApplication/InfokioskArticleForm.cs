@@ -31,6 +31,8 @@ namespace InfokioskDesktopApplication
 
         private void InfokioskArticleForm_Load(object sender, EventArgs e)
         {
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
             this.lblTitle.Text = this.Title;
             this.lblCategory.Text = this.Category;
             //this.webBrowser1.DocumentText ="<html><body bgcolor='#696969'></body></html>";
