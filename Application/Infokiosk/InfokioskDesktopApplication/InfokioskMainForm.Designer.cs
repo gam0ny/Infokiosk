@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             this.lblExit = new System.Windows.Forms.Label();
-            this.flowLayoutPanel = new System.Windows.Forms.FlowLayoutPanel();
             this.SuspendLayout();
             // 
             // lblExit
@@ -47,23 +46,12 @@
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
-            // flowLayoutPanel
-            // 
-            this.flowLayoutPanel.AutoScroll = true;
-            this.flowLayoutPanel.AutoSize = true;
-            this.flowLayoutPanel.FlowDirection = System.Windows.Forms.FlowDirection.TopDown;
-            this.flowLayoutPanel.Location = new System.Drawing.Point(2, 0);
-            this.flowLayoutPanel.Name = "flowLayoutPanel";
-            this.flowLayoutPanel.Size = new System.Drawing.Size(1121, 737);
-            this.flowLayoutPanel.TabIndex = 1;
-            // 
             // InfokioskMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1146, 756);
-            this.Controls.Add(this.flowLayoutPanel);
             this.Controls.Add(this.lblExit);
             this.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -72,14 +60,12 @@
             this.Text = "Инфокиоск";
             this.Load += new System.EventHandler(this.InfokioskMainForm_Load);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
 
         private System.Windows.Forms.Label lblExit;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel;
     }
 }
 

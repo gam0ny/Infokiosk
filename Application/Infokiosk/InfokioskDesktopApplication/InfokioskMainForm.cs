@@ -10,18 +10,20 @@ namespace InfokioskDesktopApplication
 {
     public partial class InfokioskMainForm : Form
     {
+        public List<ImageBoxItem> NewArticles { get; set; }
         public List<ArticleByCategory> ArticleByCategoriesCollection { get; set; }
         public InfokioskArticleForm InfokioskArticleForm { get; set; }
+
+        private ImageBoxListView newArticlesImageBoxView;
+        private FlowLayoutPanel flowLayoutPanel;
+
         public InfokioskMainForm()
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
 
             InitializeComponent();
-
-            this.ArticleByCategoriesCollection = new List<ArticleByCategory> {
-                new ArticleByCategory {
-                    Category = "Новое",
-                    Articles = new List<ImageBoxItem> {
+       
+            this.NewArticles = new List<ImageBoxItem> {
                         new ImageBoxItem { Id="1", Category="IXX Век", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
                         new ImageBoxItem { Id="2", Category="Золотой Век", Title = "Тема 2", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = true },
                         new ImageBoxItem { Id="3", Category="Искусство", Title = "Тема 3", ImageUrl=string.Format("{0}3.jpg", contentPath), HasDocuments = false, HasVideo = false },
@@ -32,8 +34,9 @@ namespace InfokioskDesktopApplication
                         new ImageBoxItem { Id="8", Category="Искусство", Title = "Тема 3", ImageUrl=string.Format("{0}3.jpg", contentPath), HasDocuments = false, HasVideo = false },
                         new ImageBoxItem {  Id="9", Category="XVI Век", Title = "Тема 4", ImageUrl=string.Format("{0}4.jpg", contentPath), HasDocuments = false, HasVideo = false },
                         new ImageBoxItem {  Id="10", Category="Наука", Title = "Тема 5", ImageUrl=string.Format("{0}5.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    },
-                },
+                    };
+
+            this.ArticleByCategoriesCollection = new List<ArticleByCategory> {
                 new ArticleByCategory {
                     Category = "IXX Век",
                     Articles = new List<ImageBoxItem> {
@@ -64,6 +67,18 @@ namespace InfokioskDesktopApplication
                 },
             };
 
+            newArticlesImageBoxView = new ImageBoxListView {
+                Title = "Новое",
+                CountItemsPerLine = 5,
+                ImageBoxItemList = NewArticles
+            };
+
+            newArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
+            this.Controls.Add(newArticlesImageBoxView);
+
+            flowLayoutPanel = new FlowLayoutPanel();
+            this.Controls.Add(flowLayoutPanel);
+
             foreach (var category in ArticleByCategoriesCollection)
             {
                 ImageBoxListView imageBoxListView = new ImageBoxListView();
@@ -91,8 +106,14 @@ namespace InfokioskDesktopApplication
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            this.AutoSize = true;
-            this.AutoScroll = true;
+            //this.AutoScroll = true;
+            this.flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
+            this.flowLayoutPanel.AutoSizeMode = AutoSizeMode.GrowOnly;
+            this.flowLayoutPanel.WrapContents = false;
+            this.flowLayoutPanel.AutoScroll = true;
+            this.flowLayoutPanel.MinimumSize = new Size(this.Width - 80, this.Height - this.newArticlesImageBoxView.Height - 80);
+            this.flowLayoutPanel.Location = new Point(-3, this.newArticlesImageBoxView.Height);
+            this.flowLayoutPanel.Focus();
         }
 
         private void LblExit_Click(object sender, EventArgs e)
