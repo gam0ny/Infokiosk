@@ -69,6 +69,7 @@ namespace CustomControlLibrary
             {
                 var imageBoxItem = ImageBoxItemList[i];
                 var imageBox = new ImageBox();
+                imageBox.Id = imageBoxItem.Id;
                 imageBox.Category = imageBoxItem.Category.ToUpper();
                 imageBox.Title = imageBoxItem.Title;
                 imageBox.HasVideo = imageBoxItem.HasVideo;

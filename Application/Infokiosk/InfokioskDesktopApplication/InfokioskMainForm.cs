@@ -1,5 +1,6 @@
 ﻿using CustomControlLibrary;
 using CustomControlLibrary.Entities;
+using InfokioskDesktopApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -34,9 +35,13 @@ namespace InfokioskDesktopApplication
 
         public InfokioskMainForm()
         {
-            businessLogicLayer = new BusinessLogicLayer();
-            backgroundWorker = new BackgroundWorker();
+            this.FormBorderStyle = FormBorderStyle.None;
+            this.WindowState = FormWindowState.Maximized;
+            this.AutoScroll = true;
 
+            businessLogicLayer = new BusinessLogicLayer();
+
+            backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(FetchingLatestArticlesInProgress);
             backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingLatestArticlesComplete);
 
@@ -45,7 +50,6 @@ namespace InfokioskDesktopApplication
             InitializeDynamicComponents();
 
             this.pbLoading.Visible = true;
-            backgroundWorker.RunWorkerAsync();
         }
 
         private void FetchingLatestArticlesInProgress(object sender, DoWorkEventArgs e)
@@ -89,15 +93,14 @@ namespace InfokioskDesktopApplication
 
             foreach(var articlesByCategory in this.ArticlesByCategoies)
             {
-                var articlesByCategoryImageBoxView = new ImageBoxListView {
-                    Title = articlesByCategory.Category,
-                    NoFileImage = noFileImage,
-                    //MaximumSize = new Size(this.Size.Width - 200, 0)
-                };
+                var articlesByCategoryImageBoxView = new ImageBoxListView();
+                this.flowLayoutMainPanel.Controls.Add(articlesByCategoryImageBoxView);
 
+                articlesByCategoryImageBoxView.Title = articlesByCategory.Category;
+                articlesByCategoryImageBoxView.NoFileImage = noFileImage;
+                articlesByCategoryImageBoxView.MaximumSize = new Size(this.Size.Width - 200, 0);
                 articlesByCategoryImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
                 articlesByCategoryImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(articlesByCategory.Articles);
-                this.flowLayoutMainPanel.Controls.Add(articlesByCategoryImageBoxView);
             }
 
             this.flowLayoutMainPanel.Focus();
@@ -105,7 +108,6 @@ namespace InfokioskDesktopApplication
 
         private void InitializeDynamicComponents()
         {
-            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
             var noFileImagePath = ConfigurationManager.AppSettings["NoFileImagePath"];
 
             if(File.Exists(noFileImagePath))
@@ -118,11 +120,11 @@ namespace InfokioskDesktopApplication
             }
 
             this.flowLayoutMainPanel = new FlowLayoutPanel();
+            //this.flowLayoutMainPanel.AutoScroll = true;
             this.flowLayoutMainPanel.AutoSize = true;
             this.flowLayoutMainPanel.FlowDirection = FlowDirection.TopDown;
-            //this.flowLayoutMainPanel.AutoScroll = true;
             this.flowLayoutMainPanel.WrapContents = true;
-            this.flowLayoutMainPanel.MaximumSize = new Size(this.Width - 100, this.Height);
+            //this.flowLayoutMainPanel.MaximumSize = new Size(this.Size.Width, this.Size.Height);
             this.Controls.Add(flowLayoutMainPanel);
         }
         private void HandleImageBoxItemClick(object sender, EventArgs e)
@@ -130,22 +132,19 @@ namespace InfokioskDesktopApplication
             var args = (CustomClickEventArgs)e;
             var ImageBox = args.ImageBox;
             infokioskArticleForm = new InfokioskArticleForm(this);
-            infokioskArticleForm.ArticleId = ImageBox.Id;
-            infokioskArticleForm.Title = ImageBox.Title;
-            infokioskArticleForm.Category = ImageBox.Category;
+            infokioskArticleForm.ArticleModel.Id = ImageBox.Id;
             infokioskArticleForm.Show();
             this.Hide();
-        }
-
-        private void InfokioskMainForm_Load(object sender, EventArgs e)
-        {
-            this.FormBorderStyle = FormBorderStyle.None;
-            this.WindowState = FormWindowState.Maximized;
         }
 
         private void LblExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
+        }
+
+        private void InfokioskMainForm_Load(object sender, EventArgs e)
+        {
+            backgroundWorker.RunWorkerAsync();
         }
     }
 }

@@ -1,5 +1,6 @@
 ﻿using CustomControlLibrary.Entities;
 using Entities;
+using InfokioskDesktopApplication.Models;
 using System.Collections.Generic;
 using System.Configuration;
 
@@ -58,6 +59,22 @@ namespace InfokioskDesktopApplication
             }
 
             return imageBoxItemCollection;
+        }
+
+        public static ArticleModel FromArticleToArticleModel(Article article)
+        {
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+
+            return new ArticleModel
+            {
+                Id = article.Id,
+                Title = article.Title,
+                ImageUrl = string.Format("{0}/{1}/{2}", contentPath, article.Id, article.TitleImageName),
+                HasDocument = article.HasDocument,
+                HasVideo = article.HasVideo,
+                CategoryName = article.ContentCategory.Name,
+                Content = article.Content,
+            };
         }
     }
 }

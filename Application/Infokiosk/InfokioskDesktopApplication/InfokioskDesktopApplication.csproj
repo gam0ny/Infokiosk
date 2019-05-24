@@ -63,8 +63,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticlesByCategoryPreviewModel.cs" />
-    <Compile Include="ArticlePreviewModel.cs" />
+    <Compile Include="Models\ArticleModel.cs" />
+    <Compile Include="Models\ArticlesByCategoryPreviewModel.cs" />
+    <Compile Include="Models\ArticlePreviewModel.cs" />
     <Compile Include="BusinessLogicLayer.cs" />
     <Compile Include="Converter.cs" />
     <Compile Include="InfokioskArticleForm.cs">

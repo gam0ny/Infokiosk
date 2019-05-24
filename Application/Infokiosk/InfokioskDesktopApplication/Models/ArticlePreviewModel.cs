@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace InfokioskDesktopApplication
+namespace InfokioskDesktopApplication.Models
 {
     public class ArticlePreviewModel
     {

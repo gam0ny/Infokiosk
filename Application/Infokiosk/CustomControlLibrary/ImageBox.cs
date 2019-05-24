@@ -7,7 +7,7 @@ namespace CustomControlLibrary
 {
     public partial class ImageBox : UserControl
     {
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public bool HasVideo { get; set; }
 
         public bool HasDocuments { get; set; }

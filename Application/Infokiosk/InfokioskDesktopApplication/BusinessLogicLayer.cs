@@ -1,4 +1,6 @@
 ﻿using DatabaseLayer.Repositories;
+using InfokioskDesktopApplication.Models;
+using System;
 using System.Collections.Generic;
 
 namespace InfokioskDesktopApplication
@@ -39,6 +41,13 @@ namespace InfokioskDesktopApplication
 
             }
             return articlesByCategoryPreviewModelCollection;
+        }
+
+        public ArticleModel GetArticleById(Guid articleId)
+        {
+            var dbArticle = articleRepository.GetArticleById(articleId);
+
+            return Converter.FromArticleToArticleModel(dbArticle);
         }
     }
 }

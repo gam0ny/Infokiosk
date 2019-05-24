@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace InfokioskDesktopApplication
+namespace InfokioskDesktopApplication.Models
 {
     public class ArticlesByCategoryPreviewModel
     {

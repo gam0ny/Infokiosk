@@ -1,5 +1,6 @@
-﻿using System;
-using System.Configuration;
+﻿using InfokioskDesktopApplication.Models;
+using System;
+using System.ComponentModel;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -7,18 +8,28 @@ namespace InfokioskDesktopApplication
 {
     public partial class InfokioskArticleForm : Form
     {
+        private BusinessLogicLayer businessLogicLayer;
+
+        private BackgroundWorker backgroundWorker;
+
         InfokioskMainForm InfokioskMainForm { get; set; }
-        public string ArticleId { get; set; }
 
-        public string Title { get; set; }
+        public ArticleModel ArticleModel { get; set; }
 
-        public string Category { get; set; }
         public InfokioskArticleForm()
         {
             InitializeComponent();
             this.webBrowser1.Visible = false;
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
+
+            this.businessLogicLayer = new BusinessLogicLayer();
+
+            this.backgroundWorker = new BackgroundWorker();
+            this.backgroundWorker.DoWork += new DoWorkEventHandler(FetchingArticleContentByIdInProgress);
+            this.backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingArticleContentByIdComplete);
+
+            this.ArticleModel = new ArticleModel();
         }
 
         public InfokioskArticleForm(InfokioskMainForm mainForm) : this()
@@ -26,17 +37,23 @@ namespace InfokioskDesktopApplication
             InfokioskMainForm = mainForm;
         }
 
+        private void FetchingArticleContentByIdInProgress(object sender, DoWorkEventArgs e)
+        {
+            e.Result = businessLogicLayer.GetArticleById(this.ArticleModel.Id);
+        }
+
+        private void FetchingArticleContentByIdComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.ArticleModel = (ArticleModel)e.Result;
+            this.lblTitle.Text = this.ArticleModel.Title;
+            this.lblCategory.Text = this.ArticleModel.CategoryName.ToUpper();
+            this.webBrowser1.DocumentText = this.ArticleModel.Content;
+            this.pbLoading.Visible = false;
+        }
+
         private void LblExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
-        }
-
-        private void InfokioskArticleForm_Load(object sender, EventArgs e)
-        {
-            this.lblTitle.Text = this.Title;
-            this.lblCategory.Text = this.Category;
-            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
-            this.webBrowser1.Url = new Uri(string.Format("{0}Articles/Древнейшие люди на белорусской земле.html", contentPath));
         }
 
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
@@ -51,6 +68,11 @@ namespace InfokioskDesktopApplication
         {
             this.Close();
             InfokioskMainForm.Show();
+        }
+
+        private void InfokioskArticleForm_Load(object sender, EventArgs e)
+        {
+            this.backgroundWorker.RunWorkerAsync();
         }
     }
 }

@@ -85,5 +85,43 @@ namespace DatabaseLayer.Repositories
 
             return articles;
         }
+
+        public Article GetArticleById(Guid articleId)
+        {
+            var sqlStatement = "SELECT t1.Id, t1.Title, t1.TitleImageName, t1.HasVideo, t1.HasDocument, t2.Id, t2.Name, t1.Content, t1.UserId, t1.CreationDate, t1.EditDate " +
+               "FROM Article t1 " +
+               "INNER JOIN ContentCategory t2 ON t1.ContentCategoryId = t2.Id " +
+               "WHERE t1.Id = @articleId";
+
+            MySqlDataReader rdr = DbManager.Execute(sqlStatement,
+                new Parameter[] { new Parameter() { Name = "@articleId", Value = articleId.ToString() } });
+
+            if (rdr.HasRows)
+            {
+                while (rdr.Read())
+                {
+                    return new Article
+                    {
+                        Id = Guid.Parse((string)rdr[0]),
+                        Title = (string)rdr[1],
+                        TitleImageName = (string)rdr[2],
+                        HasVideo = Convert.ToBoolean(rdr[3]),
+                        HasDocument = Convert.ToBoolean(rdr[4]),
+                        ContentCategory = new ContentCategory
+                        {
+                            Id = (int)rdr[5],
+                            Name = (string)rdr[6],
+                        },
+                        Content = (string)rdr[7],
+                        UserId = Guid.Parse((string)rdr[8]),
+                        CreationDate = (DateTime)rdr[9],
+                        EditingDate = (DateTime)rdr[10],
+                    };
+                }
+            }
+
+            return null;
+
+        }
     }
 }

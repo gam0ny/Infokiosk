@@ -4,7 +4,9 @@ namespace Entities
 {
     public class Article : ArticleShort
     {
-        public string UserId { get; set; }
+        public string Content { get; set; }
+
+        public Guid UserId { get; set; }
 
         public DateTime CreationDate { get; set; }
 
