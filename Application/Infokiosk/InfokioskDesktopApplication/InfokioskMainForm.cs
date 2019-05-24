@@ -21,6 +21,8 @@ namespace InfokioskDesktopApplication
         #region Dynamic controls
         private InfokioskArticleForm infokioskArticleForm { get; set; }
 
+        private InfokioskSearchArticleForm infokioskSearchArticleForm { get; set; }
+
         private Image noFileImage;
 
         private FlowLayoutPanel flowLayoutMainPanel { get; set; }
@@ -145,6 +147,13 @@ namespace InfokioskDesktopApplication
         private void InfokioskMainForm_Load(object sender, EventArgs e)
         {
             backgroundWorker.RunWorkerAsync();
+        }
+
+        private void LblSearch_Click(object sender, EventArgs e)
+        {
+            infokioskSearchArticleForm = new InfokioskSearchArticleForm(this);
+            this.infokioskSearchArticleForm.Show();
+            this.Hide();
         }
     }
 }
