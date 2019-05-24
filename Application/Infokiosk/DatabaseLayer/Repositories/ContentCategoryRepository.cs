@@ -27,5 +27,27 @@ namespace DatabaseLayer.Repositories
 
             return contentCategories;
         }
+
+        public ContentCategory GetContentCategoryById(int id)
+        {
+            var sqlStatement = "SELECT Id, Name FROM ContentCategory WHERE Id = @id";
+
+            MySqlDataReader rdr = DbManager.Execute(sqlStatement,
+                new Parameter[] { new Parameter() { Name = "@id", Value = id.ToString() } });
+
+            ContentCategory contentCategory = null;
+
+            while (rdr.Read())
+            {
+                contentCategory = new ContentCategory
+                {
+                    Id = (int)rdr[0],
+                    Name = (string)rdr[1]
+                };
+            }
+            rdr.Close();
+
+            return contentCategory;
+        }
     }
 }

@@ -63,7 +63,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ArticleByCategory.cs" />
+    <Compile Include="ArticlesByCategoryPreviewModel.cs" />
     <Compile Include="ArticlePreviewModel.cs" />
     <Compile Include="BusinessLogicLayer.cs" />
     <Compile Include="Converter.cs" />

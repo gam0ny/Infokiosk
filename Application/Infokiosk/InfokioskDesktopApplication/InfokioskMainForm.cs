@@ -11,11 +11,6 @@ using System.Windows.Forms;
 
 namespace InfokioskDesktopApplication
 {
-    public enum Action
-    {
-        FetchLatestArticles,
-        FetchArticlesGroupedByContentCategory
-    }
     public partial class InfokioskMainForm : Form
     {
         private BusinessLogicLayer businessLogicLayer;
@@ -25,13 +20,15 @@ namespace InfokioskDesktopApplication
         #region Dynamic controls
         private InfokioskArticleForm infokioskArticleForm { get; set; }
 
-        private ImageBoxListView latestArticlesImageBoxView;
+        private Image noFileImage;
 
-        private FlowLayoutPanel flowLayoutPanel;
+        private FlowLayoutPanel flowLayoutMainPanel { get; set; }
         #endregion
 
         #region Binded Models
         public List<ArticlePreviewModel> LatestArticles { get; set; } 
+
+        public List<ArticlesByCategoryPreviewModel> ArticlesByCategoies { get; set; }
 
         #endregion
 
@@ -48,7 +45,7 @@ namespace InfokioskDesktopApplication
             InitializeDynamicComponents();
 
             this.pbLoading.Visible = true;
-            backgroundWorker.RunWorkerAsync(Action.FetchLatestArticles);
+            backgroundWorker.RunWorkerAsync();
         }
 
         private void FetchingLatestArticlesInProgress(object sender, DoWorkEventArgs e)
@@ -58,37 +55,75 @@ namespace InfokioskDesktopApplication
 
         private void FetchingLatestArticlesComplete(object sender, RunWorkerCompletedEventArgs e)
         {
-            this.pbLoading.Visible = false;
             this.LatestArticles = (List<ArticlePreviewModel>)e.Result;
-            this.latestArticlesImageBoxView.Title = "Новое";
-            this.latestArticlesImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(this.LatestArticles);
-            this.latestArticlesImageBoxView.Refresh();
+            backgroundWorker.DoWork -= new DoWorkEventHandler(FetchingLatestArticlesInProgress);
+            backgroundWorker.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(FetchingLatestArticlesComplete);
+            backgroundWorker.DoWork += new DoWorkEventHandler(FetchingArticlesByCategoiesInProgress);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingArticlesByCategoiesComplete);
+            backgroundWorker.RunWorkerAsync();
+
+        }
+
+        private void FetchingArticlesByCategoiesInProgress(object sender, DoWorkEventArgs e)
+        {
+            e.Result = businessLogicLayer.GetArticlesByCategories();
+        }
+
+        private void FetchingArticlesByCategoiesComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.ArticlesByCategoies = (List<ArticlesByCategoryPreviewModel>)e.Result;
+            DrawArticles();
+            this.pbLoading.Visible = false;
+        }
+
+        private void DrawArticles()
+        {
+            var latestArticlesImageBoxView = new ImageBoxListView();
+            this.flowLayoutMainPanel.Controls.Add(latestArticlesImageBoxView);
+
+            latestArticlesImageBoxView.Title = "Новое";
+            latestArticlesImageBoxView.NoFileImage = this.noFileImage;
+            latestArticlesImageBoxView.MaximumSize = new Size(this.Size.Width - 200, 0);
+            latestArticlesImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(this.LatestArticles);
+            latestArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
+
+            foreach(var articlesByCategory in this.ArticlesByCategoies)
+            {
+                var articlesByCategoryImageBoxView = new ImageBoxListView {
+                    Title = articlesByCategory.Category,
+                    NoFileImage = noFileImage,
+                    //MaximumSize = new Size(this.Size.Width - 200, 0)
+                };
+
+                articlesByCategoryImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
+                articlesByCategoryImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(articlesByCategory.Articles);
+                this.flowLayoutMainPanel.Controls.Add(articlesByCategoryImageBoxView);
+            }
+
+            this.flowLayoutMainPanel.Focus();
         }
 
         private void InitializeDynamicComponents()
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
             var noFileImagePath = ConfigurationManager.AppSettings["NoFileImagePath"];
-            Image noFileImage = null;
 
             if(File.Exists(noFileImagePath))
             {
-                noFileImage = Image.FromFile(noFileImagePath);
+                this.noFileImage = Image.FromFile(noFileImagePath);
             }
             else
             {
                 throw new FileNotFoundException("'NoFileImagePath' key in App.config is wrong");
             }
 
-            this.latestArticlesImageBoxView = new ImageBoxListView()
-            {
-                Title = "Новое",
-                NoFileImage = noFileImage,
-                MaximumSize = new Size(this.Size.Width - 200, this.Size.Height- 200),
-            };
-
-            this.latestArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
-            this.Controls.Add(latestArticlesImageBoxView);
+            this.flowLayoutMainPanel = new FlowLayoutPanel();
+            this.flowLayoutMainPanel.AutoSize = true;
+            this.flowLayoutMainPanel.FlowDirection = FlowDirection.TopDown;
+            //this.flowLayoutMainPanel.AutoScroll = true;
+            this.flowLayoutMainPanel.WrapContents = true;
+            this.flowLayoutMainPanel.MaximumSize = new Size(this.Width - 100, this.Height);
+            this.Controls.Add(flowLayoutMainPanel);
         }
         private void HandleImageBoxItemClick(object sender, EventArgs e)
         {
@@ -106,11 +141,6 @@ namespace InfokioskDesktopApplication
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            this.flowLayoutPanel.MinimumSize = new Size(this.Width - 80, this.Height - this.latestArticlesImageBoxView.Height - 80);
-            this.flowLayoutPanel.Location = new Point(-3, this.latestArticlesImageBoxView.Height);
-            this.flowLayoutPanel.Focus();
-
-
         }
 
         private void LblExit_Click(object sender, EventArgs e)
