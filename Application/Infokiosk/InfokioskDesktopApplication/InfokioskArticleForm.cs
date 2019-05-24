@@ -1,6 +1,7 @@
 ﻿using InfokioskDesktopApplication.Models;
 using System;
 using System.ComponentModel;
+using System.Configuration;
 using System.Drawing;
 using System.Windows.Forms;
 
@@ -44,10 +45,12 @@ namespace InfokioskDesktopApplication
 
         private void FetchingArticleContentByIdComplete(object sender, RunWorkerCompletedEventArgs e)
         {
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+
             this.ArticleModel = (ArticleModel)e.Result;
             this.lblTitle.Text = this.ArticleModel.Title;
             this.lblCategory.Text = this.ArticleModel.CategoryName.ToUpper();
-            this.webBrowser1.DocumentText = this.ArticleModel.Content;
+            this.webBrowser1.DocumentText = this.ArticleModel.Content.Replace("src=\"", string.Format("src=\"{0}{1}\\", contentPath, ArticleModel.Id));
             this.pbLoading.Visible = false;
         }
 
