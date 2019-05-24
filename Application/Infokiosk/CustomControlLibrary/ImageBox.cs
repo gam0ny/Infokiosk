@@ -28,6 +28,10 @@ namespace CustomControlLibrary
             {
                 control.Click += ImageBox_Click;
             }
+            foreach(Control control in this.pbCover.Controls)
+            {
+                control.Click += ImageBox_Click;
+            }
         }
 
         private void ImageBox_Load(object sender, EventArgs e)

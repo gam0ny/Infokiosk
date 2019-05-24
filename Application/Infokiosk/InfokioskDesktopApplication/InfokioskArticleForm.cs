@@ -69,8 +69,8 @@ namespace InfokioskDesktopApplication
 
         private void LblBack_Click(object sender, EventArgs e)
         {
-            this.Close();
             InfokioskMainForm.Show();
+            this.Close();
         }
 
         private void InfokioskArticleForm_Load(object sender, EventArgs e)
