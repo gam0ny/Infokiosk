@@ -3,79 +3,107 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Drawing;
+using System.IO;
 using System.Windows.Forms;
 
 namespace CustomControlLibrary
 {
-    public partial class ImageBoxListView : UserControl
+    public partial class ImageBoxListView : UserControl, INotifyPropertyChanged
     {
-        public string Title { get; set; }
+        private List<ImageBoxItem> imageBoxItemList;
 
-        public int CountItemsPerLine { get; set; }
+        private string title;
 
-        public int CountItemsToDisplay { get; set; }
+        [NotifyParentProperty(true)]
+        public string Title { get { return title; } set { title = value; OnPropertyChanged("Title"); } }
 
-        public List<ImageBoxItem> ImageBoxItemList { get; set; }
+        [NotifyParentProperty(true)]
+        public List<ImageBoxItem> ImageBoxItemList
+        {
+            get { return imageBoxItemList; }
+            set { imageBoxItemList = value; OnPropertyChanged("ImageBoxItemList"); }
+        }
+
+        public Image NoFileImage { get; set; } 
 
         public event EventHandler ImageBoxItemClick;
+
+        public event PropertyChangedEventHandler PropertyChanged;
 
         public ImageBoxListView()
         {
             InitializeComponent();
+
+            this.PropertyChanged += ImageBoxListView_PropertyChanged;
         }
 
-        private void ImageBoxListView_Load(object sender, System.EventArgs e)
+        private void OnPropertyChanged(string propertyName)
         {
-            int xPoint = 0;
-            int yPoint = 0;
-            int spaceForTitleYPoint = 45;
-
-            if (string.IsNullOrWhiteSpace(this.Title))
+            if (PropertyChanged != null)
             {
-                lblTitle.Hide();
+                PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
             }
-            else
-            {
-                lblTitle.Show();
-                yPoint = spaceForTitleYPoint;
-            }
+        }
 
+        private void ImageBoxListView_PropertyChanged(object sender, PropertyChangedEventArgs e)
+        {
+            switch (e.PropertyName)
+            {
+                case "ImageBoxItemList": DrawImageBoxItemCollection(); break;
+                case "Title": DrawTitle(); break;
+            }
+        }
+
+        private void DrawTitle()
+        {
             if (!string.IsNullOrWhiteSpace(this.Title)) this.lblTitle.Text = this.Title.ToUpper();
 
-            if (this.CountItemsPerLine > 0)
+            if (!string.IsNullOrWhiteSpace(Title)) lblTitle.Show();
+            else lblTitle.Hide();
+        }
+
+        private void DrawImageBoxItemCollection()
+        {
+            var count = ImageBoxItemList == null ? 0 : ImageBoxItemList.Count;
+            for (int i = 0; i < count; i++)
             {
-                for (int i = 0; i < ImageBoxItemList.Count; i++)
+                var imageBoxItem = ImageBoxItemList[i];
+                var imageBox = new ImageBox();
+                imageBox.Category = imageBoxItem.Category.ToUpper();
+                imageBox.Title = imageBoxItem.Title;
+                imageBox.HasVideo = imageBoxItem.HasVideo;
+                imageBox.HasDocuments = imageBoxItem.HasDocuments;
+
+                Image image = null;
+
+                if (File.Exists(imageBoxItem.ImageUrl))
                 {
-                    var imageBoxItem = ImageBoxItemList[i];
-                    var imageBox = new ImageBox();
-                    imageBox.Category = imageBoxItem.Category.ToUpper();
-                    imageBox.Title = imageBoxItem.Title;
-                    imageBox.HasVideo = imageBoxItem.HasVideo;
-                    imageBox.HasDocuments = imageBoxItem.HasDocuments;
-                    imageBox.Image = Image.FromFile(imageBoxItem.ImageUrl);
-
-                    if (i != 0 && i % this.CountItemsPerLine == 0)
-                    {
-                        xPoint = 0;
-                        yPoint += imageBox.Size.Height;
-                    }
-
-                    imageBox.Location = new Point(xPoint, yPoint);
-                    xPoint += imageBox.Size.Width;
-                    imageBox.Cursor = Cursors.Hand;
-
-                    imageBox.CustomClick += ImageBox_Click;
-
-                    this.Controls.Add(imageBox);
+                    image = Image.FromFile(imageBoxItem.ImageUrl);
                 }
-            }
+                else
+                {
+                    image = NoFileImage;
 
+                }
+
+                imageBox.Image = image;
+                imageBox.Cursor = Cursors.Hand;
+
+                imageBox.CustomClick += ImageBox_Click;
+
+                this.flowLayoutContentPanel.Controls.Add(imageBox);
+            }
 
         }
 
         private void ImageBox_Click(object sender, System.EventArgs e)
         {
             if (ImageBoxItemClick != null) ImageBoxItemClick(sender, e);
+        }
+
+        private void FlowLayoutContentPanel_Paint(object sender, PaintEventArgs e)
+        {
+            this.flowLayoutContentPanel.MaximumSize = this.MaximumSize;
         }
     }
 }

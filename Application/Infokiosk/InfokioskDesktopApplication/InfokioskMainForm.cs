@@ -2,108 +2,94 @@
 using CustomControlLibrary.Entities;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Configuration;
 using System.Drawing;
+using System.IO;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace InfokioskDesktopApplication
 {
+    public enum Action
+    {
+        FetchLatestArticles,
+        FetchArticlesGroupedByContentCategory
+    }
     public partial class InfokioskMainForm : Form
     {
-        public List<ImageBoxItem> NewArticles { get; set; }
-        public List<ArticleByCategory> ArticleByCategoriesCollection { get; set; }
+        private BusinessLogicLayer businessLogicLayer;
+
+        private BackgroundWorker backgroundWorker;
 
         #region Dynamic controls
         private InfokioskArticleForm infokioskArticleForm { get; set; }
 
-        private ImageBoxListView newArticlesImageBoxView;
+        private ImageBoxListView latestArticlesImageBoxView;
 
         private FlowLayoutPanel flowLayoutPanel;
         #endregion
 
+        #region Binded Models
+        public List<ArticlePreviewModel> LatestArticles { get; set; } 
+
+        #endregion
+
         public InfokioskMainForm()
         {
+            businessLogicLayer = new BusinessLogicLayer();
+            backgroundWorker = new BackgroundWorker();
+
+            backgroundWorker.DoWork += new DoWorkEventHandler(FetchingLatestArticlesInProgress);
+            backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingLatestArticlesComplete);
+
             InitializeComponent();
 
             InitializeDynamicComponents();
+
+            this.pbLoading.Visible = true;
+            backgroundWorker.RunWorkerAsync(Action.FetchLatestArticles);
+        }
+
+        private void FetchingLatestArticlesInProgress(object sender, DoWorkEventArgs e)
+        {
+            e.Result = businessLogicLayer.GetLatestArticles();
+        }
+
+        private void FetchingLatestArticlesComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.pbLoading.Visible = false;
+            this.LatestArticles = (List<ArticlePreviewModel>)e.Result;
+            this.latestArticlesImageBoxView.Title = "Новое";
+            this.latestArticlesImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(this.LatestArticles);
+            this.latestArticlesImageBoxView.Refresh();
         }
 
         private void InitializeDynamicComponents()
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+            var noFileImagePath = ConfigurationManager.AppSettings["NoFileImagePath"];
+            Image noFileImage = null;
 
-            this.NewArticles = new List<ImageBoxItem> {
-                        new ImageBoxItem { Id="1", Category="IXX Век", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                        new ImageBoxItem { Id="2", Category="Золотой Век", Title = "Тема 2", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = true },
-                        new ImageBoxItem { Id="3", Category="Искусство", Title = "Тема 3", ImageUrl=string.Format("{0}3.jpg", contentPath), HasDocuments = false, HasVideo = false },
-                        new ImageBoxItem { Id="4", Category="XVI Век", Title = "Тема 4", ImageUrl=string.Format("{0}4.jpg", contentPath), HasDocuments = false, HasVideo = false },
-                        new ImageBoxItem { Id="5", Category="Наука", Title = "Тема 5", ImageUrl=string.Format("{0}5.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                        new ImageBoxItem { Id="6", Category="IXX Век", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                        new ImageBoxItem { Id="7", Category="Золотой Век", Title = "Тема 2", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = true },
-                        new ImageBoxItem { Id="8", Category="Искусство", Title = "Тема 3", ImageUrl=string.Format("{0}3.jpg", contentPath), HasDocuments = false, HasVideo = false },
-                        new ImageBoxItem {  Id="9", Category="XVI Век", Title = "Тема 4", ImageUrl=string.Format("{0}4.jpg", contentPath), HasDocuments = false, HasVideo = false },
-                        new ImageBoxItem {  Id="10", Category="Наука", Title = "Тема 5", ImageUrl=string.Format("{0}5.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    };
+            if(File.Exists(noFileImagePath))
+            {
+                noFileImage = Image.FromFile(noFileImagePath);
+            }
+            else
+            {
+                throw new FileNotFoundException("'NoFileImagePath' key in App.config is wrong");
+            }
 
-            this.ArticleByCategoriesCollection = new List<ArticleByCategory> {
-                new ArticleByCategory {
-                    Category = "IXX Век",
-                    Articles = new List<ImageBoxItem> {
-                    new ImageBoxItem { Id="1", Category="IXX Век", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    new ImageBoxItem { Id="6", Category="IXX Век", Title = "Тема 1", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    },
-                },
-                new ArticleByCategory {
-                    Category = "Искусство",
-                    Articles = new List<ImageBoxItem> {
-                    new ImageBoxItem { Id="1", Category="Искусство", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    new ImageBoxItem { Id="6", Category="Искусство", Title = "Тема 1", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    },
-                },
-                new ArticleByCategory {
-                    Category = "Золотой Век",
-                    Articles = new List<ImageBoxItem> {
-                    new ImageBoxItem { Id="1", Category="Золотой Век", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    new ImageBoxItem { Id="6", Category="Золотой Век", Title = "Тема 1", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    },
-                },
-                new ArticleByCategory {
-                    Category = "Наука",
-                    Articles = new List<ImageBoxItem> {
-                    new ImageBoxItem { Id="1", Category="Наука", Title = "Тема 1", ImageUrl=string.Format("{0}1.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    new ImageBoxItem { Id="6", Category="Наука", Title = "Тема 1", ImageUrl=string.Format("{0}2.jpg", contentPath), HasDocuments = true, HasVideo = false },
-                    },
-                },
-            };
-
-            this.newArticlesImageBoxView = new ImageBoxListView
+            this.latestArticlesImageBoxView = new ImageBoxListView()
             {
                 Title = "Новое",
-                CountItemsPerLine = 5,
-                ImageBoxItemList = NewArticles
+                NoFileImage = noFileImage,
+                MaximumSize = new Size(this.Size.Width - 200, this.Size.Height- 200),
             };
 
-            this.newArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
-            this.Controls.Add(newArticlesImageBoxView);
-
-            this.flowLayoutPanel = new FlowLayoutPanel();
-            this.flowLayoutPanel.FlowDirection = FlowDirection.TopDown;
-            this.flowLayoutPanel.AutoSizeMode = AutoSizeMode.GrowOnly;
-            this.flowLayoutPanel.WrapContents = false;
-            this.flowLayoutPanel.AutoScroll = true;
-            this.Controls.Add(flowLayoutPanel);
-
-            foreach (var category in ArticleByCategoriesCollection)
-            {
-                ImageBoxListView imageBoxListView = new ImageBoxListView();
-                imageBoxListView.Title = category.Category;
-                imageBoxListView.CountItemsPerLine = 5;
-                imageBoxListView.ImageBoxItemList = category.Articles;
-                imageBoxListView.ImageBoxItemClick += HandleImageBoxItemClick;
-                this.flowLayoutPanel.Controls.Add(imageBoxListView);
-            }
+            this.latestArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
+            this.Controls.Add(latestArticlesImageBoxView);
         }
-
         private void HandleImageBoxItemClick(object sender, EventArgs e)
         {
             var args = (CustomClickEventArgs)e;
@@ -120,9 +106,11 @@ namespace InfokioskDesktopApplication
         {
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
-            this.flowLayoutPanel.MinimumSize = new Size(this.Width - 80, this.Height - this.newArticlesImageBoxView.Height - 80);
-            this.flowLayoutPanel.Location = new Point(-3, this.newArticlesImageBoxView.Height);
+            this.flowLayoutPanel.MinimumSize = new Size(this.Width - 80, this.Height - this.latestArticlesImageBoxView.Height - 80);
+            this.flowLayoutPanel.Location = new Point(-3, this.latestArticlesImageBoxView.Height);
             this.flowLayoutPanel.Focus();
+
+
         }
 
         private void LblExit_Click(object sender, EventArgs e)

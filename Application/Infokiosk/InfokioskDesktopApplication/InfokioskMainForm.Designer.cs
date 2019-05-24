@@ -28,7 +28,10 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfokioskMainForm));
             this.lblExit = new System.Windows.Forms.Label();
+            this.pbLoading = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.SuspendLayout();
             // 
             // lblExit
@@ -46,12 +49,24 @@
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
+            // pbLoading
+            // 
+            this.pbLoading.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
+            this.pbLoading.Location = new System.Drawing.Point(0, 0);
+            this.pbLoading.Name = "pbLoading";
+            this.pbLoading.Size = new System.Drawing.Size(1126, 737);
+            this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
+            this.pbLoading.TabIndex = 1;
+            this.pbLoading.TabStop = false;
+            // 
             // InfokioskMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1176, 737);
+            this.Controls.Add(this.pbLoading);
             this.Controls.Add(this.lblExit);
             this.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(4);
@@ -59,6 +74,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Инфокиоск";
             this.Load += new System.EventHandler(this.InfokioskMainForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -66,6 +82,7 @@
         #endregion
 
         private System.Windows.Forms.Label lblExit;
+        private System.Windows.Forms.PictureBox pbLoading;
     }
 }
 
