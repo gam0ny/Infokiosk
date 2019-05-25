@@ -49,5 +49,19 @@ namespace InfokioskDesktopApplication
 
             return Converter.FromArticleToArticleModel(dbArticle);
         }
+
+        public List<ArticlePreviewModel> SearchArticlesByTitle(string keyword)
+        {
+            var dbArticles = articleRepository.SearchArticlesByTitle(keyword);
+
+            return Converter.FromArticleShortCollectionToArticlePreviewModelCollection(dbArticles);
+        }
+
+        public List<ArticlePreviewModel> SearchArticlesByContent(string keyword)
+        {
+            var dbArticles = articleRepository.SearchArticlesByContent(keyword);
+
+            return Converter.FromArticleShortCollectionToArticlePreviewModelCollection(dbArticles);
+        }
     }
 }

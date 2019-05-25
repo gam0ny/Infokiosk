@@ -31,19 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfokioskSearchArticleForm));
             this.lblBack = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
-            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.tableLayoutPanelSearchCriteria = new System.Windows.Forms.TableLayoutPanel();
             this.btnSearch = new System.Windows.Forms.Button();
             this.tbxSearch = new System.Windows.Forms.TextBox();
-            this.panel2 = new System.Windows.Forms.Panel();
+            this.panelSearchCriteria = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.radioButton1 = new System.Windows.Forms.RadioButton();
-            this.radioButton2 = new System.Windows.Forms.RadioButton();
-            this.panel1 = new System.Windows.Forms.Panel();
+            this.rbContent = new System.Windows.Forms.RadioButton();
+            this.rbName = new System.Windows.Forms.RadioButton();
+            this.panelSearchResult = new System.Windows.Forms.Panel();
             this.pbLoading = new System.Windows.Forms.PictureBox();
-            this.tableLayoutPanel1.SuspendLayout();
-            this.panel2.SuspendLayout();
+            this.tableLayoutPanelSearchCriteria.SuspendLayout();
+            this.panelSearchCriteria.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.panel1.SuspendLayout();
+            this.panelSearchResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.SuspendLayout();
             // 
@@ -79,31 +79,33 @@
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
-            // tableLayoutPanel1
+            // tableLayoutPanelSearchCriteria
             // 
-            this.tableLayoutPanel1.ColumnCount = 2;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanel1.Controls.Add(this.btnSearch, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.tbxSearch, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1026, 100);
-            this.tableLayoutPanel1.TabIndex = 7;
+            this.tableLayoutPanelSearchCriteria.ColumnCount = 2;
+            this.tableLayoutPanelSearchCriteria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
+            this.tableLayoutPanelSearchCriteria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
+            this.tableLayoutPanelSearchCriteria.Controls.Add(this.btnSearch, 1, 0);
+            this.tableLayoutPanelSearchCriteria.Controls.Add(this.tbxSearch, 0, 0);
+            this.tableLayoutPanelSearchCriteria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanelSearchCriteria.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelSearchCriteria.Name = "tableLayoutPanelSearchCriteria";
+            this.tableLayoutPanelSearchCriteria.RowCount = 1;
+            this.tableLayoutPanelSearchCriteria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelSearchCriteria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelSearchCriteria.Size = new System.Drawing.Size(1026, 100);
+            this.tableLayoutPanelSearchCriteria.TabIndex = 7;
             // 
             // btnSearch
             // 
             this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.Enabled = false;
             this.btnSearch.Location = new System.Drawing.Point(926, 3);
             this.btnSearch.Name = "btnSearch";
             this.btnSearch.Size = new System.Drawing.Size(97, 94);
             this.btnSearch.TabIndex = 1;
             this.btnSearch.Text = "Найти";
             this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // tbxSearch
             // 
@@ -112,20 +114,21 @@
             this.tbxSearch.Name = "tbxSearch";
             this.tbxSearch.Size = new System.Drawing.Size(917, 29);
             this.tbxSearch.TabIndex = 2;
+            this.tbxSearch.TextChanged += new System.EventHandler(this.TbxSearch_TextChanged);
             // 
-            // panel2
+            // panelSearchCriteria
             // 
-            this.panel2.Controls.Add(this.groupBox1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel2.Location = new System.Drawing.Point(0, 100);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1026, 100);
-            this.panel2.TabIndex = 3;
+            this.panelSearchCriteria.Controls.Add(this.groupBox1);
+            this.panelSearchCriteria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSearchCriteria.Location = new System.Drawing.Point(0, 100);
+            this.panelSearchCriteria.Name = "panelSearchCriteria";
+            this.panelSearchCriteria.Size = new System.Drawing.Size(1026, 100);
+            this.panelSearchCriteria.TabIndex = 3;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.radioButton2);
-            this.groupBox1.Controls.Add(this.radioButton1);
+            this.groupBox1.Controls.Add(this.rbContent);
+            this.groupBox1.Controls.Add(this.rbName);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
@@ -134,36 +137,36 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Поиск по";
             // 
-            // radioButton1
+            // rbContent
             // 
-            this.radioButton1.AutoSize = true;
-            this.radioButton1.Location = new System.Drawing.Point(21, 42);
-            this.radioButton1.Name = "radioButton1";
-            this.radioButton1.Size = new System.Drawing.Size(98, 29);
-            this.radioButton1.TabIndex = 0;
-            this.radioButton1.TabStop = true;
-            this.radioButton1.Text = "имени";
-            this.radioButton1.UseVisualStyleBackColor = true;
+            this.rbContent.AutoSize = true;
+            this.rbContent.Location = new System.Drawing.Point(190, 42);
+            this.rbContent.Name = "rbContent";
+            this.rbContent.Size = new System.Drawing.Size(174, 29);
+            this.rbContent.TabIndex = 1;
+            this.rbContent.Text = "содержимому";
+            this.rbContent.UseVisualStyleBackColor = true;
             // 
-            // radioButton2
+            // rbName
             // 
-            this.radioButton2.AutoSize = true;
-            this.radioButton2.Location = new System.Drawing.Point(190, 42);
-            this.radioButton2.Name = "radioButton2";
-            this.radioButton2.Size = new System.Drawing.Size(174, 29);
-            this.radioButton2.TabIndex = 1;
-            this.radioButton2.TabStop = true;
-            this.radioButton2.Text = "содержимому";
-            this.radioButton2.UseVisualStyleBackColor = true;
+            this.rbName.AutoSize = true;
+            this.rbName.Checked = true;
+            this.rbName.Location = new System.Drawing.Point(21, 42);
+            this.rbName.Name = "rbName";
+            this.rbName.Size = new System.Drawing.Size(98, 29);
+            this.rbName.TabIndex = 0;
+            this.rbName.TabStop = true;
+            this.rbName.Text = "имени";
+            this.rbName.UseVisualStyleBackColor = true;
             // 
-            // panel1
+            // panelSearchResult
             // 
-            this.panel1.Controls.Add(this.pbLoading);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 200);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1026, 537);
-            this.panel1.TabIndex = 8;
+            this.panelSearchResult.Controls.Add(this.pbLoading);
+            this.panelSearchResult.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelSearchResult.Location = new System.Drawing.Point(0, 200);
+            this.panelSearchResult.Name = "panelSearchResult";
+            this.panelSearchResult.Size = new System.Drawing.Size(1026, 537);
+            this.panelSearchResult.TabIndex = 8;
             // 
             // pbLoading
             // 
@@ -175,6 +178,7 @@
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 4;
             this.pbLoading.TabStop = false;
+            this.pbLoading.Visible = false;
             // 
             // InfokioskSearchArticleForm
             // 
@@ -182,21 +186,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1176, 737);
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.panel2);
-            this.Controls.Add(this.tableLayoutPanel1);
+            this.Controls.Add(this.panelSearchResult);
+            this.Controls.Add(this.panelSearchCriteria);
+            this.Controls.Add(this.tableLayoutPanelSearchCriteria);
             this.Controls.Add(this.lblBack);
             this.Controls.Add(this.lblExit);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "InfokioskSearchArticleForm";
             this.Padding = new System.Windows.Forms.Padding(0, 0, 50, 0);
             this.Text = "Поиск статьи";
-            this.tableLayoutPanel1.ResumeLayout(false);
-            this.tableLayoutPanel1.PerformLayout();
-            this.panel2.ResumeLayout(false);
+            this.tableLayoutPanelSearchCriteria.ResumeLayout(false);
+            this.tableLayoutPanelSearchCriteria.PerformLayout();
+            this.panelSearchCriteria.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.panel1.ResumeLayout(false);
+            this.panelSearchResult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             this.ResumeLayout(false);
 
@@ -206,14 +210,14 @@
 
         private System.Windows.Forms.Label lblBack;
         private System.Windows.Forms.Label lblExit;
-        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelSearchCriteria;
         private System.Windows.Forms.Button btnSearch;
         private System.Windows.Forms.TextBox tbxSearch;
-        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panelSearchCriteria;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.RadioButton radioButton2;
-        private System.Windows.Forms.RadioButton radioButton1;
-        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.RadioButton rbContent;
+        private System.Windows.Forms.RadioButton rbName;
+        private System.Windows.Forms.Panel panelSearchResult;
         private System.Windows.Forms.PictureBox pbLoading;
     }
 }
