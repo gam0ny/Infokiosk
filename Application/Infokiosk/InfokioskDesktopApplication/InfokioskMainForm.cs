@@ -89,7 +89,7 @@ namespace InfokioskDesktopApplication
 
             latestArticlesImageBoxView.Title = "Новое";
             latestArticlesImageBoxView.NoFileImage = this.noFileImage;
-            latestArticlesImageBoxView.MaximumSize = new Size(this.Size.Width - 200, 0);
+            latestArticlesImageBoxView.MaximumSize = new Size(this.panelContent.Size.Width - 200, 0);
             latestArticlesImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(this.LatestArticles);
             latestArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
 
@@ -100,7 +100,7 @@ namespace InfokioskDesktopApplication
 
                 articlesByCategoryImageBoxView.Title = articlesByCategory.Category;
                 articlesByCategoryImageBoxView.NoFileImage = noFileImage;
-                articlesByCategoryImageBoxView.MaximumSize = new Size(this.Size.Width - 200, 0);
+                articlesByCategoryImageBoxView.MaximumSize = new Size(this.panelContent.Size.Width - 200, 0);
                 articlesByCategoryImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
                 articlesByCategoryImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(articlesByCategory.Articles);
             }
@@ -127,7 +127,8 @@ namespace InfokioskDesktopApplication
             this.flowLayoutMainPanel.FlowDirection = FlowDirection.TopDown;
             this.flowLayoutMainPanel.WrapContents = true;
             //this.flowLayoutMainPanel.MaximumSize = new Size(this.Size.Width, this.Size.Height);
-            this.Controls.Add(flowLayoutMainPanel);
+            this.panelContent.Controls.Add(flowLayoutMainPanel);
+            this.panelContent.AutoScroll = true;
         }
         private void HandleImageBoxItemClick(object sender, EventArgs e)
         {
