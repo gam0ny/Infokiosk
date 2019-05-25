@@ -64,6 +64,7 @@ namespace CustomControlLibrary
 
         private void DrawImageBoxItemCollection()
         {
+            this.flowLayoutContentPanel.Controls.Clear();
             var count = ImageBoxItemList == null ? 0 : ImageBoxItemList.Count;
             for (int i = 0; i < count; i++)
             {
