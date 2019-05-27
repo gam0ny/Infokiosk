@@ -7,7 +7,6 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace InfokioskDesktopApplication
@@ -140,11 +139,6 @@ namespace InfokioskDesktopApplication
             this.Hide();
         }
 
-        private void LblExit_Click(object sender, EventArgs e)
-        {
-            Application.Exit();
-        }
-
         private void InfokioskMainForm_Load(object sender, EventArgs e)
         {
             backgroundWorker.RunWorkerAsync();
@@ -155,6 +149,11 @@ namespace InfokioskDesktopApplication
             infokioskSearchArticleForm = new InfokioskSearchArticleForm(this);
             this.infokioskSearchArticleForm.Show();
             this.Hide();
+        }
+
+        private void LblExit_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

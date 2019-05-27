@@ -38,10 +38,18 @@
             this.lblBack = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
+            this.panelEmail = new System.Windows.Forms.Panel();
+            this.btnSendEmail = new System.Windows.Forms.Button();
+            this.tbxEmail = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.pbEmailSendingLoading = new System.Windows.Forms.PictureBox();
+            this.lblEmailMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.flowLayoutTitlePanel.SuspendLayout();
             this.panelToolbar.SuspendLayout();
             this.panelContent.SuspendLayout();
+            this.panelEmail.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEmailSendingLoading)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -152,12 +160,82 @@
             this.panelContent.Size = new System.Drawing.Size(916, 737);
             this.panelContent.TabIndex = 14;
             // 
+            // panelEmail
+            // 
+            this.panelEmail.Controls.Add(this.lblEmailMessage);
+            this.panelEmail.Controls.Add(this.pbEmailSendingLoading);
+            this.panelEmail.Controls.Add(this.btnSendEmail);
+            this.panelEmail.Controls.Add(this.tbxEmail);
+            this.panelEmail.Controls.Add(this.label1);
+            this.panelEmail.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panelEmail.Location = new System.Drawing.Point(10, 557);
+            this.panelEmail.Name = "panelEmail";
+            this.panelEmail.Padding = new System.Windows.Forms.Padding(0, 0, 0, 100);
+            this.panelEmail.Size = new System.Drawing.Size(916, 180);
+            this.panelEmail.TabIndex = 8;
+            // 
+            // btnSendEmail
+            // 
+            this.btnSendEmail.Enabled = false;
+            this.btnSendEmail.Location = new System.Drawing.Point(1250, 34);
+            this.btnSendEmail.Name = "btnSendEmail";
+            this.btnSendEmail.Size = new System.Drawing.Size(145, 40);
+            this.btnSendEmail.TabIndex = 8;
+            this.btnSendEmail.Text = "Отправить";
+            this.btnSendEmail.UseVisualStyleBackColor = true;
+            this.btnSendEmail.Click += new System.EventHandler(this.BtnSendEmail_Click);
+            // 
+            // tbxEmail
+            // 
+            this.tbxEmail.Location = new System.Drawing.Point(713, 35);
+            this.tbxEmail.Name = "tbxEmail";
+            this.tbxEmail.Size = new System.Drawing.Size(500, 29);
+            this.tbxEmail.TabIndex = 1;
+            this.tbxEmail.TextChanged += new System.EventHandler(this.TbxEmail_TextChanged);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.Location = new System.Drawing.Point(18, 30);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(681, 39);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "Нравится статья? Отправь себе на e-mail";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // pbEmailSendingLoading
+            // 
+            this.pbEmailSendingLoading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbEmailSendingLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbEmailSendingLoading.Image")));
+            this.pbEmailSendingLoading.Location = new System.Drawing.Point(1415, 25);
+            this.pbEmailSendingLoading.Name = "pbEmailSendingLoading";
+            this.pbEmailSendingLoading.Size = new System.Drawing.Size(50, 50);
+            this.pbEmailSendingLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEmailSendingLoading.TabIndex = 8;
+            this.pbEmailSendingLoading.TabStop = false;
+            this.pbEmailSendingLoading.Visible = false;
+            // 
+            // lblEmailMessage
+            // 
+            this.lblEmailMessage.AutoSize = true;
+            this.lblEmailMessage.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmailMessage.ForeColor = System.Drawing.Color.Lime;
+            this.lblEmailMessage.Location = new System.Drawing.Point(1450, 30);
+            this.lblEmailMessage.Name = "lblEmailMessage";
+            this.lblEmailMessage.Size = new System.Drawing.Size(400, 39);
+            this.lblEmailMessage.TabIndex = 9;
+            this.lblEmailMessage.Text = " Отправлено успешно";
+            this.lblEmailMessage.Visible = false;
+            // 
             // InfokioskArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
             this.ClientSize = new System.Drawing.Size(1176, 737);
+            this.Controls.Add(this.panelEmail);
             this.Controls.Add(this.panelContent);
             this.Controls.Add(this.panelToolbar);
             this.Name = "InfokioskArticleForm";
@@ -172,6 +250,9 @@
             this.panelToolbar.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);
             this.panelContent.PerformLayout();
+            this.panelEmail.ResumeLayout(false);
+            this.panelEmail.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pbEmailSendingLoading)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -186,5 +267,11 @@
         private System.Windows.Forms.Label lblBack;
         private System.Windows.Forms.Label lblExit;
         private System.Windows.Forms.Panel panelContent;
+        private System.Windows.Forms.Panel panelEmail;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tbxEmail;
+        private System.Windows.Forms.Button btnSendEmail;
+        private System.Windows.Forms.PictureBox pbEmailSendingLoading;
+        private System.Windows.Forms.Label lblEmailMessage;
     }
 }

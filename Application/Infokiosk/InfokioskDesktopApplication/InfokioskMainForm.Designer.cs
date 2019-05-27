@@ -41,11 +41,10 @@
             // 
             // pbLoading
             // 
-            this.pbLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
             this.pbLoading.Location = new System.Drawing.Point(0, 0);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(976, 737);
+            this.pbLoading.Size = new System.Drawing.Size(1001, 737);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 1;
             this.pbLoading.TabStop = false;
