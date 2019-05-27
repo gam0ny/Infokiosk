@@ -81,6 +81,7 @@
             this.tbxPassword.Placeholder = "Placeholder";
             this.tbxPassword.Size = new System.Drawing.Size(320, 60);
             this.tbxPassword.TabIndex = 3;
+            this.tbxPassword.Value = "";
             // 
             // tbxUsername
             // 
@@ -95,6 +96,7 @@
             this.tbxUsername.Placeholder = "Username";
             this.tbxUsername.Size = new System.Drawing.Size(320, 60);
             this.tbxUsername.TabIndex = 2;
+            this.tbxUsername.Value = "";
             this.tbxUsername.CustomTextChanged += new System.EventHandler(this.TbxUsername_CustomTextChanged);
             // 
             // LoginForm
@@ -102,7 +104,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(514, 646);
+            this.ClientSize = new System.Drawing.Size(576, 637);
             this.Controls.Add(this.lblErrorMessage);
             this.Controls.Add(this.btnAuthenticate);
             this.Controls.Add(this.tbxPassword);
@@ -112,6 +114,7 @@
             this.Margin = new System.Windows.Forms.Padding(4);
             this.Name = "LoginForm";
             this.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Авторизация";
             this.Load += new System.EventHandler(this.LoginForm_Load);
             this.ResumeLayout(false);

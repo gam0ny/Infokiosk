@@ -41,10 +41,12 @@
             // 
             // pbLoading
             // 
+            this.pbLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
             this.pbLoading.Location = new System.Drawing.Point(0, 0);
+            this.pbLoading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(1001, 737);
+            this.pbLoading.Size = new System.Drawing.Size(976, 737);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 1;
             this.pbLoading.TabStop = false;
@@ -68,11 +70,11 @@
             this.lblSearch.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblSearch.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblSearch.ForeColor = System.Drawing.Color.Yellow;
-            this.lblSearch.Location = new System.Drawing.Point(60, 0);
+            this.lblSearch.Location = new System.Drawing.Point(80, 0);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(0);
             this.lblSearch.Name = "lblSearch";
             this.lblSearch.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.lblSearch.Size = new System.Drawing.Size(80, 737);
+            this.lblSearch.Size = new System.Drawing.Size(60, 737);
             this.lblSearch.TabIndex = 7;
             this.lblSearch.Text = "";
             this.lblSearch.Click += new System.EventHandler(this.LblSearch_Click);
@@ -98,20 +100,22 @@
             this.panelContent.Controls.Add(this.pbLoading);
             this.panelContent.Controls.Add(this.panelToolbar);
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelContent.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelContent.Location = new System.Drawing.Point(0, 0);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(1176, 737);
             this.panelContent.TabIndex = 15;
             // 
             // InfokioskMainForm
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 38F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(1176, 737);
             this.Controls.Add(this.panelContent);
-            this.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(4);
+            this.Font = new System.Drawing.Font("FontAwesome", 7.81503F);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "InfokioskMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Инфокиоск";
