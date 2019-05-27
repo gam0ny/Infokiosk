@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.Models;
+using BusinessLogicLayer.ViewModels;
 using CustomControlLibrary.Entities;
 using Entities;
 using System.Collections.Generic;
@@ -75,6 +76,28 @@ namespace BusinessLogicLayer
                 CategoryName = article.ContentCategory.Name,
                 Content = article.Content,
             };
+        }
+
+        public static ContentCategoryViewModel FromContentCategoryToContentCategoryViewModel(ContentCategory contentCategory)
+        {
+            return new ContentCategoryViewModel {
+                Id = contentCategory.Id,
+                Name = contentCategory.Name,
+            };
+        }
+
+        public static List<ContentCategoryViewModel> FromContentCategoryCollectionToContentCategoryViewModelCollection(List<ContentCategory> contentCategories)
+        {
+            var contentCategoryViewModelCollection = new List<ContentCategoryViewModel>();
+
+            foreach(var contentCategory in contentCategories)
+            {
+                var contentCatetoryViewModel = FromContentCategoryToContentCategoryViewModel(contentCategory);
+                contentCategoryViewModelCollection.Add(contentCatetoryViewModel);
+
+            }
+
+            return contentCategoryViewModelCollection;
         }
     }
 }

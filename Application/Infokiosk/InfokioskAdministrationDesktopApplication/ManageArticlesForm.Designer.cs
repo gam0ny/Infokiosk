@@ -40,10 +40,10 @@
             this.panelToolbar.Controls.Add(this.lblBack);
             this.panelToolbar.Controls.Add(this.lblExit);
             this.panelToolbar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelToolbar.Location = new System.Drawing.Point(600, 0);
+            this.panelToolbar.Location = new System.Drawing.Point(1000, 0);
             this.panelToolbar.Margin = new System.Windows.Forms.Padding(0);
             this.panelToolbar.Name = "panelToolbar";
-            this.panelToolbar.Size = new System.Drawing.Size(200, 450);
+            this.panelToolbar.Size = new System.Drawing.Size(200, 800);
             this.panelToolbar.TabIndex = 15;
             // 
             // lblBack
@@ -57,7 +57,7 @@
             this.lblBack.Margin = new System.Windows.Forms.Padding(0);
             this.lblBack.Name = "lblBack";
             this.lblBack.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.lblBack.Size = new System.Drawing.Size(80, 450);
+            this.lblBack.Size = new System.Drawing.Size(80, 800);
             this.lblBack.TabIndex = 7;
             this.lblBack.Text = "";
             this.lblBack.Click += new System.EventHandler(this.LblBack_Click);
@@ -73,7 +73,7 @@
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
             this.lblExit.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.lblExit.Size = new System.Drawing.Size(60, 450);
+            this.lblExit.Size = new System.Drawing.Size(60, 800);
             this.lblExit.TabIndex = 6;
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
@@ -83,7 +83,7 @@
             this.panelMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMainContent.Location = new System.Drawing.Point(0, 0);
             this.panelMainContent.Name = "panelMainContent";
-            this.panelMainContent.Size = new System.Drawing.Size(600, 450);
+            this.panelMainContent.Size = new System.Drawing.Size(1000, 800);
             this.panelMainContent.TabIndex = 16;
             // 
             // ManageArticlesForm
@@ -91,7 +91,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.panelMainContent);
             this.Controls.Add(this.panelToolbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
