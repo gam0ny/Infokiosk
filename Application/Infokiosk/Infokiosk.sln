@@ -15,6 +15,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "InfokioskAdministrationDesk
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CustomControlLibrary", "CustomControlLibrary\CustomControlLibrary.csproj", "{8F905450-6D7C-4DDB-A10F-B9AAB6846093}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicLayer", "BusinessLogicLayer\BusinessLogicLayer.csproj", "{99395080-363D-4FB3-91CF-F56D2C12A8C2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -45,6 +47,10 @@ Global
 		{8F905450-6D7C-4DDB-A10F-B9AAB6846093}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8F905450-6D7C-4DDB-A10F-B9AAB6846093}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8F905450-6D7C-4DDB-A10F-B9AAB6846093}.Release|Any CPU.Build.0 = Release|Any CPU
+		{99395080-363D-4FB3-91CF-F56D2C12A8C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{99395080-363D-4FB3-91CF-F56D2C12A8C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{99395080-363D-4FB3-91CF-F56D2C12A8C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{99395080-363D-4FB3-91CF-F56D2C12A8C2}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,10 +1,11 @@
 ﻿using Entities;
+using Interfaces;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
 namespace DatabaseLayer.Repositories
 {
-    public class ContentCategoryRepository : BaseRepository
+    public class ContentCategoryRepository : BaseRepository, IContentCategoryRepository
     {
         public List<ContentCategory> GetContentCategories()
         {

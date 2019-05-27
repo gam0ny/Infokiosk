@@ -1,10 +1,11 @@
 ﻿using Entities;
+using Interfaces;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
 namespace DatabaseLayer.Repositories
 {
-    public class UserRepository : BaseRepository
+    public class UserRepository : BaseRepository, IUserRepository
     {
         public List<User> GetUsers()
         {

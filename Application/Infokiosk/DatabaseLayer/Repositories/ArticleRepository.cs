@@ -1,11 +1,12 @@
 ﻿using Entities;
+using Interfaces;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
 
 namespace DatabaseLayer.Repositories
 {
-    public class ArticleRepository : BaseRepository
+    public class ArticleRepository : BaseRepository, IArticleRepository
     {
         public List<ArticleShort> GetLatestArticles(int limit = 0)
         {

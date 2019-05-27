@@ -1,4 +1,4 @@
-﻿namespace InfokioskDesktopApplication.Models
+﻿namespace BusinessLogicLayer.Models
 {
     public class ArticleModel : ArticlePreviewModel
     {

@@ -1,6 +1,8 @@
-﻿using CustomControlLibrary;
+﻿using BusinessLogicLayer;
+using BusinessLogicLayer.Interfaces;
+using BusinessLogicLayer.Models;
+using CustomControlLibrary;
 using CustomControlLibrary.Entities;
-using InfokioskDesktopApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -15,7 +17,7 @@ namespace InfokioskDesktopApplication
     {
         public InfokioskMainForm InfokioskMainForm { get; set; }
 
-        private BusinessLogicLayer businessLogicLayer;
+        private IInfokioskDesktopApplicationController controller;
 
         private BackgroundWorker backgroundWorker;
 
@@ -32,7 +34,7 @@ namespace InfokioskDesktopApplication
             this.WindowState = FormWindowState.Maximized;
             this.AutoScroll = true;
 
-            businessLogicLayer = new BusinessLogicLayer();
+            controller = new InfokioskDesktopApplicationController();
 
             backgroundWorker = new BackgroundWorker();
 
@@ -67,12 +69,12 @@ namespace InfokioskDesktopApplication
             var keyword = e.Argument.ToString();
             if (rbName.Checked)
             {
-                e.Result = businessLogicLayer.SearchArticlesByTitle(keyword);
+                e.Result = controller.SearchArticlesByTitle(keyword);
             }
 
             if (rbContent.Checked)
             {
-                e.Result = businessLogicLayer.SearchArticlesByContent(keyword);
+                e.Result = controller.SearchArticlesByContent(keyword);
             }
             
         }

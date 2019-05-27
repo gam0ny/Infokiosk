@@ -1,10 +1,10 @@
-﻿using CustomControlLibrary.Entities;
+﻿using BusinessLogicLayer.Models;
+using CustomControlLibrary.Entities;
 using Entities;
-using InfokioskDesktopApplication.Models;
 using System.Collections.Generic;
 using System.Configuration;
 
-namespace InfokioskDesktopApplication
+namespace BusinessLogicLayer
 {
     public static class Converter
     {

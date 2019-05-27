@@ -1,4 +1,6 @@
-﻿using InfokioskDesktopApplication.Models;
+﻿using BusinessLogicLayer;
+using BusinessLogicLayer.Interfaces;
+using BusinessLogicLayer.Models;
 using System;
 using System.ComponentModel;
 using System.Configuration;
@@ -10,7 +12,7 @@ namespace InfokioskDesktopApplication
 {
     public partial class InfokioskArticleForm : Form
     {
-        private BusinessLogicLayer businessLogicLayer;
+        private IInfokioskDesktopApplicationController controller;
 
         private BackgroundWorker backgroundWorker;
 
@@ -27,7 +29,7 @@ namespace InfokioskDesktopApplication
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
 
-            this.businessLogicLayer = new BusinessLogicLayer();
+            this.controller = new InfokioskDesktopApplicationController();
 
             this.backgroundWorker = new BackgroundWorker();
             this.backgroundWorker.DoWork += new DoWorkEventHandler(FetchingArticleContentByIdInProgress);
@@ -45,7 +47,7 @@ namespace InfokioskDesktopApplication
 
         private void FetchingArticleContentByIdInProgress(object sender, DoWorkEventArgs e)
         {
-            e.Result = businessLogicLayer.GetArticleById(this.ArticleModel.Id);
+            e.Result = controller.GetArticleById(this.ArticleModel.Id);
         }
 
         private void FetchingArticleContentByIdComplete(object sender, RunWorkerCompletedEventArgs e)
@@ -87,7 +89,7 @@ namespace InfokioskDesktopApplication
         {
             pbEmailSendingLoading.Visible = true;
             lblEmailMessage.Visible = false;
-            businessLogicLayer.SendEmail(tbxEmail.Text, this.ArticleModel, this.emailSendEventHandler);
+            controller.SendEmail(tbxEmail.Text, this.ArticleModel, this.emailSendEventHandler);
         }
 
         private void Email_SendAsyncEventHandler(object sender, AsyncCompletedEventArgs args)

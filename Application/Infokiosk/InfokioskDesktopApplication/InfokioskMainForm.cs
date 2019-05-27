@@ -1,6 +1,8 @@
-﻿using CustomControlLibrary;
+﻿using BusinessLogicLayer;
+using BusinessLogicLayer.Interfaces;
+using BusinessLogicLayer.Models;
+using CustomControlLibrary;
 using CustomControlLibrary.Entities;
-using InfokioskDesktopApplication.Models;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,7 +15,7 @@ namespace InfokioskDesktopApplication
 {
     public partial class InfokioskMainForm : Form
     {
-        private BusinessLogicLayer businessLogicLayer;
+        private IInfokioskDesktopApplicationController controller;
 
         private BackgroundWorker backgroundWorker;
 
@@ -40,7 +42,7 @@ namespace InfokioskDesktopApplication
             this.WindowState = FormWindowState.Maximized;
             this.AutoScroll = true;
 
-            businessLogicLayer = new BusinessLogicLayer();
+            controller = new InfokioskDesktopApplicationController();
 
             backgroundWorker = new BackgroundWorker();
             backgroundWorker.DoWork += new DoWorkEventHandler(FetchingLatestArticlesInProgress);
@@ -55,7 +57,7 @@ namespace InfokioskDesktopApplication
 
         private void FetchingLatestArticlesInProgress(object sender, DoWorkEventArgs e)
         {
-            e.Result = businessLogicLayer.GetLatestArticles();
+            e.Result = controller.GetLatestArticles();
         }
 
         private void FetchingLatestArticlesComplete(object sender, RunWorkerCompletedEventArgs e)
@@ -71,7 +73,7 @@ namespace InfokioskDesktopApplication
 
         private void FetchingArticlesByCategoiesInProgress(object sender, DoWorkEventArgs e)
         {
-            e.Result = businessLogicLayer.GetArticlesByCategories();
+            e.Result = controller.GetArticlesByCategories();
         }
 
         private void FetchingArticlesByCategoiesComplete(object sender, RunWorkerCompletedEventArgs e)

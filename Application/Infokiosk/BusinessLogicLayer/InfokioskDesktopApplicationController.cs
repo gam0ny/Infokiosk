@@ -1,6 +1,8 @@
-﻿using DatabaseLayer.Repositories;
+﻿using BusinessLogicLayer.Interfaces;
+using BusinessLogicLayer.Models;
+using DatabaseLayer.Repositories;
 using HtmlAgilityPack;
-using InfokioskDesktopApplication.Models;
+using Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Configuration;
@@ -8,13 +10,13 @@ using System.IO;
 using System.Net;
 using System.Net.Mail;
 
-namespace InfokioskDesktopApplication
+namespace BusinessLogicLayer
 {
-    public class BusinessLogicLayer
+    public class InfokioskDesktopApplicationController : IInfokioskDesktopApplicationController
     {
-        private readonly ContentCategoryRepository contentCategoryRepoitory;
-        private readonly ArticleRepository articleRepository;
-        public BusinessLogicLayer()
+        private readonly IContentCategoryRepository contentCategoryRepoitory;
+        private readonly IArticleRepository articleRepository;
+        public InfokioskDesktopApplicationController()
         {
             contentCategoryRepoitory = new ContentCategoryRepository();
             articleRepository = new ArticleRepository();
@@ -102,7 +104,7 @@ namespace InfokioskDesktopApplication
             client.SendMailAsync(mail);
         }
 
-        public List<Attachment> CreateAttachmentCollection(ArticleModel article, out string updatedContent)
+        private List<Attachment> CreateAttachmentCollection(ArticleModel article, out string updatedContent)
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
             var attachments = new List<Attachment>();
@@ -117,7 +119,8 @@ namespace InfokioskDesktopApplication
 
                 var attachmnetPath = string.Format("{0}{1}/{2}", contentPath, article.Id, imageTagValue);
 
-                if (File.Exists(attachmnetPath)) {
+                if (File.Exists(attachmnetPath))
+                {
                     var attachment = new Attachment(attachmnetPath);
 
                     attachment.ContentId = imageTagValue;
