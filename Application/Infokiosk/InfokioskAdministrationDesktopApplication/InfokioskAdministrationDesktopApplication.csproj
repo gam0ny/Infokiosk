@@ -108,13 +108,13 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\BusinessLogicLayer\BusinessLogicLayer.csproj">
+      <Project>{99395080-363d-4fb3-91cf-f56d2c12a8c2}</Project>
+      <Name>BusinessLogicLayer</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CustomControlLibrary\CustomControlLibrary.csproj">
       <Project>{8F905450-6D7C-4DDB-A10F-B9AAB6846093}</Project>
       <Name>CustomControlLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DatabaseLayer\DatabaseLayer.csproj">
-      <Project>{7b82e258-1ce6-4722-bc22-0e15ce5d4d35}</Project>
-      <Name>DatabaseLayer</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

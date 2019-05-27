@@ -1,12 +1,11 @@
 SELECT * FROM infokiosk.article;
 
-UPDATE inforkiosk.article 
-SET Content = '<html>
+update infokiosk.article SET Content = '<html>
  <meta charset="UTF-8">
  <meta http-equiv="X-UA-Compatible" content="IE=9" />
  <style>
  	body {
- 		background-color: #696969;
+ 		background-color: #1F222E;
  		color: white;
  		font-family: Arial;
  	}
@@ -49,13 +48,13 @@ SET Content = '<html>
  	</p>
  	<div class="row">
  		<div class="column" style="width: 50%; text-align: center">
- 			<img src="2019-05-15_124530.png" width="500" height="250" />
+ 			<img src="2019-05-15_124530.jpg" width="500" height="250" />
  			<br />
  			<br />
  			<span>Появление людей на территории Беларуси</span>
  		</div>
  		<div class="column" style="width:50%; text-align: center">
- 			<img src="2019-05-15_124630.png" width="500" height="250" />
+ 			<img src="2019-05-15_124630.jpg" width="500" height="250" />
  			<br />
  			<br />
  			<span>Шерстистые носороги</span>
@@ -97,13 +96,13 @@ SET Content = '<html>
  			</p>
  			<div class="row">
  				<div class="column" style="width: 50%; text-align: center">
- 					<img src="2019-05-15_135828.png" width="400" height="250" />
+ 					<img src="2019-05-15_135828.jpg" width="400" height="250" />
  					<br />
  					<br />
  					<span>Череп и бивни мамонта. Стоянка Юровичи Калинковичского района Гомельской области</span>
  				</div>
  				<div class="column" style="width: 50%; text-align: center">
- 					<img src="2019-05-15_140108.png" width="400" height="250" />
+ 					<img src="2019-05-15_140108.jpg" width="400" height="250" />
  					<br />
  					<br />
  					<span>Древнее жилище</span>
@@ -112,13 +111,13 @@ SET Content = '<html>
  		</div>
  		<div class="column" style="width: 30%">
  			<p style="text-align: center">
- 				<img src="2019-05-15_125410.png" width="150" height="200" />
+ 				<img src="2019-05-15_125410.jpg" width="150" height="200" />
  				<br />
  				<br />
  				<span>Неандерталец</span>
  			</p>
  			<p style="text-align: center">
- 				<img src="2019-05-15_125547.png" width="150" height="200" />
+ 				<img src="2019-05-15_125547.jpg" width="150" height="200" />
  				<br />
  				<br />
  				<span>Кроманьонец</span>
@@ -130,7 +129,7 @@ SET Content = '<html>
  		из черепов, челюстей и других крупных костей мамонтов. Жилища покрывались шкурами и напоминали шалаши. В их
  		центре разжигался костер.</p>
  	<p style=" text-align: center">
- 			<img src="2019-05-15_142138.png" width="700" height="150" />
+ 			<img src="2019-05-15_142138.jpg" width="700" height="150" />
  			<br />
  			<br />
  			<span>«Лента времени». Периоды каменного века</span>
@@ -184,7 +183,7 @@ SET Content = '<html>
  			<div class="row">
  				<div class="column" style="width: 50%">
  					<p style="text-align: center">
- 						<img src="2019-05-15_145539.png" width="150" height="200" />
+ 						<img src="2019-05-15_145539.jpg" width="150" height="200" />
  						<br />
  						<br />
  						<span>Остроконечник</span>
@@ -192,7 +191,7 @@ SET Content = '<html>
  				</div>
  				<div class="column" style="width: 50%">
  					<p style="text-align: center">
- 						<img src="2019-05-15_145550.png" width="150" height="200" />
+ 						<img src="2019-05-15_145550.jpg" width="150" height="200" />
  						<br />
  						<br />
  						<span>Резец</span>
@@ -200,7 +199,7 @@ SET Content = '<html>
  				</div>
  			</div>
  			<p style="text-align: center">
- 				<img src="2019-05-15_145512.png" width="200" height="150" />
+ 				<img src="2019-05-15_145512.jpg" width="200" height="150" />
  				<br />
  				<br />
  				<span>Скребок</span>
@@ -216,4 +215,4 @@ SET Content = '<html>
  </body>
  
  </html>'
- WHERE Id = 'd7bdca2c-9e25-4b2e-8222-c550b72ddef6'
+ where Id = 'd7bdca2c-9e25-4b2e-8222-c550b72ddefb'

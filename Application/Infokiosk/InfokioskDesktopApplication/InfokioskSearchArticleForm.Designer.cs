@@ -105,6 +105,7 @@
             this.groupBox1.Controls.Add(this.rbContent);
             this.groupBox1.Controls.Add(this.rbName);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.groupBox1.ForeColor = System.Drawing.Color.White;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(411, 100);
@@ -115,6 +116,7 @@
             // rbContent
             // 
             this.rbContent.AutoSize = true;
+            this.rbContent.ForeColor = System.Drawing.Color.White;
             this.rbContent.Location = new System.Drawing.Point(190, 42);
             this.rbContent.Name = "rbContent";
             this.rbContent.Size = new System.Drawing.Size(174, 29);
@@ -126,6 +128,7 @@
             // 
             this.rbName.AutoSize = true;
             this.rbName.Checked = true;
+            this.rbName.ForeColor = System.Drawing.Color.White;
             this.rbName.Location = new System.Drawing.Point(21, 42);
             this.rbName.Name = "rbName";
             this.rbName.Size = new System.Drawing.Size(98, 29);
@@ -211,7 +214,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ControlDarkDark;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(1176, 737);
             this.Controls.Add(this.panelSearchResult);
             this.Controls.Add(this.panelSearchCriteria);
