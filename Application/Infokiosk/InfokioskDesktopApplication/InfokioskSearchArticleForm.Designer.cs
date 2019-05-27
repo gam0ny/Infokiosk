@@ -41,12 +41,14 @@
             this.lblExit = new System.Windows.Forms.Label();
             this.tbxSearch = new System.Windows.Forms.TextBox();
             this.btnSearch = new System.Windows.Forms.Button();
+            this.panelSearch = new System.Windows.Forms.Panel();
             this.tableLayoutPanelSearchCriteria.SuspendLayout();
             this.panelSearchCriteria.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.panelSearchResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.panelToolbar.SuspendLayout();
+            this.panelSearch.SuspendLayout();
             this.SuspendLayout();
             // 
             // tableLayoutPanelSearchCriteria
@@ -54,23 +56,24 @@
             this.tableLayoutPanelSearchCriteria.ColumnCount = 2;
             this.tableLayoutPanelSearchCriteria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 90F));
             this.tableLayoutPanelSearchCriteria.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 10F));
-            this.tableLayoutPanelSearchCriteria.Controls.Add(this.tbxSearch, 0, 0);
-            this.tableLayoutPanelSearchCriteria.Controls.Add(this.btnSearch, 1, 0);
-            this.tableLayoutPanelSearchCriteria.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tableLayoutPanelSearchCriteria.Controls.Add(this.tbxSearch, 0, 1);
+            this.tableLayoutPanelSearchCriteria.Controls.Add(this.btnSearch, 1, 1);
+            this.tableLayoutPanelSearchCriteria.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelSearchCriteria.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelSearchCriteria.Margin = new System.Windows.Forms.Padding(3, 50, 3, 3);
+            this.tableLayoutPanelSearchCriteria.Margin = new System.Windows.Forms.Padding(3, 100, 3, 100);
             this.tableLayoutPanelSearchCriteria.Name = "tableLayoutPanelSearchCriteria";
-            this.tableLayoutPanelSearchCriteria.RowCount = 2;
+            this.tableLayoutPanelSearchCriteria.RowCount = 3;
             this.tableLayoutPanelSearchCriteria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanelSearchCriteria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
-            this.tableLayoutPanelSearchCriteria.Size = new System.Drawing.Size(926, 50);
+            this.tableLayoutPanelSearchCriteria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanelSearchCriteria.Size = new System.Drawing.Size(926, 100);
             this.tableLayoutPanelSearchCriteria.TabIndex = 7;
             // 
             // panelSearchCriteria
             // 
             this.panelSearchCriteria.Controls.Add(this.groupBox1);
             this.panelSearchCriteria.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panelSearchCriteria.Location = new System.Drawing.Point(0, 50);
+            this.panelSearchCriteria.Location = new System.Drawing.Point(0, 100);
             this.panelSearchCriteria.Name = "panelSearchCriteria";
             this.panelSearchCriteria.Size = new System.Drawing.Size(926, 100);
             this.panelSearchCriteria.TabIndex = 3;
@@ -113,9 +116,9 @@
             // 
             this.panelSearchResult.Controls.Add(this.pbLoading);
             this.panelSearchResult.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelSearchResult.Location = new System.Drawing.Point(0, 150);
+            this.panelSearchResult.Location = new System.Drawing.Point(0, 200);
             this.panelSearchResult.Name = "panelSearchResult";
-            this.panelSearchResult.Size = new System.Drawing.Size(926, 587);
+            this.panelSearchResult.Size = new System.Drawing.Size(926, 537);
             this.panelSearchResult.TabIndex = 8;
             // 
             // pbLoading
@@ -124,7 +127,7 @@
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
             this.pbLoading.Location = new System.Drawing.Point(0, 0);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(926, 587);
+            this.pbLoading.Size = new System.Drawing.Size(926, 537);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 4;
             this.pbLoading.TabStop = false;
@@ -195,6 +198,15 @@
             this.btnSearch.UseVisualStyleBackColor = true;
             this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
+            // panelSearch
+            // 
+            this.panelSearch.Controls.Add(this.tableLayoutPanelSearchCriteria);
+            this.panelSearch.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panelSearch.Location = new System.Drawing.Point(0, 0);
+            this.panelSearch.Name = "panelSearch";
+            this.panelSearch.Size = new System.Drawing.Size(926, 100);
+            this.panelSearch.TabIndex = 1;
+            // 
             // InfokioskSearchArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -203,7 +215,7 @@
             this.ClientSize = new System.Drawing.Size(1176, 737);
             this.Controls.Add(this.panelSearchResult);
             this.Controls.Add(this.panelSearchCriteria);
-            this.Controls.Add(this.tableLayoutPanelSearchCriteria);
+            this.Controls.Add(this.panelSearch);
             this.Controls.Add(this.panelToolbar);
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Name = "InfokioskSearchArticleForm";
@@ -217,6 +229,7 @@
             this.panelSearchResult.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             this.panelToolbar.ResumeLayout(false);
+            this.panelSearch.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -234,5 +247,6 @@
         private System.Windows.Forms.Label lblBack;
         private System.Windows.Forms.TextBox tbxSearch;
         private System.Windows.Forms.Button btnSearch;
+        private System.Windows.Forms.Panel panelSearch;
     }
 }
