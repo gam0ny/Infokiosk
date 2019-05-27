@@ -1,7 +1,7 @@
 ﻿using Entities;
 using System.Collections.Generic;
 
-namespace Interfaces
+namespace DatabaseLayer.Interfaces
 {
     public interface IContentCategoryRepository
     {

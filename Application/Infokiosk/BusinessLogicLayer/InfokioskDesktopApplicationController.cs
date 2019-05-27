@@ -1,8 +1,8 @@
 ﻿using BusinessLogicLayer.Interfaces;
 using BusinessLogicLayer.Models;
+using DatabaseLayer.Interfaces;
 using DatabaseLayer.Repositories;
 using HtmlAgilityPack;
-using Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Configuration;

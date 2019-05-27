@@ -1,5 +1,5 @@
-﻿using Entities;
-using Interfaces;
+﻿using DatabaseLayer.Interfaces;
+using Entities;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
@@ -34,7 +34,7 @@ namespace DatabaseLayer.Repositories
             var sqlStatement = "SELECT Id, Name FROM ContentCategory WHERE Id = @id";
 
             MySqlDataReader rdr = DbManager.Execute(sqlStatement,
-                new Parameter[] { new Parameter() { Name = "@id", Value = id.ToString() } });
+                new DatabaseParameter[] { new DatabaseParameter() { Name = "@id", Value = id.ToString() } });
 
             ContentCategory contentCategory = null;
 

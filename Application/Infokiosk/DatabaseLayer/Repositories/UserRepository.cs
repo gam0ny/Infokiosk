@@ -1,5 +1,5 @@
-﻿using Entities;
-using Interfaces;
+﻿using DatabaseLayer.Interfaces;
+using Entities;
 using MySql.Data.MySqlClient;
 using System.Collections.Generic;
 
@@ -29,7 +29,7 @@ namespace DatabaseLayer.Repositories
 
             MySqlDataReader rdr = DbManager.Execute(
                 "SELECT * FROM user WHERE name = @name AND password = @password", 
-                new Parameter[] { new Parameter() { Name = "@name", Value = username }, new Parameter() { Name = "@password", Value = password } });
+                new DatabaseParameter[] { new DatabaseParameter() { Name = "@name", Value = username }, new DatabaseParameter() { Name = "@password", Value = password } });
 
             if(rdr.HasRows)
             {

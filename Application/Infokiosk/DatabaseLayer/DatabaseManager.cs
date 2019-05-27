@@ -1,6 +1,7 @@
-﻿using System;
-using System.Configuration;
+﻿using Entities;
 using MySql.Data.MySqlClient;
+using System;
+using System.Configuration;
 
 namespace DatabaseLayer
 {
@@ -25,7 +26,7 @@ namespace DatabaseLayer
             return cmd.ExecuteReader();
         }
 
-        public MySqlDataReader Execute(string sql, Parameter[] parameters)
+        public MySqlDataReader Execute(string sql, DatabaseParameter[] parameters)
         {
             MySqlConnection.Close();
             MySqlConnection.Open();

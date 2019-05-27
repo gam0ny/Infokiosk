@@ -1,5 +1,5 @@
-﻿using Entities;
-using Interfaces;
+﻿using DatabaseLayer.Interfaces;
+using Entities;
 using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
@@ -61,7 +61,7 @@ namespace DatabaseLayer.Repositories
             }
 
             MySqlDataReader rdr = DbManager.Execute(sqlStatement, 
-                new Parameter[] { new Parameter() { Name = "@contentCategoryId", Value = contentCategoryId.ToString() } });
+                new DatabaseParameter[] { new DatabaseParameter() { Name = "@contentCategoryId", Value = contentCategoryId.ToString() } });
 
             var articles = new List<ArticleShort>();
 
@@ -95,7 +95,7 @@ namespace DatabaseLayer.Repositories
                "WHERE t1.Id = @articleId";
 
             MySqlDataReader rdr = DbManager.Execute(sqlStatement,
-                new Parameter[] { new Parameter() { Name = "@articleId", Value = articleId.ToString() } });
+                new DatabaseParameter[] { new DatabaseParameter() { Name = "@articleId", Value = articleId.ToString() } });
 
             if (rdr.HasRows)
             {
@@ -134,9 +134,9 @@ namespace DatabaseLayer.Repositories
                    "ORDER BY t1.PublishingDate";
 
             MySqlDataReader rdr = DbManager.Execute(sqlStatement,
-                new Parameter[] {
-                    new Parameter() { Name = "@searchText", Value = string.Format("%{0}%", keyword)},
-                    new Parameter() { Name = "@isPublished", Value = Convert.ToInt32(isPublished).ToString() }
+                new DatabaseParameter[] {
+                    new DatabaseParameter() { Name = "@searchText", Value = string.Format("%{0}%", keyword)},
+                    new DatabaseParameter() { Name = "@isPublished", Value = Convert.ToInt32(isPublished).ToString() }
             });
 
             var articles = new List<ArticleShort>();
@@ -172,9 +172,9 @@ namespace DatabaseLayer.Repositories
                    "ORDER BY t1.PublishingDate";
 
             MySqlDataReader rdr = DbManager.Execute(sqlStatement,
-                new Parameter[] {
-                    new Parameter() { Name = "@searchText", Value = string.Format("%{0}%", keyword)},
-                    new Parameter() { Name = "@isPublished", Value = Convert.ToInt32(isPublished).ToString() }
+                new DatabaseParameter[] {
+                    new DatabaseParameter() { Name = "@searchText", Value = string.Format("%{0}%", keyword)},
+                    new DatabaseParameter() { Name = "@isPublished", Value = Convert.ToInt32(isPublished).ToString() }
                 });
 
             var articles = new List<ArticleShort>();

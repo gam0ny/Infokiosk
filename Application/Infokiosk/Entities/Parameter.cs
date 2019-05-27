@@ -1,6 +1,6 @@
-﻿namespace DatabaseLayer
+﻿namespace Entities
 {
-    public class Parameter
+    public class DatabaseParameter
     {
         public string Name { get; set; }
 
