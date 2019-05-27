@@ -143,6 +143,7 @@
             this.tableLayoutPanel1.SetRowSpan(this.lbxContentCategories, 3);
             this.lbxContentCategories.Size = new System.Drawing.Size(390, 363);
             this.lbxContentCategories.TabIndex = 0;
+            this.lbxContentCategories.SelectedValueChanged += new System.EventHandler(this.LbxContentCategories_SelectedValueChanged);
             // 
             // btnAdd
             // 

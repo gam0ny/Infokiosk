@@ -76,5 +76,23 @@ namespace InfokioskAdministrationDesktopApplication
             this.pbLoading.Visible = true;
             backgroundWorker.RunWorkerAsync();
         }
+
+        private void LbxContentCategories_SelectedValueChanged(object sender, System.EventArgs e)
+        {
+            var contentCategory = (ContentCategoryViewModel)((ListBox)sender).SelectedItem;
+
+            if (contentCategory != null)
+            {
+                tbxEdit.Text = contentCategory.Name;
+                btnEdit.Enabled = true;
+                btnDelete.Enabled = true;
+            }
+            else
+            {
+                tbxEdit.Text = string.Empty;
+                btnEdit.Enabled = false;
+                btnDelete.Enabled = false;
+            }
+        }
     }
 }
