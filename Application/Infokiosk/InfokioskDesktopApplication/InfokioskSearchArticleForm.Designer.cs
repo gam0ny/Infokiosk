@@ -30,6 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfokioskSearchArticleForm));
             this.tableLayoutPanelSearchCriteria = new System.Windows.Forms.TableLayoutPanel();
+            this.tbxSearch = new System.Windows.Forms.TextBox();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panelSearchCriteria = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbContent = new System.Windows.Forms.RadioButton();
@@ -39,8 +41,6 @@
             this.panelToolbar = new System.Windows.Forms.Panel();
             this.lblBack = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
-            this.tbxSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.tableLayoutPanelSearchCriteria.SuspendLayout();
             this.panelSearchCriteria.SuspendLayout();
@@ -68,6 +68,28 @@
             this.tableLayoutPanelSearchCriteria.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanelSearchCriteria.Size = new System.Drawing.Size(926, 100);
             this.tableLayoutPanelSearchCriteria.TabIndex = 7;
+            // 
+            // tbxSearch
+            // 
+            this.tbxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06936F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxSearch.Location = new System.Drawing.Point(3, 53);
+            this.tbxSearch.Multiline = true;
+            this.tbxSearch.Name = "tbxSearch";
+            this.tbxSearch.Size = new System.Drawing.Size(827, 44);
+            this.tbxSearch.TabIndex = 0;
+            this.tbxSearch.TextChanged += new System.EventHandler(this.TbxSearch_TextChanged);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.Location = new System.Drawing.Point(836, 53);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(87, 44);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Искать";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // panelSearchCriteria
             // 
@@ -175,28 +197,6 @@
             this.lblExit.TabIndex = 6;
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
-            // 
-            // tbxSearch
-            // 
-            this.tbxSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06936F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxSearch.Location = new System.Drawing.Point(3, 3);
-            this.tbxSearch.Multiline = true;
-            this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(827, 44);
-            this.tbxSearch.TabIndex = 0;
-            this.tbxSearch.TextChanged += new System.EventHandler(this.TbxSearch_TextChanged);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Location = new System.Drawing.Point(836, 3);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(87, 44);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Искать";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // panelSearch
             // 

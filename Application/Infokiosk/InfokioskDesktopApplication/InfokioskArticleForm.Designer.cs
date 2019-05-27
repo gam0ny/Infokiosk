@@ -39,11 +39,11 @@
             this.lblExit = new System.Windows.Forms.Label();
             this.panelContent = new System.Windows.Forms.Panel();
             this.panelEmail = new System.Windows.Forms.Panel();
+            this.lblEmailMessage = new System.Windows.Forms.Label();
+            this.pbEmailSendingLoading = new System.Windows.Forms.PictureBox();
             this.btnSendEmail = new System.Windows.Forms.Button();
             this.tbxEmail = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.pbEmailSendingLoading = new System.Windows.Forms.PictureBox();
-            this.lblEmailMessage = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.flowLayoutTitlePanel.SuspendLayout();
             this.panelToolbar.SuspendLayout();
@@ -174,6 +174,30 @@
             this.panelEmail.Size = new System.Drawing.Size(916, 180);
             this.panelEmail.TabIndex = 8;
             // 
+            // lblEmailMessage
+            // 
+            this.lblEmailMessage.AutoSize = true;
+            this.lblEmailMessage.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEmailMessage.ForeColor = System.Drawing.Color.Lime;
+            this.lblEmailMessage.Location = new System.Drawing.Point(1450, 30);
+            this.lblEmailMessage.Name = "lblEmailMessage";
+            this.lblEmailMessage.Size = new System.Drawing.Size(400, 39);
+            this.lblEmailMessage.TabIndex = 9;
+            this.lblEmailMessage.Text = " Отправлено успешно";
+            this.lblEmailMessage.Visible = false;
+            // 
+            // pbEmailSendingLoading
+            // 
+            this.pbEmailSendingLoading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
+            this.pbEmailSendingLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbEmailSendingLoading.Image")));
+            this.pbEmailSendingLoading.Location = new System.Drawing.Point(1415, 25);
+            this.pbEmailSendingLoading.Name = "pbEmailSendingLoading";
+            this.pbEmailSendingLoading.Size = new System.Drawing.Size(50, 50);
+            this.pbEmailSendingLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pbEmailSendingLoading.TabIndex = 8;
+            this.pbEmailSendingLoading.TabStop = false;
+            this.pbEmailSendingLoading.Visible = false;
+            // 
             // btnSendEmail
             // 
             this.btnSendEmail.Enabled = false;
@@ -204,30 +228,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Нравится статья? Отправь себе на e-mail";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            // 
-            // pbEmailSendingLoading
-            // 
-            this.pbEmailSendingLoading.BackgroundImageLayout = System.Windows.Forms.ImageLayout.None;
-            this.pbEmailSendingLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbEmailSendingLoading.Image")));
-            this.pbEmailSendingLoading.Location = new System.Drawing.Point(1415, 25);
-            this.pbEmailSendingLoading.Name = "pbEmailSendingLoading";
-            this.pbEmailSendingLoading.Size = new System.Drawing.Size(50, 50);
-            this.pbEmailSendingLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbEmailSendingLoading.TabIndex = 8;
-            this.pbEmailSendingLoading.TabStop = false;
-            this.pbEmailSendingLoading.Visible = false;
-            // 
-            // lblEmailMessage
-            // 
-            this.lblEmailMessage.AutoSize = true;
-            this.lblEmailMessage.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEmailMessage.ForeColor = System.Drawing.Color.Lime;
-            this.lblEmailMessage.Location = new System.Drawing.Point(1450, 30);
-            this.lblEmailMessage.Name = "lblEmailMessage";
-            this.lblEmailMessage.Size = new System.Drawing.Size(400, 39);
-            this.lblEmailMessage.TabIndex = 9;
-            this.lblEmailMessage.Text = " Отправлено успешно";
-            this.lblEmailMessage.Visible = false;
             // 
             // InfokioskArticleForm
             // 

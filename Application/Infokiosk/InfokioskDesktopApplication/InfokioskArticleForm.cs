@@ -87,15 +87,28 @@ namespace InfokioskDesktopApplication
 
         private void BtnSendEmail_Click(object sender, EventArgs e)
         {
-            pbEmailSendingLoading.Visible = true;
-            lblEmailMessage.Visible = false;
-            controller.SendEmail(tbxEmail.Text, this.ArticleModel, this.emailSendEventHandler);
+            var email = tbxEmail.Text;
+
+            if (controller.EmailIsValid(email))
+            {
+                pbEmailSendingLoading.Visible = true;
+                lblEmailMessage.Visible = false;
+                controller.SendEmail(tbxEmail.Text, this.ArticleModel, this.emailSendEventHandler);
+            }
+            else
+            {
+                lblEmailMessage.Text = Constants.InvalidEmailMessage;
+                lblEmailMessage.ForeColor = Constants.ErrorColor;
+                lblEmailMessage.Visible = true;
+            }
         }
 
         private void Email_SendAsyncEventHandler(object sender, AsyncCompletedEventArgs args)
         {
             pbEmailSendingLoading.Visible = false;
             lblEmailMessage.Visible = true;
+            lblEmailMessage.Text = Constants.SentSuccessEmailMessage;
+            lblEmailMessage.ForeColor = Constants.SuccessColor;
         }
 
         private void TbxEmail_TextChanged(object sender, EventArgs e)

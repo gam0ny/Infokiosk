@@ -17,5 +17,7 @@ namespace BusinessLogicLayer.Interfaces
         List<ArticlePreviewModel> SearchArticlesByContent(string keyword);
 
         void SendEmail(string toEmail, ArticleModel article, SendCompletedEventHandler Client_SendCompleted);
+
+        bool EmailIsValid(string emailAddress);
     }
 }

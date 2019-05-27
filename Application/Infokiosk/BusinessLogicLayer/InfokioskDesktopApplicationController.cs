@@ -134,5 +134,19 @@ namespace BusinessLogicLayer
 
             return attachments;
         }
+
+        public bool EmailIsValid(string emailAddress)
+        {
+            try
+            {
+                MailAddress m = new MailAddress(emailAddress);
+
+                return true;
+            }
+            catch (FormatException)
+            {
+                return false;
+            }
+        }
     }
 }
