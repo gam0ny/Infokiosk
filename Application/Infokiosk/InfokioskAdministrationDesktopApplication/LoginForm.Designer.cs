@@ -81,7 +81,7 @@
             this.tbxPassword.Placeholder = "Placeholder";
             this.tbxPassword.Size = new System.Drawing.Size(320, 60);
             this.tbxPassword.TabIndex = 3;
-            this.tbxPassword.Value = "";
+            this.tbxPassword.Value = "sa";
             // 
             // tbxUsername
             // 
@@ -96,7 +96,7 @@
             this.tbxUsername.Placeholder = "Username";
             this.tbxUsername.Size = new System.Drawing.Size(320, 60);
             this.tbxUsername.TabIndex = 2;
-            this.tbxUsername.Value = "";
+            this.tbxUsername.Value = "admin";
             this.tbxUsername.CustomTextChanged += new System.EventHandler(this.TbxUsername_CustomTextChanged);
             // 
             // LoginForm

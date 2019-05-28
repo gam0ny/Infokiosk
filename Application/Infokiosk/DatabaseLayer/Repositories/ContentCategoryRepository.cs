@@ -1,6 +1,7 @@
 ﻿using DatabaseLayer.Interfaces;
 using Entities;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 
 namespace DatabaseLayer.Repositories
@@ -49,6 +50,27 @@ namespace DatabaseLayer.Repositories
             rdr.Close();
 
             return contentCategory;
+        }
+
+        public bool Add(ContentCategory contentCategory)
+        {
+            var sqlStatement = "INSERT INTO ContentCategory (Name) VALUES (@contentCategoryName)";
+
+            var result = false;
+
+            try
+            {
+                MySqlDataReader rdr = DbManager.Execute(sqlStatement,
+                    new DatabaseParameter[] { new DatabaseParameter() { Name = "@contentCategoryName", Value = contentCategory.Name } });
+
+                result = rdr.RecordsAffected > 0;
+            }
+            catch(Exception e)
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }

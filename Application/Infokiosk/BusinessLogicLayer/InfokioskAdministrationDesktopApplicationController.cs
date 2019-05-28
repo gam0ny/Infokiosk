@@ -26,5 +26,10 @@ namespace BusinessLogicLayer
         {
             return Converter.FromContentCategoryCollectionToContentCategoryViewModelCollection(contentCategoryRepository.GetContentCategories());
         }
+
+        public bool AddContentCategory(ContentCategoryViewModel contentCategoryViewModel)
+        {
+            return contentCategoryRepository.Add(Converter.FromContentCategoryViewModelToContentCategory(contentCategoryViewModel));
+        }
     }
 }

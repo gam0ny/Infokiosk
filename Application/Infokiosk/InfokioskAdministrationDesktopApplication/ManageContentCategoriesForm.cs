@@ -43,6 +43,27 @@ namespace InfokioskAdministrationDesktopApplication
             this.pbLoading.Visible = false;
         }
 
+        private void AddingContentCategoriesInProgress(object sender, DoWorkEventArgs e)
+        {
+            e.Result = controller.AddContentCategory((ContentCategoryViewModel)e.Argument);
+        }
+
+        private void AddingContentCategoriesComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            bool result = (bool)e.Result;
+            if(result)
+            {
+                this.backgroundWorker.DoWork -= new DoWorkEventHandler(AddingContentCategoriesInProgress);
+                this.backgroundWorker.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(AddingContentCategoriesComplete);
+                this.backgroundWorker.DoWork += new DoWorkEventHandler(FetchingContentCategoriesInProgress);
+                this.backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingContentCategoriesComplete);
+                this.pbLoading.Visible = true;
+                this.backgroundWorker.RunWorkerAsync();
+            }
+
+            this.pbLoading.Visible = false;
+        }
+
         public ManageContentCategoriesForm(MainForm mainForm) : this()
         {
             this.mainForm = mainForm;
@@ -92,6 +113,21 @@ namespace InfokioskAdministrationDesktopApplication
                 tbxEdit.Text = string.Empty;
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
+            }
+        }
+
+        private void BtnAdd_Click(object sender, System.EventArgs e)
+        {
+            this.backgroundWorker.DoWork -= new DoWorkEventHandler(FetchingContentCategoriesInProgress);
+            this.backgroundWorker.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(FetchingContentCategoriesComplete);
+            this.backgroundWorker.DoWork += new DoWorkEventHandler(AddingContentCategoriesInProgress);
+            this.backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(AddingContentCategoriesComplete);
+
+            var value = tbxAdd.Text;
+            if(!string.IsNullOrWhiteSpace(value))
+            {
+                this.pbLoading.Visible = true;
+                this.backgroundWorker.RunWorkerAsync(new ContentCategoryViewModel { Name = value });
             }
         }
     }

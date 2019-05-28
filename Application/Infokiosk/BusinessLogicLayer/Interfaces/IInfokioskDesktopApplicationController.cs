@@ -8,7 +8,7 @@ namespace BusinessLogicLayer.Interfaces
     {
         List<ArticlePreviewModel> GetLatestArticles(int limit = 0);
 
-        List<ArticlesByCategoryPreviewModel> GetArticlesByCategories();
+        List<ArticlesByCategoryPreviewModel> GetArticlesByCategories(bool includeEmptyCategories = false);
 
         ArticleModel GetArticleById(System.Guid articleId);
 

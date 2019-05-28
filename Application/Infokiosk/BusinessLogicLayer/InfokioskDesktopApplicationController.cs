@@ -29,7 +29,7 @@ namespace BusinessLogicLayer
             return Converter.FromArticleShortCollectionToArticlePreviewModelCollection(dbArticles);
         }
 
-        public List<ArticlesByCategoryPreviewModel> GetArticlesByCategories()
+        public List<ArticlesByCategoryPreviewModel> GetArticlesByCategories(bool includeEmptyCategories = false)
         {
             var articlesByCategoryPreviewModelCollection = new List<ArticlesByCategoryPreviewModel>();
 
@@ -40,11 +40,14 @@ namespace BusinessLogicLayer
                 var articlesByCategoryPreviewModel = new ArticlesByCategoryPreviewModel();
                 articlesByCategoryPreviewModel.Category = contentCategory.Name;
 
-                var articlesCollection = articleRepository.GetArticlesByCategoryId(contentCategory.Id);
+                var articlesCollection = articleRepository.GetArticlesByCategoryId(contentCategory.Id == null ? 0 : contentCategory.Id.Value);
 
                 articlesByCategoryPreviewModel.Articles = Converter.FromArticleShortCollectionToArticlePreviewModelCollection(articlesCollection);
 
-                articlesByCategoryPreviewModelCollection.Add(articlesByCategoryPreviewModel);
+                if(articlesByCategoryPreviewModel.Articles.Count > 0 || (articlesByCategoryPreviewModel.Articles.Count == 0 && includeEmptyCategories))
+                {
+                    articlesByCategoryPreviewModelCollection.Add(articlesByCategoryPreviewModel);
+                }
 
             }
             return articlesByCategoryPreviewModelCollection;

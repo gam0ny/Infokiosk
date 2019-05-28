@@ -99,5 +99,14 @@ namespace BusinessLogicLayer
 
             return contentCategoryViewModelCollection;
         }
+
+        public static ContentCategory FromContentCategoryViewModelToContentCategory(ContentCategoryViewModel contentCategoryViewModel)
+        {
+            return new ContentCategory
+            {
+                Id = contentCategoryViewModel.Id,
+                Name = contentCategoryViewModel.Name,
+            };
+        }
     }
 }

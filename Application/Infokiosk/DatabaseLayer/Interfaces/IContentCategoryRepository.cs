@@ -10,5 +10,7 @@ namespace DatabaseLayer.Interfaces
 
         ContentCategory GetContentCategoryById(int id);
 
+        bool Add(ContentCategory contentCategory);
+
     }
 }
