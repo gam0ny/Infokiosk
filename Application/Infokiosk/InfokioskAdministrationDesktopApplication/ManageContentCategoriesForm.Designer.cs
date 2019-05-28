@@ -182,6 +182,7 @@
             this.btnEdit.TabIndex = 3;
             this.btnEdit.Text = " Редактировать";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // btnDelete
             // 
@@ -196,6 +197,7 @@
             this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = " Удалить";
             this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
             // 
             // tbxEdit
             // 

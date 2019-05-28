@@ -3,6 +3,7 @@ using BusinessLogicLayer.Interfaces;
 using BusinessLogicLayer.ViewModels;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace InfokioskAdministrationDesktopApplication
@@ -11,7 +12,10 @@ namespace InfokioskAdministrationDesktopApplication
     {
         private MainForm mainForm;
 
-        private BackgroundWorker backgroundWorker;
+        private BackgroundWorker getContentCategoriesBackgroundWorker;
+        private BackgroundWorker addContentCategoryBackgroundWorker;
+        private BackgroundWorker editContentCategoryBackgroundWorker;
+        private BackgroundWorker deleteContentCategoryBackgroundWorker;
 
         private IInfokioskAdministrationDesktopApplicationController controller;
         public ManageContentCategoriesForm()
@@ -20,9 +24,23 @@ namespace InfokioskAdministrationDesktopApplication
 
             controller = new InfokioskAdministrationDesktopApplicationController();
 
-            backgroundWorker = new BackgroundWorker();
-            this.backgroundWorker.DoWork += new DoWorkEventHandler(FetchingContentCategoriesInProgress);
-            this.backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingContentCategoriesComplete);
+            this.getContentCategoriesBackgroundWorker = new BackgroundWorker();
+            this.getContentCategoriesBackgroundWorker.DoWork += new DoWorkEventHandler(FetchingContentCategoriesInProgress);
+            this.getContentCategoriesBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingContentCategoriesComplete);
+            this.addContentCategoryBackgroundWorker = new BackgroundWorker();
+            this.addContentCategoryBackgroundWorker.DoWork += new DoWorkEventHandler(AddingContentCategoriesInProgress);
+            this.addContentCategoryBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(AddingContentCategoriesComplete);
+            this.editContentCategoryBackgroundWorker = new BackgroundWorker();
+            this.editContentCategoryBackgroundWorker.DoWork += new DoWorkEventHandler(EditContentCategoriesInProgress);
+            this.editContentCategoryBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(EditContentCategoriesComplete);
+            this.deleteContentCategoryBackgroundWorker = new BackgroundWorker();
+            this.deleteContentCategoryBackgroundWorker.DoWork += new DoWorkEventHandler(DeleteContentCategoriesInProgress);
+            this.deleteContentCategoryBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(DeleteContentCategoriesComplete);
+        }
+
+        public ManageContentCategoriesForm(MainForm mainForm) : this()
+        {
+            this.mainForm = mainForm;
         }
 
         private void FetchingContentCategoriesInProgress(object sender, DoWorkEventArgs e)
@@ -40,7 +58,12 @@ namespace InfokioskAdministrationDesktopApplication
                 lbxContentCategories.DisplayMember = "Name";
                 lbxContentCategories.Items.Add(contentCategory);
             }
+
             this.pbLoading.Visible = false;
+            this.tbxEdit.Text = string.Empty;
+            this.tbxEdit.Enabled = false;
+            this.btnDelete.Enabled = false;
+            this.lbxContentCategories.Focus();
         }
 
         private void AddingContentCategoriesInProgress(object sender, DoWorkEventArgs e)
@@ -50,23 +73,50 @@ namespace InfokioskAdministrationDesktopApplication
 
         private void AddingContentCategoriesComplete(object sender, RunWorkerCompletedEventArgs e)
         {
+            this.pbLoading.Visible = false;
+
             bool result = (bool)e.Result;
             if(result)
             {
-                this.backgroundWorker.DoWork -= new DoWorkEventHandler(AddingContentCategoriesInProgress);
-                this.backgroundWorker.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(AddingContentCategoriesComplete);
-                this.backgroundWorker.DoWork += new DoWorkEventHandler(FetchingContentCategoriesInProgress);
-                this.backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingContentCategoriesComplete);
                 this.pbLoading.Visible = true;
-                this.backgroundWorker.RunWorkerAsync();
+                this.getContentCategoriesBackgroundWorker.RunWorkerAsync();
             }
-
-            this.pbLoading.Visible = false;
         }
 
-        public ManageContentCategoriesForm(MainForm mainForm) : this()
+        private void EditContentCategoriesInProgress(object sender, DoWorkEventArgs e)
         {
-            this.mainForm = mainForm;
+            e.Result = controller.EditContentCategory((ContentCategoryViewModel)e.Argument);
+        }
+
+        private void EditContentCategoriesComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.pbLoading.Visible = false;
+
+            bool result = (bool)e.Result;
+
+            if (result)
+            {
+                this.pbLoading.Visible = true;
+                this.getContentCategoriesBackgroundWorker.RunWorkerAsync();
+            }
+        }
+
+        private void DeleteContentCategoriesInProgress(object sender, DoWorkEventArgs e)
+        {
+            e.Result = controller.DeleteContentCategory((ContentCategoryViewModel)e.Argument);
+        }
+
+        private void DeleteContentCategoriesComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            this.pbLoading.Visible = false;
+
+            bool result = (bool)e.Result;
+
+            if (result)
+            {
+                this.pbLoading.Visible = true;
+                this.getContentCategoriesBackgroundWorker.RunWorkerAsync();
+            }
         }
 
         private void LblExit_Click(object sender, System.EventArgs e)
@@ -82,7 +132,9 @@ namespace InfokioskAdministrationDesktopApplication
 
         private void TbxEdit_TextChanged(object sender, System.EventArgs e)
         {
+            var value = ((TextBox)sender).Text;
 
+            btnEdit.Enabled = !string.IsNullOrWhiteSpace(value);
         }
 
         private void TbxAdd_TextChanged(object sender, System.EventArgs e)
@@ -95,7 +147,7 @@ namespace InfokioskAdministrationDesktopApplication
         private void ManageContentCategoriesForm_Load(object sender, System.EventArgs e)
         {
             this.pbLoading.Visible = true;
-            backgroundWorker.RunWorkerAsync();
+            getContentCategoriesBackgroundWorker.RunWorkerAsync();
         }
 
         private void LbxContentCategories_SelectedValueChanged(object sender, System.EventArgs e)
@@ -105,12 +157,14 @@ namespace InfokioskAdministrationDesktopApplication
             if (contentCategory != null)
             {
                 tbxEdit.Text = contentCategory.Name;
+                tbxEdit.Enabled = true;
                 btnEdit.Enabled = true;
                 btnDelete.Enabled = true;
             }
             else
             {
                 tbxEdit.Text = string.Empty;
+                tbxEdit.Enabled = false;
                 btnEdit.Enabled = false;
                 btnDelete.Enabled = false;
             }
@@ -118,16 +172,35 @@ namespace InfokioskAdministrationDesktopApplication
 
         private void BtnAdd_Click(object sender, System.EventArgs e)
         {
-            this.backgroundWorker.DoWork -= new DoWorkEventHandler(FetchingContentCategoriesInProgress);
-            this.backgroundWorker.RunWorkerCompleted -= new RunWorkerCompletedEventHandler(FetchingContentCategoriesComplete);
-            this.backgroundWorker.DoWork += new DoWorkEventHandler(AddingContentCategoriesInProgress);
-            this.backgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(AddingContentCategoriesComplete);
-
             var value = tbxAdd.Text;
             if(!string.IsNullOrWhiteSpace(value))
             {
                 this.pbLoading.Visible = true;
-                this.backgroundWorker.RunWorkerAsync(new ContentCategoryViewModel { Name = value });
+                this.addContentCategoryBackgroundWorker.RunWorkerAsync(new ContentCategoryViewModel { Name = value });
+            }
+        }
+
+        private void BtnDelete_Click(object sender, System.EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить категорию? Все темы, относящиеся к этой категории будут недоступны в пользовательском инфокиоске!", "Внимание!", MessageBoxButtons.YesNo);
+            
+            if(result.ToString().ToUpper() == "Yes".ToUpper())
+            {
+                pbLoading.Visible = true;
+                var selectedContentCategory = (ContentCategoryViewModel)lbxContentCategories.SelectedItem;
+                this.deleteContentCategoryBackgroundWorker.RunWorkerAsync(selectedContentCategory);
+            }
+        }
+
+        private void BtnEdit_Click(object sender, System.EventArgs e)
+        {
+            DialogResult result = MessageBox.Show("Вы уверены, что хотите отредактировать категорию?", "Внимание!", MessageBoxButtons.YesNo);
+
+            if (result.ToString().ToUpper() == "Yes".ToUpper())
+            {
+                pbLoading.Visible = true;
+                var selectedContentCategory = (ContentCategoryViewModel)lbxContentCategories.SelectedItem;
+                this.editContentCategoryBackgroundWorker.RunWorkerAsync(new ContentCategoryViewModel { Id = selectedContentCategory.Id, Name = tbxEdit.Text});
             }
         }
     }

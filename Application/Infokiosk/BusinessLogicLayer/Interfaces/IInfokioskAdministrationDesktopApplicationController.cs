@@ -10,5 +10,9 @@ namespace BusinessLogicLayer.Interfaces
         List<ContentCategoryViewModel> GetContentCategories();
 
         bool AddContentCategory(ContentCategoryViewModel contentCategoryViewModel);
+
+        bool EditContentCategory(ContentCategoryViewModel contentCategoryViewModel);
+
+        bool DeleteContentCategory(ContentCategoryViewModel contentCategoryViewModel);
     }
 }
