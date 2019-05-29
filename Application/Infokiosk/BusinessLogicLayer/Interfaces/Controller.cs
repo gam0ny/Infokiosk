@@ -1,10 +1,10 @@
-﻿using BusinessLogicLayer.Models;
+﻿using BusinessLogicLayer.ViewModels;
 using System.Collections.Generic;
 using System.Net.Mail;
 
 namespace BusinessLogicLayer.Interfaces
 {
-    public interface IInfokioskDesktopApplicationController
+    public interface IController
     {
         List<ArticlePreviewModel> GetLatestArticles(int limit = 0);
 
@@ -19,5 +19,17 @@ namespace BusinessLogicLayer.Interfaces
         void SendEmail(string toEmail, ArticleModel article, SendCompletedEventHandler Client_SendCompleted);
 
         bool EmailIsValid(string emailAddress);
+
+        bool Authenticate(string login, string password);
+
+        List<ContentCategoryViewModel> GetContentCategories();
+
+        bool AddContentCategory(ContentCategoryViewModel contentCategoryViewModel);
+
+        bool EditContentCategory(ContentCategoryViewModel contentCategoryViewModel);
+
+        bool DeleteContentCategory(ContentCategoryViewModel contentCategoryViewModel);
+
+        List<ArticlePreviewModel> GetArticles();
     }
 }

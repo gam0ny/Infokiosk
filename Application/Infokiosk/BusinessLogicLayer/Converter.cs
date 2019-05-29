@@ -1,5 +1,4 @@
-﻿using BusinessLogicLayer.Models;
-using BusinessLogicLayer.ViewModels;
+﻿using BusinessLogicLayer.ViewModels;
 using CustomControlLibrary.Entities;
 using Entities;
 using System.Collections.Generic;

@@ -241,7 +241,6 @@
             this.pbLoading.Size = new System.Drawing.Size(1018, 800);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 3;
-            this.pbLoading.TabStop = false;
             // 
             // ManageContentCategoriesForm
             // 

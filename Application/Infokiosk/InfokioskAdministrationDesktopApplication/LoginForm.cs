@@ -7,12 +7,12 @@ namespace InfokioskAdministrationDesktopApplication
 {
     public partial class LoginForm : Form
     {
-        private IInfokioskAdministrationDesktopApplicationController controller;
+        private IController controller;
         private MainForm mainForm { get; set; }
         public LoginForm()
         {
             InitializeComponent();
-            controller = new InfokioskAdministrationDesktopApplicationController();
+            controller = new Controller();
             mainForm = new MainForm();
         }
 

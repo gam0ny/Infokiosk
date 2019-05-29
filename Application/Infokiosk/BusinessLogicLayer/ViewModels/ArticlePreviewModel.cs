@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace BusinessLogicLayer.Models
+namespace BusinessLogicLayer.ViewModels
 {
     public class ArticlePreviewModel
     {

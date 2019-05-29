@@ -17,12 +17,12 @@ namespace InfokioskAdministrationDesktopApplication
         private BackgroundWorker editContentCategoryBackgroundWorker;
         private BackgroundWorker deleteContentCategoryBackgroundWorker;
 
-        private IInfokioskAdministrationDesktopApplicationController controller;
+        private IController controller;
         public ManageContentCategoriesForm()
         {
             InitializeComponent();
 
-            controller = new InfokioskAdministrationDesktopApplicationController();
+            controller = new Controller();
 
             this.getContentCategoriesBackgroundWorker = new BackgroundWorker();
             this.getContentCategoriesBackgroundWorker.DoWork += new DoWorkEventHandler(FetchingContentCategoriesInProgress);

@@ -1,5 +1,5 @@
 ﻿using BusinessLogicLayer.Interfaces;
-using BusinessLogicLayer.Models;
+using BusinessLogicLayer.ViewModels;
 using DatabaseLayer.Interfaces;
 using DatabaseLayer.Repositories;
 using HtmlAgilityPack;
@@ -12,14 +12,16 @@ using System.Net.Mail;
 
 namespace BusinessLogicLayer
 {
-    public class InfokioskDesktopApplicationController : IInfokioskDesktopApplicationController
+    public class Controller : IController
     {
-        private readonly IContentCategoryRepository contentCategoryRepoitory;
+        private readonly IContentCategoryRepository contentCategoryRepository;
         private readonly IArticleRepository articleRepository;
-        public InfokioskDesktopApplicationController()
+        private readonly IUserRepository userRepository;
+        public Controller()
         {
-            contentCategoryRepoitory = new ContentCategoryRepository();
+            contentCategoryRepository = new ContentCategoryRepository();
             articleRepository = new ArticleRepository();
+            userRepository = new UserRepository();
         }
 
         public List<ArticlePreviewModel> GetLatestArticles(int limit = 0)
@@ -33,7 +35,7 @@ namespace BusinessLogicLayer
         {
             var articlesByCategoryPreviewModelCollection = new List<ArticlesByCategoryPreviewModel>();
 
-            var contentCategories = contentCategoryRepoitory.GetContentCategories();
+            var contentCategories = contentCategoryRepository.GetContentCategories();
 
             foreach (var contentCategory in contentCategories)
             {
@@ -150,6 +152,36 @@ namespace BusinessLogicLayer
             {
                 return false;
             }
+        }
+
+        public bool Authenticate(string login, string password)
+        {
+            return userRepository.Authenticate(login, password);
+        }
+
+        public List<ContentCategoryViewModel> GetContentCategories()
+        {
+            return Converter.FromContentCategoryCollectionToContentCategoryViewModelCollection(contentCategoryRepository.GetContentCategories());
+        }
+
+        public bool AddContentCategory(ContentCategoryViewModel contentCategoryViewModel)
+        {
+            return contentCategoryRepository.Add(Converter.FromContentCategoryViewModelToContentCategory(contentCategoryViewModel));
+        }
+
+        public bool EditContentCategory(ContentCategoryViewModel contentCategoryViewModel)
+        {
+            return contentCategoryRepository.Edit(Converter.FromContentCategoryViewModelToContentCategory(contentCategoryViewModel));
+        }
+
+        public bool DeleteContentCategory(ContentCategoryViewModel contentCategoryViewModel)
+        {
+            return contentCategoryRepository.Delete(Converter.FromContentCategoryViewModelToContentCategory(contentCategoryViewModel));
+        }
+
+        public List<ArticlePreviewModel> GetArticles()
+        {
+            return Converter.FromArticleShortCollectionToArticlePreviewModelCollection(articleRepository.GetArticles());
         }
     }
 }
