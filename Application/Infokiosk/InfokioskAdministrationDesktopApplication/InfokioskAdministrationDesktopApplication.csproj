@@ -77,6 +77,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ManageArticleForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageArticleForm.Designer.cs">
+      <DependentUpon>ManageArticleForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageArticlesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageArticleForm.resx">
+      <DependentUpon>ManageArticleForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageArticlesForm.resx">
       <DependentUpon>ManageArticlesForm.cs</DependentUpon>

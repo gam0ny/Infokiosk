@@ -16,7 +16,9 @@ namespace DatabaseLayer.Interfaces
 
         List<ArticleShort> SearchArticlesByContent(string keyword, bool isPublished = true);
 
-        List<ArticleShort> GetArticles();
+        List<ArticleShort> GetArticles(bool incudeDeleted = false);
+
+        bool Delete(ArticleShort articleShort); 
 
     }
 }

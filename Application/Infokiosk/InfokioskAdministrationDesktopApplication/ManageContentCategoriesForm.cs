@@ -3,7 +3,6 @@ using BusinessLogicLayer.Interfaces;
 using BusinessLogicLayer.ViewModels;
 using System.Collections.Generic;
 using System.ComponentModel;
-using System.Threading;
 using System.Windows.Forms;
 
 namespace InfokioskAdministrationDesktopApplication

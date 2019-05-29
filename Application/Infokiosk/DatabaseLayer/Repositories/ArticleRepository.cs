@@ -201,13 +201,14 @@ namespace DatabaseLayer.Repositories
             return articles;
         }
 
-        public List<ArticleShort> GetArticles()
+        public List<ArticleShort> GetArticles(bool incudeDeleted = false)
         {
             var articles = new List<ArticleShort>();
 
             var sqlStatement = "SELECT t1.Id, t1.Title, t1.TitleImageName, t1.HasVideo, t1.HasDocument, t2.Id, t2.Name " +
                                "FROM Article t1 " +
                                "INNER JOIN ContentCategory t2 ON t1.ContentCategoryId = t2.Id " +
+                                string.Format("{0}", incudeDeleted == true ? string.Empty : "WHERE t1.IsDeleted = false ") + 
                                "ORDER BY t1.PublishingDate";
 
             MySqlDataReader rdr = DbManager.Execute(sqlStatement);
@@ -233,6 +234,25 @@ namespace DatabaseLayer.Repositories
 
             return articles;
 
+        }
+
+        public bool Delete(ArticleShort articleShort)
+        {
+            var sqlStatement = "UPDATE Article SET IsDeleted = 1 WHERE Id = @articleId";
+            bool result;
+            try
+            {
+                MySqlDataReader rdr = DbManager.Execute(sqlStatement,
+                    new DatabaseParameter[] { new DatabaseParameter() { Name = "@articleId", Value = articleShort.Id.ToString() } });
+
+                result = rdr.RecordsAffected > 0;
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+
+            return result;
         }
     }
 }

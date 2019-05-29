@@ -1,6 +1,6 @@
 ﻿using BusinessLogicLayer;
 using BusinessLogicLayer.Interfaces;
-using BusinessLogicLayer.Models;
+using BusinessLogicLayer.ViewModels;
 using System;
 using System.ComponentModel;
 using System.Configuration;
@@ -12,7 +12,7 @@ namespace InfokioskDesktopApplication
 {
     public partial class InfokioskArticleForm : Form
     {
-        private IInfokioskDesktopApplicationController controller;
+        private IController controller;
 
         private BackgroundWorker backgroundWorker;
 
@@ -29,7 +29,7 @@ namespace InfokioskDesktopApplication
             this.FormBorderStyle = FormBorderStyle.None;
             this.WindowState = FormWindowState.Maximized;
 
-            this.controller = new InfokioskDesktopApplicationController();
+            this.controller = new Controller();
 
             this.backgroundWorker = new BackgroundWorker();
             this.backgroundWorker.DoWork += new DoWorkEventHandler(FetchingArticleContentByIdInProgress);

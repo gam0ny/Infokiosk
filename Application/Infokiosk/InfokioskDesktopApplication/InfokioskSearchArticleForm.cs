@@ -1,6 +1,6 @@
 ﻿using BusinessLogicLayer;
 using BusinessLogicLayer.Interfaces;
-using BusinessLogicLayer.Models;
+using BusinessLogicLayer.ViewModels;
 using CustomControlLibrary;
 using CustomControlLibrary.Entities;
 using System;
@@ -17,7 +17,7 @@ namespace InfokioskDesktopApplication
     {
         public InfokioskMainForm InfokioskMainForm { get; set; }
 
-        private IInfokioskDesktopApplicationController controller;
+        private IController controller;
 
         private BackgroundWorker backgroundWorker;
 
@@ -34,7 +34,7 @@ namespace InfokioskDesktopApplication
             this.WindowState = FormWindowState.Maximized;
             this.AutoScroll = true;
 
-            controller = new InfokioskDesktopApplicationController();
+            controller = new Controller();
 
             backgroundWorker = new BackgroundWorker();
 

@@ -36,6 +36,9 @@
             this.panelContent = new System.Windows.Forms.Panel();
             this.gvArticles = new System.Windows.Forms.DataGridView();
             this.panelActions = new System.Windows.Forms.Panel();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.btnDelete = new System.Windows.Forms.Button();
+            this.btnEdit = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.pbLoading = new System.Windows.Forms.PictureBox();
             this.panelToolbar.SuspendLayout();
@@ -43,6 +46,7 @@
             this.panelContent.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.gvArticles)).BeginInit();
             this.panelActions.SuspendLayout();
+            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).BeginInit();
             this.SuspendLayout();
             // 
@@ -126,28 +130,78 @@
             this.gvArticles.Size = new System.Drawing.Size(1000, 665);
             this.gvArticles.TabIndex = 0;
             this.gvArticles.DataSourceChanged += new System.EventHandler(this.GvArticles_DataSourceChanged);
-            this.gvArticles.Paint += new System.Windows.Forms.PaintEventHandler(this.GvArticles_Paint);
+            this.gvArticles.SelectionChanged += new System.EventHandler(this.GvArticles_SelectionChanged);
             // 
             // panelActions
             // 
-            this.panelActions.Controls.Add(this.btnAdd);
+            this.panelActions.Controls.Add(this.tableLayoutPanel1);
             this.panelActions.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActions.Location = new System.Drawing.Point(0, 0);
             this.panelActions.Name = "panelActions";
             this.panelActions.Size = new System.Drawing.Size(1000, 135);
             this.panelActions.TabIndex = 5;
             // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 6;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 400F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 654F));
+            this.tableLayoutPanel1.Controls.Add(this.btnDelete, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnEdit, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.btnAdd, 0, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1954, 93);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDelete.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnDelete.Enabled = false;
+            this.btnDelete.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(902, 3);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(396, 94);
+            this.btnDelete.TabIndex = 5;
+            this.btnDelete.Text = " Удалить";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.BtnDelete_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnEdit.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnEdit.Enabled = false;
+            this.btnEdit.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnEdit.Location = new System.Drawing.Point(452, 3);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(396, 94);
+            this.btnEdit.TabIndex = 4;
+            this.btnEdit.Text = " Редактировать";
+            this.btnEdit.UseVisualStyleBackColor = true;
+            // 
             // btnAdd
             // 
             this.btnAdd.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnAdd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnAdd.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAdd.Location = new System.Drawing.Point(20, 22);
+            this.btnAdd.Location = new System.Drawing.Point(2, 3);
             this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.btnAdd.Name = "btnAdd";
-            this.btnAdd.Size = new System.Drawing.Size(400, 80);
+            this.btnAdd.Size = new System.Drawing.Size(396, 94);
             this.btnAdd.TabIndex = 2;
             this.btnAdd.Text = " Добавить";
             this.btnAdd.UseVisualStyleBackColor = true;
+            this.btnAdd.Click += new System.EventHandler(this.BtnAdd_Click);
             // 
             // pbLoading
             // 
@@ -159,7 +213,6 @@
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 4;
             this.pbLoading.TabStop = false;
-            this.pbLoading.Click += new System.EventHandler(this.PbLoading_Click);
             // 
             // ManageArticlesForm
             // 
@@ -179,6 +232,7 @@
             this.panelContent.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.gvArticles)).EndInit();
             this.panelActions.ResumeLayout(false);
+            this.tableLayoutPanel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.pbLoading)).EndInit();
             this.ResumeLayout(false);
 
@@ -195,5 +249,8 @@
         private System.Windows.Forms.PictureBox pbLoading;
         private System.Windows.Forms.Panel panelActions;
         private System.Windows.Forms.Panel panelContent;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Button btnEdit;
+        private System.Windows.Forms.Button btnDelete;
     }
 }

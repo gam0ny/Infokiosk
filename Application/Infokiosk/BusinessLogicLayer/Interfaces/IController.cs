@@ -31,5 +31,7 @@ namespace BusinessLogicLayer.Interfaces
         bool DeleteContentCategory(ContentCategoryViewModel contentCategoryViewModel);
 
         List<ArticlePreviewModel> GetArticles();
+
+        bool DeleteArticle(ArticlePreviewModel articlePreviewModel);
     }
 }

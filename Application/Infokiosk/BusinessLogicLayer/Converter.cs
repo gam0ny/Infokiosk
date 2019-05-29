@@ -3,6 +3,7 @@ using CustomControlLibrary.Entities;
 using Entities;
 using System.Collections.Generic;
 using System.Configuration;
+using System.IO;
 
 namespace BusinessLogicLayer
 {
@@ -105,6 +106,18 @@ namespace BusinessLogicLayer
             {
                 Id = contentCategoryViewModel.Id,
                 Name = contentCategoryViewModel.Name,
+            };
+        }
+
+        public static ArticleShort FromArticlePreviewModelToArticleShort(ArticlePreviewModel articlePreviewModel)
+        {
+            return new ArticleShort {
+                Id = articlePreviewModel.Id,
+                ContentCategory = new ContentCategory { Name = articlePreviewModel.CategoryName},
+                HasDocument = articlePreviewModel.HasDocument,
+                HasVideo = articlePreviewModel.HasVideo,
+                Title = articlePreviewModel.Title,
+                TitleImageName = Path.GetFileName(articlePreviewModel.ImageUrl),
             };
         }
     }

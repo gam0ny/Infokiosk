@@ -183,5 +183,10 @@ namespace BusinessLogicLayer
         {
             return Converter.FromArticleShortCollectionToArticlePreviewModelCollection(articleRepository.GetArticles());
         }
+
+        public bool DeleteArticle(ArticlePreviewModel articlePreviewModel)
+        {
+            return articleRepository.Delete(Converter.FromArticlePreviewModelToArticleShort(articlePreviewModel));
+        }
     }
 }
