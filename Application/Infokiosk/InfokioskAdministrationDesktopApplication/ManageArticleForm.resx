@@ -117,4 +117,18 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="tbxHeader.Text" xml:space="preserve">
+    <value>&lt;html&gt;
+&lt;meta charset="UTF-8"&gt;
+&lt;meta http-equiv="X-UA-Compatible" content="IE=9" /&gt;
+&lt;style&gt;
+body { background-color: #1F222E; color: white; font-family: Arial; }
+span { font-size: 12px; }
+p { text-align: justify; }
+.column { float: left; }
+/* Clear floats after the columns */
+.row:after { content: ""; display: table; clear: both; }
+&lt;/style&gt;
+&lt;body&gt;</value>
+  </data>
 </root>

@@ -118,6 +118,8 @@ namespace InfokioskAdministrationDesktopApplication
         private void ManageArticleForm_Load(object sender, EventArgs e)
         {
             getContentCategoriesBackgroundWorker.RunWorkerAsync();
+            articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, tbxContent.Text, tbxFooter.Text);
+            webBrowser1.DocumentText = articleModel.Content;
         }
 
         private void BtnCancel_Click(object sender, EventArgs e)
@@ -134,6 +136,12 @@ namespace InfokioskAdministrationDesktopApplication
         private void CbxIsPublish_CheckedChanged(object sender, EventArgs e)
         {
             articleModel.IsPublishing = ((CheckBox)sender).Checked;
+        }
+
+        private void TbxContent_TextChanged(object sender, EventArgs e)
+        {
+            articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, tbxContent.Text, tbxFooter.Text);
+            webBrowser1.DocumentText = articleModel.Content;
         }
     }
 }

@@ -1,7 +1,7 @@
 ﻿using System.Drawing;
 using BusinessLogicLayer.ViewModels;
 
-namespace InfokioskAdministrationDesktopApplication
+namespace InfokioskAdministrationDesktopApplication.UiModels
 {
     public class ArticleGridViewModel : ArticlePreviewModel
     {

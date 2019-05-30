@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using BusinessLogicLayer.Interfaces;
 using BusinessLogicLayer.ViewModels;
+using InfokioskAdministrationDesktopApplication.UiModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
