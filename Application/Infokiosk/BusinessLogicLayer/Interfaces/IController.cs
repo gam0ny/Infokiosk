@@ -36,5 +36,7 @@ namespace BusinessLogicLayer.Interfaces
         bool SaveArticle(ArticleModel articleModel);
 
         bool DeleteArticle(ArticlePreviewModel articlePreviewModel);
+
+        string ExtractHtmlBody(string htmlString);
     }
 }

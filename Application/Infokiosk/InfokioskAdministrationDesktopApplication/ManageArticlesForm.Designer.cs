@@ -188,6 +188,7 @@
             this.btnEdit.TabIndex = 4;
             this.btnEdit.Text = " Редактировать";
             this.btnEdit.UseVisualStyleBackColor = true;
+            this.btnEdit.Click += new System.EventHandler(this.BtnEdit_Click);
             // 
             // btnAdd
             // 

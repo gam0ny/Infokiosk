@@ -222,5 +222,14 @@ namespace BusinessLogicLayer
 
             return articleDirectory;
         }
+
+        public string ExtractHtmlBody(string htmlDocument)
+        {
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(htmlDocument);
+            var bodyNode = doc.DocumentNode.SelectSingleNode("//body");
+
+            return bodyNode.InnerHtml;
+        }
     }
 }

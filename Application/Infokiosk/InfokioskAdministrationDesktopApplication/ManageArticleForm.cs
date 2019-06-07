@@ -21,6 +21,8 @@ namespace InfokioskAdministrationDesktopApplication
 
         private BackgroundWorker saveArticleBackgroundWorker;
 
+        private BackgroundWorker fetchArticleBackgroundWorker;
+
         private IController controller;
 
         private string localPreviewImagePath;
@@ -40,14 +42,19 @@ namespace InfokioskAdministrationDesktopApplication
             this.saveArticleBackgroundWorker.DoWork += new DoWorkEventHandler(SaveArticleInProgress);
             this.saveArticleBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(SaveArticleComplete);
 
+            this.fetchArticleBackgroundWorker = new BackgroundWorker();
+            this.fetchArticleBackgroundWorker.DoWork += new DoWorkEventHandler(FetchingArticleInProgress);
+            this.fetchArticleBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingArticleComplete);
+
             this.controller = new Controller();
         }
 
-        public ManageArticleForm(ManageArticlesForm manageArticlesForm) : this()
+        public ManageArticleForm(ManageArticlesForm manageArticlesForm, Guid? articleId = null) : this()
         {
             this.manageArticlesForm = manageArticlesForm;
             this.UserId = manageArticlesForm.UserId;
             articleModel.UserId = this.UserId;
+            articleModel.Id = articleId == null ? Guid.Empty : articleId.Value;
         }
 
         private void FetchingContentCategoriesInProgress(object sender, DoWorkEventArgs e)
@@ -65,6 +72,27 @@ namespace InfokioskAdministrationDesktopApplication
                 cbCategories.DisplayMember = "Name";
                 cbCategories.Items.Add(contentCategory);
             }
+        }
+
+        private void FetchingArticleInProgress(object sender, DoWorkEventArgs e)
+        {
+            e.Result = controller.GetArticleById(this.articleModel.Id);
+        }
+
+        private void FetchingArticleComplete(object sender, RunWorkerCompletedEventArgs e)
+        {
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+            this.articleModel = (ArticleModel)e.Result;
+
+            this.tbxTitle.Text = this.articleModel.Title;
+            this.cbCategories.SelectedItem = new ContentCategoryViewModel { Id = this.articleModel.CategoryId, Name = this.articleModel.CategoryName };
+            this.tbxFileUpload.Text = this.articleModel.ImageUrl;
+            this.cbxIsPublish.Checked = this.articleModel.IsPublishing;
+
+            this.ibArticlePreview.Image = Image.FromFile(this.articleModel.ImageUrl);
+
+            this.tbxContent.Text = controller.ExtractHtmlBody(this.articleModel.Content);
+            if (string.IsNullOrEmpty(this.tbxContent.Text)) webBrowser1.DocumentText = this.articleModel.Content;
         }
 
         private void SaveArticleInProgress(object sender, DoWorkEventArgs e)
@@ -152,8 +180,17 @@ namespace InfokioskAdministrationDesktopApplication
         private void ManageArticleForm_Load(object sender, EventArgs e)
         {
             getContentCategoriesBackgroundWorker.RunWorkerAsync();
-            articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, tbxContent.Text, tbxFooter.Text);
-            webBrowser1.DocumentText = articleModel.Content;
+
+            //webBrowser1.DocumentText = articleModel.Content;
+
+            if (articleModel.Id != Guid.Empty)
+            {
+                fetchArticleBackgroundWorker.RunWorkerAsync();
+            }
+            else
+            {
+                articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, tbxContent.Text, tbxFooter.Text);
+            }
         }
 
         private void CbxIsPublish_CheckedChanged(object sender, EventArgs e)
@@ -227,6 +264,11 @@ namespace InfokioskAdministrationDesktopApplication
                 MessageBox.Show(validationMessage);
 
             return invalidCount == 0;
+        }
+
+        private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+            this.webBrowser1.Visible = true;
         }
     }
 }

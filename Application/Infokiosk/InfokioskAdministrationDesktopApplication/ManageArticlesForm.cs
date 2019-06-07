@@ -132,35 +132,58 @@ namespace InfokioskAdministrationDesktopApplication
             btnDelete.Enabled = ((DataGridView)sender).SelectedRows.Count > 0;
         }
 
-        private void BtnDelete_Click(object sender, EventArgs e)
-        {
-            DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить статью? Удаленная тема не будет доступна в пользовательском инфокиоске!", "Внимание!", MessageBoxButtons.YesNo);
-
-            if (result.ToString().ToUpper() == "Yes".ToUpper())
-            {
-                pbLoading.Visible = true;
-                if (gvArticles.SelectedRows.Count > 0)
-                {
-                    var selectedArticle = (ArticleGridViewModel)gvArticles.SelectedRows[0].DataBoundItem;
-                    deleteArticleBackgroundWorker.RunWorkerAsync(new ArticlePreviewModel
-                    {
-                        CategoryName = selectedArticle.CategoryName,
-                        HasDocument = selectedArticle.HasDocument,
-                        HasVideo = selectedArticle.HasVideo,
-                        Id = selectedArticle.Id,
-                        ImageUrl = selectedArticle.ImageUrl,
-                        Title = selectedArticle.Title
-                    });
-                }
-            }
-
-        }
-
         private void BtnAdd_Click(object sender, EventArgs e)
         {
             var manageArticleForm = new ManageArticleForm(this);
             manageArticleForm.Show();
             this.Hide();
+        }
+
+        private void BtnEdit_Click(object sender, EventArgs e)
+        {
+            if (gvArticles.SelectedRows.Count > 0)
+            {
+                var selectedArticle = (ArticleGridViewModel)gvArticles.SelectedRows[0].DataBoundItem;
+
+                var manageArticleForm = new ManageArticleForm(this, selectedArticle.Id);
+                manageArticleForm.Show();
+                this.Hide();
+            }
+            else
+            {
+                MessageBox.Show("Ни одной строчки в списке не выбрано", "Внимание!");
+            }
+        }
+
+        private void BtnDelete_Click(object sender, EventArgs e)
+        {
+            if (gvArticles.SelectedRows.Count > 0)
+            {
+                DialogResult result = MessageBox.Show("Вы уверены, что хотите удалить статью? Удаленная тема не будет доступна в пользовательском инфокиоске!", "Внимание!", MessageBoxButtons.YesNo);
+
+                if (result.ToString().ToUpper() == "Yes".ToUpper())
+                {
+                    pbLoading.Visible = true;
+                    if (gvArticles.SelectedRows.Count > 0)
+                    {
+                        var selectedArticle = (ArticleGridViewModel)gvArticles.SelectedRows[0].DataBoundItem;
+                        deleteArticleBackgroundWorker.RunWorkerAsync(new ArticlePreviewModel
+                        {
+                            CategoryName = selectedArticle.CategoryName,
+                            HasDocument = selectedArticle.HasDocument,
+                            HasVideo = selectedArticle.HasVideo,
+                            Id = selectedArticle.Id,
+                            ImageUrl = selectedArticle.ImageUrl,
+                            Title = selectedArticle.Title
+                        });
+                    }
+                }
+            }
+            else
+            {
+                MessageBox.Show("Ни одной строчки в списке не выбрано", "Внимание!");
+            }
+
         }
 
         private void ManageArticlesForm_Shown(object sender, EventArgs e)

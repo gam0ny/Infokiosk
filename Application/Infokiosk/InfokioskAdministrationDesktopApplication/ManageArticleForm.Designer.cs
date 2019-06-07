@@ -183,6 +183,8 @@
             this.webBrowser1.Name = "webBrowser1";
             this.webBrowser1.Size = new System.Drawing.Size(20, 361);
             this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Visible = false;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebBrowser1_DocumentCompleted);
             // 
             // panelContentEditing
             // 
@@ -208,6 +210,7 @@
             // tbxContent
             // 
             this.tbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxContent.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxContent.Location = new System.Drawing.Point(0, 303);
             this.tbxContent.Multiline = true;
             this.tbxContent.Name = "tbxContent";
@@ -219,6 +222,7 @@
             // 
             this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tbxFooter.Enabled = false;
+            this.tbxFooter.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxFooter.Location = new System.Drawing.Point(0, 247);
             this.tbxFooter.Multiline = true;
             this.tbxFooter.Name = "tbxFooter";
@@ -230,6 +234,7 @@
             // 
             this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Top;
             this.tbxHeader.Enabled = false;
+            this.tbxHeader.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tbxHeader.Location = new System.Drawing.Point(0, 0);
             this.tbxHeader.Multiline = true;
             this.tbxHeader.Name = "tbxHeader";
