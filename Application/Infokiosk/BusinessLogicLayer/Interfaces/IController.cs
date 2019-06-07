@@ -38,5 +38,7 @@ namespace BusinessLogicLayer.Interfaces
         bool DeleteArticle(ArticlePreviewModel articlePreviewModel);
 
         string ExtractHtmlBody(string htmlString);
+
+        string FixImageUrls(string htmlString, Guid articleId);
     }
 }

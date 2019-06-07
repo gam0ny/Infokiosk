@@ -58,8 +58,11 @@ namespace BusinessLogicLayer
         public ArticleModel GetArticleById(Guid articleId)
         {
             var dbArticle = articleRepository.GetArticleById(articleId);
+            var articleModel = Converter.FromArticleToArticleModel(dbArticle);
 
-            return Converter.FromArticleToArticleModel(dbArticle);
+            articleModel.Content = FixImageUrls(articleModel.Content, articleId);
+
+            return articleModel;
         }
 
         public List<ArticlePreviewModel> SearchArticlesByTitle(string keyword)
@@ -230,6 +233,28 @@ namespace BusinessLogicLayer
             var bodyNode = doc.DocumentNode.SelectSingleNode("//body");
 
             return bodyNode.InnerHtml;
+        }
+
+        public string FixImageUrls(string htmlString, Guid articleId)
+        {
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(htmlString);
+            var imageTags = doc.DocumentNode.SelectNodes("//img");
+
+            if(imageTags != null)
+            {
+                foreach (var imageTag in imageTags)
+                {
+                    string imageTagValue = imageTag.Attributes["src"].Value;
+
+                    imageTag.SetAttributeValue("src", string.Format("{0}{1}\\{2}", contentPath, articleId.ToString(), imageTagValue));
+
+                }
+            }
+
+            return doc.DocumentNode.InnerHtml;
         }
     }
 }

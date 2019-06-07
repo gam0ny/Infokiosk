@@ -30,17 +30,17 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageArticleForm));
             this.panelToolbar = new System.Windows.Forms.Panel();
-            this.panelActions = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
-            this.btnSave = new System.Windows.Forms.Button();
             this.lblBack = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
+            this.btnSave = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelManageContent = new System.Windows.Forms.Panel();
-            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.tableLayoutPanelContentEditing = new System.Windows.Forms.TableLayoutPanel();
             this.tbxContent = new System.Windows.Forms.TextBox();
             this.tbxFooter = new System.Windows.Forms.TextBox();
             this.tbxHeader = new System.Windows.Forms.TextBox();
+            this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panelManagePreview = new System.Windows.Forms.Panel();
             this.tableLayoutPanelPreviewControls = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -54,62 +54,39 @@
             this.tbxFileUpload = new System.Windows.Forms.TextBox();
             this.btnFileUpload = new System.Windows.Forms.Button();
             this.cbxIsPublish = new System.Windows.Forms.CheckBox();
-            this.tableLayoutPanelContentEditing = new System.Windows.Forms.TableLayoutPanel();
             this.panelToolbar.SuspendLayout();
-            this.panelActions.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelManageContent.SuspendLayout();
+            this.tableLayoutPanelContentEditing.SuspendLayout();
             this.panelManagePreview.SuspendLayout();
             this.tableLayoutPanelPreviewControls.SuspendLayout();
             this.tableLayoutPanelUpload.SuspendLayout();
-            this.tableLayoutPanelContentEditing.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelToolbar
             // 
-            this.panelToolbar.Controls.Add(this.panelActions);
+            this.panelToolbar.Controls.Add(this.btnCancel);
+            this.panelToolbar.Controls.Add(this.btnSave);
             this.panelToolbar.Controls.Add(this.lblBack);
             this.panelToolbar.Controls.Add(this.lblExit);
             this.panelToolbar.Dock = System.Windows.Forms.DockStyle.Right;
             this.panelToolbar.Location = new System.Drawing.Point(1000, 0);
             this.panelToolbar.Margin = new System.Windows.Forms.Padding(0);
             this.panelToolbar.Name = "panelToolbar";
-            this.panelToolbar.Size = new System.Drawing.Size(200, 800);
+            this.panelToolbar.Size = new System.Drawing.Size(200, 439);
             this.panelToolbar.TabIndex = 16;
-            // 
-            // panelActions
-            // 
-            this.panelActions.Controls.Add(this.btnCancel);
-            this.panelActions.Controls.Add(this.btnSave);
-            this.panelActions.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelActions.Location = new System.Drawing.Point(0, 532);
-            this.panelActions.Name = "panelActions";
-            this.panelActions.Size = new System.Drawing.Size(200, 268);
-            this.panelActions.TabIndex = 8;
             // 
             // btnCancel
             // 
             this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancel.Location = new System.Drawing.Point(3, 105);
+            this.btnCancel.Location = new System.Drawing.Point(0, 233);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(200, 70);
             this.btnCancel.TabIndex = 1;
             this.btnCancel.Text = " Отмена";
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
-            // 
-            // btnSave
-            // 
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(6, 17);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(200, 70);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = " Сохранить";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // lblBack
             // 
@@ -141,6 +118,18 @@
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(0, 131);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(200, 70);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = " Сохранить";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
             // panelMain
             // 
             this.panelMain.Controls.Add(this.panelManageContent);
@@ -148,7 +137,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1000, 800);
+            this.panelMain.Size = new System.Drawing.Size(1200, 800);
             this.panelMain.TabIndex = 17;
             // 
             // panelManageContent
@@ -157,29 +146,40 @@
             this.panelManageContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelManageContent.Location = new System.Drawing.Point(0, 439);
             this.panelManageContent.Name = "panelManageContent";
-            this.panelManageContent.Size = new System.Drawing.Size(1000, 361);
+            this.panelManageContent.Size = new System.Drawing.Size(1200, 361);
             this.panelManageContent.TabIndex = 1;
             // 
-            // webBrowser1
+            // tableLayoutPanelContentEditing
             // 
-            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(568, 3);
-            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
-            this.webBrowser1.Name = "webBrowser1";
-            this.tableLayoutPanelContentEditing.SetRowSpan(this.webBrowser1, 3);
-            this.webBrowser1.Size = new System.Drawing.Size(399, 355);
-            this.webBrowser1.TabIndex = 0;
-            this.webBrowser1.Visible = false;
-            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebBrowser1_DocumentCompleted);
+            this.tableLayoutPanelContentEditing.ColumnCount = 6;
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxContent, 2, 1);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxFooter, 2, 2);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxHeader, 2, 0);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.webBrowser1, 4, 0);
+            this.tableLayoutPanelContentEditing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelContentEditing.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelContentEditing.Name = "tableLayoutPanelContentEditing";
+            this.tableLayoutPanelContentEditing.RowCount = 3;
+            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelContentEditing.Size = new System.Drawing.Size(1200, 361);
+            this.tableLayoutPanelContentEditing.TabIndex = 3;
             // 
             // tbxContent
             // 
             this.tbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxContent.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxContent.Location = new System.Drawing.Point(133, 353);
+            this.tbxContent.Location = new System.Drawing.Point(113, 353);
             this.tbxContent.Multiline = true;
             this.tbxContent.Name = "tbxContent";
-            this.tbxContent.Size = new System.Drawing.Size(399, 1);
+            this.tbxContent.Size = new System.Drawing.Size(406, 1);
             this.tbxContent.TabIndex = 2;
             this.tbxContent.TextChanged += new System.EventHandler(this.TbxContent_TextChanged);
             // 
@@ -188,10 +188,10 @@
             this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxFooter.Enabled = false;
             this.tbxFooter.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxFooter.Location = new System.Drawing.Point(133, 264);
+            this.tbxFooter.Location = new System.Drawing.Point(113, 264);
             this.tbxFooter.Multiline = true;
             this.tbxFooter.Name = "tbxFooter";
-            this.tbxFooter.Size = new System.Drawing.Size(399, 94);
+            this.tbxFooter.Size = new System.Drawing.Size(406, 94);
             this.tbxFooter.TabIndex = 1;
             this.tbxFooter.Text = "</body>\r\n</html>";
             // 
@@ -200,20 +200,33 @@
             this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxHeader.Enabled = false;
             this.tbxHeader.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxHeader.Location = new System.Drawing.Point(133, 3);
+            this.tbxHeader.Location = new System.Drawing.Point(113, 3);
             this.tbxHeader.Multiline = true;
             this.tbxHeader.Name = "tbxHeader";
-            this.tbxHeader.Size = new System.Drawing.Size(399, 344);
+            this.tbxHeader.Size = new System.Drawing.Size(406, 344);
             this.tbxHeader.TabIndex = 0;
             this.tbxHeader.Text = resources.GetString("tbxHeader.Text");
             // 
+            // webBrowser1
+            // 
+            this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.webBrowser1.Location = new System.Drawing.Point(555, 3);
+            this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
+            this.webBrowser1.Name = "webBrowser1";
+            this.tableLayoutPanelContentEditing.SetRowSpan(this.webBrowser1, 3);
+            this.webBrowser1.Size = new System.Drawing.Size(612, 355);
+            this.webBrowser1.TabIndex = 0;
+            this.webBrowser1.Visible = false;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebBrowser1_DocumentCompleted);
+            // 
             // panelManagePreview
             // 
+            this.panelManagePreview.Controls.Add(this.panelToolbar);
             this.panelManagePreview.Controls.Add(this.tableLayoutPanelPreviewControls);
             this.panelManagePreview.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelManagePreview.Location = new System.Drawing.Point(0, 0);
             this.panelManagePreview.Name = "panelManagePreview";
-            this.panelManagePreview.Size = new System.Drawing.Size(1000, 439);
+            this.panelManagePreview.Size = new System.Drawing.Size(1200, 439);
             this.panelManagePreview.TabIndex = 0;
             // 
             // tableLayoutPanelPreviewControls
@@ -224,6 +237,7 @@
             this.tableLayoutPanelPreviewControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 800F));
             this.tableLayoutPanelPreviewControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 200F));
             this.tableLayoutPanelPreviewControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle());
+            this.tableLayoutPanelPreviewControls.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPreviewControls.Controls.Add(this.label4, 1, 7);
             this.tableLayoutPanelPreviewControls.Controls.Add(this.ibArticlePreview, 4, 1);
             this.tableLayoutPanelPreviewControls.Controls.Add(this.label3, 1, 5);
@@ -246,7 +260,7 @@
             this.tableLayoutPanelPreviewControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPreviewControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanelPreviewControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelPreviewControls.Size = new System.Drawing.Size(1000, 439);
+            this.tableLayoutPanelPreviewControls.Size = new System.Drawing.Size(1200, 439);
             this.tableLayoutPanelPreviewControls.TabIndex = 0;
             this.tableLayoutPanelPreviewControls.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanelPreviewControls_Paint);
             // 
@@ -276,7 +290,7 @@
             this.ibArticlePreview.Margin = new System.Windows.Forms.Padding(0);
             this.ibArticlePreview.Name = "ibArticlePreview";
             this.tableLayoutPanelPreviewControls.SetRowSpan(this.ibArticlePreview, 6);
-            this.ibArticlePreview.Size = new System.Drawing.Size(320, 290);
+            this.ibArticlePreview.Size = new System.Drawing.Size(400, 290);
             this.ibArticlePreview.TabIndex = 0;
             this.ibArticlePreview.Title = null;
             // 
@@ -394,29 +408,6 @@
             this.cbxIsPublish.UseVisualStyleBackColor = true;
             this.cbxIsPublish.CheckedChanged += new System.EventHandler(this.CbxIsPublish_CheckedChanged);
             // 
-            // tableLayoutPanelContentEditing
-            // 
-            this.tableLayoutPanelContentEditing.ColumnCount = 6;
-            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxContent, 2, 1);
-            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxFooter, 2, 2);
-            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxHeader, 2, 0);
-            this.tableLayoutPanelContentEditing.Controls.Add(this.webBrowser1, 4, 0);
-            this.tableLayoutPanelContentEditing.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanelContentEditing.Location = new System.Drawing.Point(0, 0);
-            this.tableLayoutPanelContentEditing.Name = "tableLayoutPanelContentEditing";
-            this.tableLayoutPanelContentEditing.RowCount = 3;
-            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
-            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelContentEditing.Size = new System.Drawing.Size(1000, 361);
-            this.tableLayoutPanelContentEditing.TabIndex = 3;
-            // 
             // ManageArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -424,7 +415,6 @@
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
             this.ClientSize = new System.Drawing.Size(1200, 800);
             this.Controls.Add(this.panelMain);
-            this.Controls.Add(this.panelToolbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManageArticleForm";
             this.Text = "ManageArticle";
@@ -432,16 +422,15 @@
             this.Load += new System.EventHandler(this.ManageArticleForm_Load);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.ManageArticleForm_Paint);
             this.panelToolbar.ResumeLayout(false);
-            this.panelActions.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panelManageContent.ResumeLayout(false);
+            this.tableLayoutPanelContentEditing.ResumeLayout(false);
+            this.tableLayoutPanelContentEditing.PerformLayout();
             this.panelManagePreview.ResumeLayout(false);
             this.tableLayoutPanelPreviewControls.ResumeLayout(false);
             this.tableLayoutPanelPreviewControls.PerformLayout();
             this.tableLayoutPanelUpload.ResumeLayout(false);
             this.tableLayoutPanelUpload.PerformLayout();
-            this.tableLayoutPanelContentEditing.ResumeLayout(false);
-            this.tableLayoutPanelContentEditing.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -457,7 +446,6 @@
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelPreviewControls;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbxTitle;
-        private System.Windows.Forms.Panel panelActions;
         private System.Windows.Forms.Button btnCancel;
         private System.Windows.Forms.Button btnSave;
         private System.Windows.Forms.Label label2;
