@@ -163,7 +163,7 @@ namespace InfokioskAdministrationDesktopApplication
             this.Hide();
         }
 
-        private void ManageArticlesForm_Paint(object sender, PaintEventArgs e)
+        private void ManageArticlesForm_Shown(object sender, EventArgs e)
         {
             pbLoading.Visible = true;
             fetchArticlesBackgroundWorker.RunWorkerAsync();

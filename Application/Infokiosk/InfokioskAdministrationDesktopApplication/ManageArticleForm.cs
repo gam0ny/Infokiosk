@@ -169,18 +169,22 @@ namespace InfokioskAdministrationDesktopApplication
 
         private void BtnSave_Click(object sender, EventArgs e)
         {
-            if (articleModel.IsPublishing)
+            if (this.ValidateModel())
             {
-                DialogResult result = MessageBox.Show("Вы уверены, что хотите опубликовать статью? Статья станет доступна на инфопортале", "Внимание!", MessageBoxButtons.YesNo);
+                if (articleModel.IsPublishing)
+                {
+                    DialogResult result = MessageBox.Show("Вы уверены, что хотите опубликовать статью? Статья станет доступна на инфопортале", "Внимание!", MessageBoxButtons.YesNo);
 
-                if (result.ToString().ToUpper() == "Yes".ToUpper())
+                    if (result.ToString().ToUpper() == "Yes".ToUpper())
+                    {
+
+                        saveArticleBackgroundWorker.RunWorkerAsync(this.articleModel);
+                    }
+                }
+                else
                 {
                     saveArticleBackgroundWorker.RunWorkerAsync(this.articleModel);
                 }
-            }
-            else
-            {
-                saveArticleBackgroundWorker.RunWorkerAsync(this.articleModel);
             }
         }
 
@@ -193,6 +197,36 @@ namespace InfokioskAdministrationDesktopApplication
                 manageArticlesForm.Show();
                 this.Close();
             }
+        }
+
+        private bool ValidateModel()
+        {
+            var invalidCount = 0;
+
+            var validationMessage = "Следующие поля обязательны для заполнения: ";
+
+            if (string.IsNullOrWhiteSpace(this.articleModel.Title))
+            {
+                validationMessage += "\n\"Название\"";
+                invalidCount++;
+            }
+
+            if (this.articleModel.CategoryId == 0)
+            {
+                validationMessage += "\n\"Категория\"";
+                invalidCount++;
+            }
+
+            if (string.IsNullOrWhiteSpace(this.articleModel.ImageUrl))
+            {
+                validationMessage += "\n\"Картинка\"";
+                invalidCount++;
+            }
+
+            if (invalidCount > 0)
+                MessageBox.Show(validationMessage);
+
+            return invalidCount == 0;
         }
     }
 }

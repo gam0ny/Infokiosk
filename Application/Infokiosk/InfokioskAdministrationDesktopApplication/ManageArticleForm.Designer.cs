@@ -94,6 +94,7 @@
             // 
             // btnCancel
             // 
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnCancel.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancel.Location = new System.Drawing.Point(3, 105);
             this.btnCancel.Name = "btnCancel";
@@ -105,6 +106,7 @@
             // 
             // btnSave
             // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnSave.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSave.Location = new System.Drawing.Point(6, 17);
             this.btnSave.Name = "btnSave";
@@ -369,6 +371,7 @@
             // cbCategories
             // 
             this.cbCategories.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbCategories.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbCategories.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.cbCategories.FormattingEnabled = true;
             this.cbCategories.Location = new System.Drawing.Point(373, 133);
@@ -395,6 +398,7 @@
             // tbxFileUpload
             // 
             this.tbxFileUpload.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxFileUpload.Enabled = false;
             this.tbxFileUpload.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.tbxFileUpload.Location = new System.Drawing.Point(3, 3);
             this.tbxFileUpload.Multiline = true;
@@ -404,6 +408,7 @@
             // 
             // btnFileUpload
             // 
+            this.btnFileUpload.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnFileUpload.Dock = System.Windows.Forms.DockStyle.Fill;
             this.btnFileUpload.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnFileUpload.Location = new System.Drawing.Point(638, 3);
