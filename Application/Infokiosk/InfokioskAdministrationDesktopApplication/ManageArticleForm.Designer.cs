@@ -37,14 +37,10 @@
             this.lblExit = new System.Windows.Forms.Label();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelManageContent = new System.Windows.Forms.Panel();
-            this.panelContentPreview = new System.Windows.Forms.Panel();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
-            this.panelContentEditing = new System.Windows.Forms.Panel();
-            this.panelArticleEditor = new System.Windows.Forms.Panel();
             this.tbxContent = new System.Windows.Forms.TextBox();
             this.tbxFooter = new System.Windows.Forms.TextBox();
             this.tbxHeader = new System.Windows.Forms.TextBox();
-            this.flowLayoutPanelTags = new System.Windows.Forms.FlowLayoutPanel();
             this.panelManagePreview = new System.Windows.Forms.Panel();
             this.tableLayoutPanelPreviewControls = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -58,16 +54,15 @@
             this.tbxFileUpload = new System.Windows.Forms.TextBox();
             this.btnFileUpload = new System.Windows.Forms.Button();
             this.cbxIsPublish = new System.Windows.Forms.CheckBox();
+            this.tableLayoutPanelContentEditing = new System.Windows.Forms.TableLayoutPanel();
             this.panelToolbar.SuspendLayout();
             this.panelActions.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelManageContent.SuspendLayout();
-            this.panelContentPreview.SuspendLayout();
-            this.panelContentEditing.SuspendLayout();
-            this.panelArticleEditor.SuspendLayout();
             this.panelManagePreview.SuspendLayout();
             this.tableLayoutPanelPreviewControls.SuspendLayout();
             this.tableLayoutPanelUpload.SuspendLayout();
+            this.tableLayoutPanelContentEditing.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelToolbar
@@ -158,97 +153,59 @@
             // 
             // panelManageContent
             // 
-            this.panelManageContent.Controls.Add(this.panelContentPreview);
-            this.panelManageContent.Controls.Add(this.panelContentEditing);
+            this.panelManageContent.Controls.Add(this.tableLayoutPanelContentEditing);
             this.panelManageContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelManageContent.Location = new System.Drawing.Point(0, 439);
             this.panelManageContent.Name = "panelManageContent";
             this.panelManageContent.Size = new System.Drawing.Size(1000, 361);
             this.panelManageContent.TabIndex = 1;
             // 
-            // panelContentPreview
-            // 
-            this.panelContentPreview.Controls.Add(this.webBrowser1);
-            this.panelContentPreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelContentPreview.Location = new System.Drawing.Point(1500, 0);
-            this.panelContentPreview.Name = "panelContentPreview";
-            this.panelContentPreview.Size = new System.Drawing.Size(0, 361);
-            this.panelContentPreview.TabIndex = 1;
-            // 
             // webBrowser1
             // 
             this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(0, 0);
+            this.webBrowser1.Location = new System.Drawing.Point(568, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
-            this.webBrowser1.Size = new System.Drawing.Size(20, 361);
+            this.tableLayoutPanelContentEditing.SetRowSpan(this.webBrowser1, 3);
+            this.webBrowser1.Size = new System.Drawing.Size(399, 355);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Visible = false;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebBrowser1_DocumentCompleted);
-            // 
-            // panelContentEditing
-            // 
-            this.panelContentEditing.Controls.Add(this.panelArticleEditor);
-            this.panelContentEditing.Controls.Add(this.flowLayoutPanelTags);
-            this.panelContentEditing.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panelContentEditing.Location = new System.Drawing.Point(0, 0);
-            this.panelContentEditing.Name = "panelContentEditing";
-            this.panelContentEditing.Size = new System.Drawing.Size(1500, 361);
-            this.panelContentEditing.TabIndex = 0;
-            // 
-            // panelArticleEditor
-            // 
-            this.panelArticleEditor.Controls.Add(this.tbxContent);
-            this.panelArticleEditor.Controls.Add(this.tbxFooter);
-            this.panelArticleEditor.Controls.Add(this.tbxHeader);
-            this.panelArticleEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelArticleEditor.Location = new System.Drawing.Point(91, 0);
-            this.panelArticleEditor.Name = "panelArticleEditor";
-            this.panelArticleEditor.Size = new System.Drawing.Size(1409, 361);
-            this.panelArticleEditor.TabIndex = 1;
             // 
             // tbxContent
             // 
             this.tbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxContent.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxContent.Location = new System.Drawing.Point(0, 303);
+            this.tbxContent.Location = new System.Drawing.Point(133, 353);
             this.tbxContent.Multiline = true;
             this.tbxContent.Name = "tbxContent";
-            this.tbxContent.Size = new System.Drawing.Size(1409, 0);
+            this.tbxContent.Size = new System.Drawing.Size(399, 1);
             this.tbxContent.TabIndex = 2;
             this.tbxContent.TextChanged += new System.EventHandler(this.TbxContent_TextChanged);
             // 
             // tbxFooter
             // 
-            this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxFooter.Enabled = false;
             this.tbxFooter.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxFooter.Location = new System.Drawing.Point(0, 247);
+            this.tbxFooter.Location = new System.Drawing.Point(133, 264);
             this.tbxFooter.Multiline = true;
             this.tbxFooter.Name = "tbxFooter";
-            this.tbxFooter.Size = new System.Drawing.Size(1409, 114);
+            this.tbxFooter.Size = new System.Drawing.Size(399, 94);
             this.tbxFooter.TabIndex = 1;
             this.tbxFooter.Text = "</body>\r\n</html>";
             // 
             // tbxHeader
             // 
-            this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxHeader.Enabled = false;
             this.tbxHeader.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxHeader.Location = new System.Drawing.Point(0, 0);
+            this.tbxHeader.Location = new System.Drawing.Point(133, 3);
             this.tbxHeader.Multiline = true;
             this.tbxHeader.Name = "tbxHeader";
-            this.tbxHeader.Size = new System.Drawing.Size(1409, 303);
+            this.tbxHeader.Size = new System.Drawing.Size(399, 344);
             this.tbxHeader.TabIndex = 0;
             this.tbxHeader.Text = resources.GetString("tbxHeader.Text");
-            // 
-            // flowLayoutPanelTags
-            // 
-            this.flowLayoutPanelTags.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanelTags.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanelTags.Name = "flowLayoutPanelTags";
-            this.flowLayoutPanelTags.Size = new System.Drawing.Size(91, 361);
-            this.flowLayoutPanelTags.TabIndex = 0;
             // 
             // panelManagePreview
             // 
@@ -437,6 +394,29 @@
             this.cbxIsPublish.UseVisualStyleBackColor = true;
             this.cbxIsPublish.CheckedChanged += new System.EventHandler(this.CbxIsPublish_CheckedChanged);
             // 
+            // tableLayoutPanelContentEditing
+            // 
+            this.tableLayoutPanelContentEditing.ColumnCount = 6;
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxContent, 2, 1);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxFooter, 2, 2);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxHeader, 2, 0);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.webBrowser1, 4, 0);
+            this.tableLayoutPanelContentEditing.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tableLayoutPanelContentEditing.Location = new System.Drawing.Point(0, 0);
+            this.tableLayoutPanelContentEditing.Name = "tableLayoutPanelContentEditing";
+            this.tableLayoutPanelContentEditing.RowCount = 3;
+            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
+            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelContentEditing.Size = new System.Drawing.Size(1000, 361);
+            this.tableLayoutPanelContentEditing.TabIndex = 3;
+            // 
             // ManageArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -455,15 +435,13 @@
             this.panelActions.ResumeLayout(false);
             this.panelMain.ResumeLayout(false);
             this.panelManageContent.ResumeLayout(false);
-            this.panelContentPreview.ResumeLayout(false);
-            this.panelContentEditing.ResumeLayout(false);
-            this.panelArticleEditor.ResumeLayout(false);
-            this.panelArticleEditor.PerformLayout();
             this.panelManagePreview.ResumeLayout(false);
             this.tableLayoutPanelPreviewControls.ResumeLayout(false);
             this.tableLayoutPanelPreviewControls.PerformLayout();
             this.tableLayoutPanelUpload.ResumeLayout(false);
             this.tableLayoutPanelUpload.PerformLayout();
+            this.tableLayoutPanelContentEditing.ResumeLayout(false);
+            this.tableLayoutPanelContentEditing.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -491,13 +469,10 @@
         private CustomControlLibrary.ImageBox ibArticlePreview;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox cbxIsPublish;
-        private System.Windows.Forms.Panel panelContentEditing;
-        private System.Windows.Forms.Panel panelContentPreview;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.Panel panelArticleEditor;
-        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelTags;
         private System.Windows.Forms.TextBox tbxContent;
         private System.Windows.Forms.TextBox tbxFooter;
         private System.Windows.Forms.TextBox tbxHeader;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanelContentEditing;
     }
 }
