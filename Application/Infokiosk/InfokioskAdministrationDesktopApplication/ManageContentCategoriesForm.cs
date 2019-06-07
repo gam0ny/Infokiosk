@@ -1,13 +1,14 @@
 ﻿using BusinessLogicLayer;
 using BusinessLogicLayer.Interfaces;
 using BusinessLogicLayer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Windows.Forms;
 
 namespace InfokioskAdministrationDesktopApplication
 {
-    public partial class ManageContentCategoriesForm : Form
+    public partial class ManageContentCategoriesForm : Form, IAuthorizedForm
     {
         private MainForm mainForm;
 
@@ -17,6 +18,8 @@ namespace InfokioskAdministrationDesktopApplication
         private BackgroundWorker deleteContentCategoryBackgroundWorker;
 
         private IController controller;
+
+        public Guid? UserId { get; set; }
         public ManageContentCategoriesForm()
         {
             InitializeComponent();
@@ -40,6 +43,7 @@ namespace InfokioskAdministrationDesktopApplication
         public ManageContentCategoriesForm(MainForm mainForm) : this()
         {
             this.mainForm = mainForm;
+            this.UserId = mainForm.UserId;
         }
 
         private void FetchingContentCategoriesInProgress(object sender, DoWorkEventArgs e)

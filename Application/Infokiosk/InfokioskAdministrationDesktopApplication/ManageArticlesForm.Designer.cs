@@ -226,7 +226,7 @@
             this.Name = "ManageArticlesForm";
             this.Text = "ManageArticlesForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Load += new System.EventHandler(this.ManageArticlesForm_Load);
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.ManageArticlesForm_Paint);
             this.panelToolbar.ResumeLayout(false);
             this.panelMainContent.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);

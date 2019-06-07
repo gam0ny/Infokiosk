@@ -18,6 +18,8 @@ namespace DatabaseLayer.Interfaces
 
         List<ArticleShort> GetArticles(bool incudeDeleted = false);
 
+        bool Save(Article article);
+
         bool Delete(ArticleShort articleShort); 
 
     }

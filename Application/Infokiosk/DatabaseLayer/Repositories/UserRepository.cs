@@ -1,6 +1,7 @@
 ﻿using DatabaseLayer.Interfaces;
 using Entities;
 using MySql.Data.MySqlClient;
+using System;
 using System.Collections.Generic;
 
 namespace DatabaseLayer.Repositories
@@ -23,9 +24,11 @@ namespace DatabaseLayer.Repositories
             return users;
         }
 
-        public bool Authenticate(string username, string password)
+        public bool Authenticate(string username, string password, out Guid? userId)
         {
             var isAuthenticated = false;
+
+            userId = null;
 
             MySqlDataReader rdr = DbManager.Execute(
                 "SELECT * FROM user WHERE name = @name AND password = @password", 
@@ -34,6 +37,16 @@ namespace DatabaseLayer.Repositories
             if(rdr.HasRows)
             {
                 isAuthenticated = true;
+
+                while (rdr.Read())
+                {
+                    Guid result;
+                    if (Guid.TryParse((string)rdr[0], out result))
+                    {
+                        userId = result;
+                    }
+                }
+
             }
 
             return isAuthenticated;

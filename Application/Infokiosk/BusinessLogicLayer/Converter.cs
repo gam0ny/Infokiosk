@@ -13,12 +13,14 @@ namespace BusinessLogicLayer
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
 
-            return new ArticlePreviewModel {
+            return new ArticlePreviewModel
+            {
                 Id = articleShort.Id,
                 Title = articleShort.Title,
                 ImageUrl = string.Format("{0}/{1}/{2}", contentPath, articleShort.Id, articleShort.TitleImageName),
                 HasDocument = articleShort.HasDocument,
                 HasVideo = articleShort.HasVideo,
+                CategoryId = articleShort.ContentCategory.Id,
                 CategoryName = articleShort.ContentCategory.Name
             };
         }
@@ -27,7 +29,7 @@ namespace BusinessLogicLayer
         {
             var articlePreviewModelCollection = new List<ArticlePreviewModel>();
 
-            foreach(var articleShort in articleShortCollection)
+            foreach (var articleShort in articleShortCollection)
             {
                 var articlePreviewModel = Converter.FromArticleShortToArticlePreviewModel(articleShort);
                 articlePreviewModelCollection.Add(articlePreviewModel);
@@ -39,7 +41,8 @@ namespace BusinessLogicLayer
 
         public static ImageBoxItem FromArticlePreviewModelToImageBoxItem(ArticlePreviewModel articlePreviewModel)
         {
-            return new ImageBoxItem {
+            return new ImageBoxItem
+            {
                 Id = articlePreviewModel.Id,
                 Title = articlePreviewModel.Title,
                 ImageUrl = articlePreviewModel.ImageUrl,
@@ -73,14 +76,34 @@ namespace BusinessLogicLayer
                 ImageUrl = string.Format("{0}/{1}/{2}", contentPath, article.Id, article.TitleImageName),
                 HasDocument = article.HasDocument,
                 HasVideo = article.HasVideo,
+                CategoryId = article.ContentCategory.Id,
                 CategoryName = article.ContentCategory.Name,
                 Content = article.Content,
+                IsPublishing = article.IsPublished,
+                UserId = article.UserId
+            };
+        }
+
+        public static Article FromArticleModelToArticle(ArticleModel articleModel)
+        {
+            return new Article
+            {
+                Content = articleModel.Content,
+                ContentCategory = new ContentCategory { Id = articleModel.CategoryId, Name = articleModel.CategoryName },
+                Id = articleModel.Id,
+                Title = articleModel.Title,
+                HasDocument = articleModel.HasDocument,
+                HasVideo = articleModel.HasVideo,
+                TitleImageName = articleModel.TitleFileName,
+                IsPublished = articleModel.IsPublishing,
+                UserId = articleModel.UserId
             };
         }
 
         public static ContentCategoryViewModel FromContentCategoryToContentCategoryViewModel(ContentCategory contentCategory)
         {
-            return new ContentCategoryViewModel {
+            return new ContentCategoryViewModel
+            {
                 Id = contentCategory.Id,
                 Name = contentCategory.Name,
             };
@@ -90,7 +113,7 @@ namespace BusinessLogicLayer
         {
             var contentCategoryViewModelCollection = new List<ContentCategoryViewModel>();
 
-            foreach(var contentCategory in contentCategories)
+            foreach (var contentCategory in contentCategories)
             {
                 var contentCatetoryViewModel = FromContentCategoryToContentCategoryViewModel(contentCategory);
                 contentCategoryViewModelCollection.Add(contentCatetoryViewModel);
@@ -111,9 +134,10 @@ namespace BusinessLogicLayer
 
         public static ArticleShort FromArticlePreviewModelToArticleShort(ArticlePreviewModel articlePreviewModel)
         {
-            return new ArticleShort {
+            return new ArticleShort
+            {
                 Id = articlePreviewModel.Id,
-                ContentCategory = new ContentCategory { Name = articlePreviewModel.CategoryName},
+                ContentCategory = new ContentCategory { Id= articlePreviewModel.CategoryId, Name = articlePreviewModel.CategoryName },
                 HasDocument = articlePreviewModel.HasDocument,
                 HasVideo = articlePreviewModel.HasVideo,
                 Title = articlePreviewModel.Title,

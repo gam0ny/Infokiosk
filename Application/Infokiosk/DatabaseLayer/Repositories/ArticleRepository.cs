@@ -60,7 +60,7 @@ namespace DatabaseLayer.Repositories
                 sqlStatement += string.Format(" LIMIT {0}", limit);
             }
 
-            MySqlDataReader rdr = DbManager.Execute(sqlStatement, 
+            MySqlDataReader rdr = DbManager.Execute(sqlStatement,
                 new DatabaseParameter[] { new DatabaseParameter() { Name = "@contentCategoryId", Value = contentCategoryId.ToString() } });
 
             var articles = new List<ArticleShort>();
@@ -208,7 +208,7 @@ namespace DatabaseLayer.Repositories
             var sqlStatement = "SELECT t1.Id, t1.Title, t1.TitleImageName, t1.HasVideo, t1.HasDocument, t2.Id, t2.Name " +
                                "FROM Article t1 " +
                                "INNER JOIN ContentCategory t2 ON t1.ContentCategoryId = t2.Id " +
-                                string.Format("{0}", incudeDeleted == true ? string.Empty : "WHERE t1.IsDeleted = false ") + 
+                                string.Format("{0}", incudeDeleted == true ? string.Empty : "WHERE t1.IsDeleted = false ") +
                                "ORDER BY t1.PublishingDate";
 
             MySqlDataReader rdr = DbManager.Execute(sqlStatement);
@@ -244,6 +244,66 @@ namespace DatabaseLayer.Repositories
             {
                 MySqlDataReader rdr = DbManager.Execute(sqlStatement,
                     new DatabaseParameter[] { new DatabaseParameter() { Name = "@articleId", Value = articleShort.Id.ToString() } });
+
+                result = rdr.RecordsAffected > 0;
+            }
+            catch (Exception e)
+            {
+                result = false;
+            }
+
+            return result;
+        }
+
+        public bool Save(Article article)
+        {
+            var sqlStatement = "INSERT INTO Article (" +
+                "Id" +
+                ", Title" +
+                ", TitleImageName" +
+                ", Content" +
+                ", HasVideo" +
+                ", HasDocument" +
+                ", ContentCategoryId" +
+                ", UserId" +
+                ", CreationDate" +
+                ", EditDate" +
+                ", IsPublished" +
+                ", PublishingDate) " +
+                "VALUES (" +
+                "@articleId" +
+                ", @articleTitle" +
+                ", @articleTitleImageName" +
+                ", @articleContent" +
+                ", @articleHasVideo" +
+                ", @articleHasDocument" +
+                ", @articleContentCategoryId" +
+                ", @articleUserId" +
+                ", @articleCreationDate" +
+                ", @articleEditDate" +
+                ", @articleIsPublished" +
+                ", @articlePublishingDate) ";
+
+            bool result;
+            try
+            {
+                DateTime timeStamp = DateTime.Now;
+
+                MySqlDataReader rdr = DbManager.Execute(sqlStatement,
+                    new DatabaseParameter[] {
+                        new DatabaseParameter() { Name = "@articleId", Value = article.Id.ToString() },
+                        new DatabaseParameter() { Name = "@articleTitle", Value = article.Title },
+                        new DatabaseParameter() { Name = "@articleTitleImageName", Value = article.TitleImageName },
+                        new DatabaseParameter() { Name = "@articleContent", Value = article.Content },
+                        new DatabaseParameter() { Name = "@articleHasVideo", Value = Convert.ToInt32(article.HasVideo).ToString() },
+                        new DatabaseParameter() { Name = "@articleHasDocument", Value = Convert.ToInt32(article.HasDocument).ToString() },
+                        new DatabaseParameter() { Name = "@articleContentCategoryId", Value = article.ContentCategory.Id.ToString() },
+                        new DatabaseParameter() { Name = "@articleUserId", Value = article.UserId.ToString() },
+                        new DatabaseParameter() { Name = "@articleCreationDate", Value = timeStamp.ToString("yyyy-MM-dd HH:mm:ss") },
+                        new DatabaseParameter() { Name = "@articleEditDate", Value = timeStamp.ToString("yyyy-MM-dd HH:mm:ss") },
+                        new DatabaseParameter() { Name = "@articleIsPublished", Value = Convert.ToInt32(article.IsPublished).ToString() },
+                        new DatabaseParameter() { Name = "@articlePublishingDate", Value = article.IsPublished ? timeStamp.ToString("yyyy-MM-dd HH:mm:ss") : null},
+                    });
 
                 result = rdr.RecordsAffected > 0;
             }

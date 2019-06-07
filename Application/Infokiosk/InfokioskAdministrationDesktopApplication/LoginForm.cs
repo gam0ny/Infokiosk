@@ -8,7 +8,11 @@ namespace InfokioskAdministrationDesktopApplication
     public partial class LoginForm : Form
     {
         private IController controller;
+
         private MainForm mainForm { get; set; }
+
+        public Guid UserId { get; set; }
+
         public LoginForm()
         {
             InitializeComponent();
@@ -20,10 +24,12 @@ namespace InfokioskAdministrationDesktopApplication
         {
             var userName = this.tbxUsername.Value;
             var password = this.tbxPassword.Value;
-            var result = controller.Authenticate(userName, password);
+            Guid? userId;
+            bool result = controller.Authenticate(userName, password, out userId);
 
             if(result)
             {
+                this.mainForm.UserId = userId;
                 this.Hide();
                 this.lblErrorMessage.Hide();
                 this.mainForm.Show();

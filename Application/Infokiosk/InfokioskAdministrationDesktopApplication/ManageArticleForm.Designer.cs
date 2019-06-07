@@ -40,9 +40,15 @@
             this.panelContentPreview = new System.Windows.Forms.Panel();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.panelContentEditing = new System.Windows.Forms.Panel();
+            this.panelArticleEditor = new System.Windows.Forms.Panel();
+            this.tbxContent = new System.Windows.Forms.TextBox();
+            this.tbxFooter = new System.Windows.Forms.TextBox();
+            this.tbxHeader = new System.Windows.Forms.TextBox();
+            this.flowLayoutPanelTags = new System.Windows.Forms.FlowLayoutPanel();
             this.panelManagePreview = new System.Windows.Forms.Panel();
             this.tableLayoutPanelPreviewControls = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
+            this.ibArticlePreview = new CustomControlLibrary.ImageBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbxTitle = new System.Windows.Forms.TextBox();
@@ -52,22 +58,16 @@
             this.tbxFileUpload = new System.Windows.Forms.TextBox();
             this.btnFileUpload = new System.Windows.Forms.Button();
             this.cbxIsPublish = new System.Windows.Forms.CheckBox();
-            this.ibArticlePreview = new CustomControlLibrary.ImageBox();
-            this.flowLayoutPanelTags = new System.Windows.Forms.FlowLayoutPanel();
-            this.panelArticleEditor = new System.Windows.Forms.Panel();
-            this.tbxHeader = new System.Windows.Forms.TextBox();
-            this.tbxFooter = new System.Windows.Forms.TextBox();
-            this.tbxContent = new System.Windows.Forms.TextBox();
             this.panelToolbar.SuspendLayout();
             this.panelActions.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelManageContent.SuspendLayout();
             this.panelContentPreview.SuspendLayout();
             this.panelContentEditing.SuspendLayout();
+            this.panelArticleEditor.SuspendLayout();
             this.panelManagePreview.SuspendLayout();
             this.tableLayoutPanelPreviewControls.SuspendLayout();
             this.tableLayoutPanelUpload.SuspendLayout();
-            this.panelArticleEditor.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelToolbar
@@ -112,6 +112,7 @@
             this.btnSave.TabIndex = 0;
             this.btnSave.Text = " Сохранить";
             this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
             // 
             // lblBack
             // 
@@ -191,6 +192,57 @@
             this.panelContentEditing.Size = new System.Drawing.Size(1500, 361);
             this.panelContentEditing.TabIndex = 0;
             // 
+            // panelArticleEditor
+            // 
+            this.panelArticleEditor.Controls.Add(this.tbxContent);
+            this.panelArticleEditor.Controls.Add(this.tbxFooter);
+            this.panelArticleEditor.Controls.Add(this.tbxHeader);
+            this.panelArticleEditor.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelArticleEditor.Location = new System.Drawing.Point(91, 0);
+            this.panelArticleEditor.Name = "panelArticleEditor";
+            this.panelArticleEditor.Size = new System.Drawing.Size(1409, 361);
+            this.panelArticleEditor.TabIndex = 1;
+            // 
+            // tbxContent
+            // 
+            this.tbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxContent.Location = new System.Drawing.Point(0, 303);
+            this.tbxContent.Multiline = true;
+            this.tbxContent.Name = "tbxContent";
+            this.tbxContent.Size = new System.Drawing.Size(1409, 0);
+            this.tbxContent.TabIndex = 2;
+            this.tbxContent.TextChanged += new System.EventHandler(this.TbxContent_TextChanged);
+            // 
+            // tbxFooter
+            // 
+            this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.tbxFooter.Enabled = false;
+            this.tbxFooter.Location = new System.Drawing.Point(0, 247);
+            this.tbxFooter.Multiline = true;
+            this.tbxFooter.Name = "tbxFooter";
+            this.tbxFooter.Size = new System.Drawing.Size(1409, 114);
+            this.tbxFooter.TabIndex = 1;
+            this.tbxFooter.Text = "</body>\r\n</html>";
+            // 
+            // tbxHeader
+            // 
+            this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Top;
+            this.tbxHeader.Enabled = false;
+            this.tbxHeader.Location = new System.Drawing.Point(0, 0);
+            this.tbxHeader.Multiline = true;
+            this.tbxHeader.Name = "tbxHeader";
+            this.tbxHeader.Size = new System.Drawing.Size(1409, 303);
+            this.tbxHeader.TabIndex = 0;
+            this.tbxHeader.Text = resources.GetString("tbxHeader.Text");
+            // 
+            // flowLayoutPanelTags
+            // 
+            this.flowLayoutPanelTags.Dock = System.Windows.Forms.DockStyle.Left;
+            this.flowLayoutPanelTags.Location = new System.Drawing.Point(0, 0);
+            this.flowLayoutPanelTags.Name = "flowLayoutPanelTags";
+            this.flowLayoutPanelTags.Size = new System.Drawing.Size(91, 361);
+            this.flowLayoutPanelTags.TabIndex = 0;
+            // 
             // panelManagePreview
             // 
             this.panelManagePreview.Controls.Add(this.tableLayoutPanelPreviewControls);
@@ -246,6 +298,23 @@
             this.label4.TabIndex = 3;
             this.label4.Text = "Сразу публикуем?";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // ibArticlePreview
+            // 
+            this.ibArticlePreview.Category = null;
+            this.ibArticlePreview.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.ibArticlePreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ibArticlePreview.HasDocuments = false;
+            this.ibArticlePreview.HasVideo = false;
+            this.ibArticlePreview.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
+            this.ibArticlePreview.Image = null;
+            this.ibArticlePreview.Location = new System.Drawing.Point(1370, 30);
+            this.ibArticlePreview.Margin = new System.Windows.Forms.Padding(0);
+            this.ibArticlePreview.Name = "ibArticlePreview";
+            this.tableLayoutPanelPreviewControls.SetRowSpan(this.ibArticlePreview, 6);
+            this.ibArticlePreview.Size = new System.Drawing.Size(320, 290);
+            this.ibArticlePreview.TabIndex = 0;
+            this.ibArticlePreview.Title = null;
             // 
             // label3
             // 
@@ -358,74 +427,6 @@
             this.cbxIsPublish.UseVisualStyleBackColor = true;
             this.cbxIsPublish.CheckedChanged += new System.EventHandler(this.CbxIsPublish_CheckedChanged);
             // 
-            // ibArticlePreview
-            // 
-            this.ibArticlePreview.Category = null;
-            this.ibArticlePreview.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.ibArticlePreview.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ibArticlePreview.HasDocuments = false;
-            this.ibArticlePreview.HasVideo = false;
-            this.ibArticlePreview.Id = new System.Guid("00000000-0000-0000-0000-000000000000");
-            this.ibArticlePreview.Image = null;
-            this.ibArticlePreview.Location = new System.Drawing.Point(1370, 30);
-            this.ibArticlePreview.Margin = new System.Windows.Forms.Padding(0);
-            this.ibArticlePreview.Name = "ibArticlePreview";
-            this.tableLayoutPanelPreviewControls.SetRowSpan(this.ibArticlePreview, 6);
-            this.ibArticlePreview.Size = new System.Drawing.Size(320, 290);
-            this.ibArticlePreview.TabIndex = 0;
-            this.ibArticlePreview.Title = null;
-            // 
-            // flowLayoutPanelTags
-            // 
-            this.flowLayoutPanelTags.Dock = System.Windows.Forms.DockStyle.Left;
-            this.flowLayoutPanelTags.Location = new System.Drawing.Point(0, 0);
-            this.flowLayoutPanelTags.Name = "flowLayoutPanelTags";
-            this.flowLayoutPanelTags.Size = new System.Drawing.Size(91, 361);
-            this.flowLayoutPanelTags.TabIndex = 0;
-            // 
-            // panelArticleEditor
-            // 
-            this.panelArticleEditor.Controls.Add(this.tbxContent);
-            this.panelArticleEditor.Controls.Add(this.tbxFooter);
-            this.panelArticleEditor.Controls.Add(this.tbxHeader);
-            this.panelArticleEditor.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelArticleEditor.Location = new System.Drawing.Point(91, 0);
-            this.panelArticleEditor.Name = "panelArticleEditor";
-            this.panelArticleEditor.Size = new System.Drawing.Size(1409, 361);
-            this.panelArticleEditor.TabIndex = 1;
-            // 
-            // tbxHeader
-            // 
-            this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Top;
-            this.tbxHeader.Enabled = false;
-            this.tbxHeader.Location = new System.Drawing.Point(0, 0);
-            this.tbxHeader.Multiline = true;
-            this.tbxHeader.Name = "tbxHeader";
-            this.tbxHeader.Size = new System.Drawing.Size(1409, 303);
-            this.tbxHeader.TabIndex = 0;
-            this.tbxHeader.Text = resources.GetString("tbxHeader.Text");
-            // 
-            // tbxFooter
-            // 
-            this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tbxFooter.Enabled = false;
-            this.tbxFooter.Location = new System.Drawing.Point(0, 247);
-            this.tbxFooter.Multiline = true;
-            this.tbxFooter.Name = "tbxFooter";
-            this.tbxFooter.Size = new System.Drawing.Size(1409, 114);
-            this.tbxFooter.TabIndex = 1;
-            this.tbxFooter.Text = "</body>\r\n</html>";
-            // 
-            // tbxContent
-            // 
-            this.tbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxContent.Location = new System.Drawing.Point(0, 303);
-            this.tbxContent.Multiline = true;
-            this.tbxContent.Name = "tbxContent";
-            this.tbxContent.Size = new System.Drawing.Size(1409, 0);
-            this.tbxContent.TabIndex = 2;
-            this.tbxContent.TextChanged += new System.EventHandler(this.TbxContent_TextChanged);
-            // 
             // ManageArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -446,13 +447,13 @@
             this.panelManageContent.ResumeLayout(false);
             this.panelContentPreview.ResumeLayout(false);
             this.panelContentEditing.ResumeLayout(false);
+            this.panelArticleEditor.ResumeLayout(false);
+            this.panelArticleEditor.PerformLayout();
             this.panelManagePreview.ResumeLayout(false);
             this.tableLayoutPanelPreviewControls.ResumeLayout(false);
             this.tableLayoutPanelPreviewControls.PerformLayout();
             this.tableLayoutPanelUpload.ResumeLayout(false);
             this.tableLayoutPanelUpload.PerformLayout();
-            this.panelArticleEditor.ResumeLayout(false);
-            this.panelArticleEditor.PerformLayout();
             this.ResumeLayout(false);
 
         }

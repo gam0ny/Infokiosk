@@ -42,7 +42,7 @@ namespace BusinessLogicLayer
                 var articlesByCategoryPreviewModel = new ArticlesByCategoryPreviewModel();
                 articlesByCategoryPreviewModel.Category = contentCategory.Name;
 
-                var articlesCollection = articleRepository.GetArticlesByCategoryId(contentCategory.Id == null ? 0 : contentCategory.Id.Value);
+                var articlesCollection = articleRepository.GetArticlesByCategoryId(contentCategory.Id);
 
                 articlesByCategoryPreviewModel.Articles = Converter.FromArticleShortCollectionToArticlePreviewModelCollection(articlesCollection);
 
@@ -154,9 +154,11 @@ namespace BusinessLogicLayer
             }
         }
 
-        public bool Authenticate(string login, string password)
+        public bool Authenticate(string login, string password, out Guid? userId)
         {
-            return userRepository.Authenticate(login, password);
+            var result = userRepository.Authenticate(login, password, out userId);
+
+            return result;
         }
 
         public List<ContentCategoryViewModel> GetContentCategories()
@@ -187,6 +189,38 @@ namespace BusinessLogicLayer
         public bool DeleteArticle(ArticlePreviewModel articlePreviewModel)
         {
             return articleRepository.Delete(Converter.FromArticlePreviewModelToArticleShort(articlePreviewModel));
+        }
+
+        public bool SaveArticle(ArticleModel articleModel)
+        {
+            var articleDirectory = string.Empty;
+
+            if (articleModel.Id == Guid.Empty)
+            {
+                articleModel.Id = Guid.NewGuid();
+
+                articleDirectory = CreateFolderStrucure(articleModel);
+            }
+
+            if (articleModel.ImageUrl != null && articleModel.TitleFileName != null)
+            {
+                File.Copy(articleModel.ImageUrl, string.Format("{0}/{1}", articleDirectory, articleModel.TitleFileName));
+            }
+
+            articleModel.HasVideo = articleModel.Content.Contains("<video>");
+
+            return articleRepository.Save(Converter.FromArticleModelToArticle(articleModel));
+        }
+
+        private string CreateFolderStrucure(ArticleModel articleModel)
+        {
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+
+            var articleDirectory = string.Format("{0}{1}", contentPath, articleModel.Id);
+
+            Directory.CreateDirectory(articleDirectory);
+
+            return articleDirectory;
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using BusinessLogicLayer.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Net.Mail;
 
@@ -20,7 +21,7 @@ namespace BusinessLogicLayer.Interfaces
 
         bool EmailIsValid(string emailAddress);
 
-        bool Authenticate(string login, string password);
+        bool Authenticate(string login, string password, out Guid? userId);
 
         List<ContentCategoryViewModel> GetContentCategories();
 
@@ -31,6 +32,8 @@ namespace BusinessLogicLayer.Interfaces
         bool DeleteContentCategory(ContentCategoryViewModel contentCategoryViewModel);
 
         List<ArticlePreviewModel> GetArticles();
+
+        bool SaveArticle(ArticleModel articleModel);
 
         bool DeleteArticle(ArticlePreviewModel articlePreviewModel);
     }

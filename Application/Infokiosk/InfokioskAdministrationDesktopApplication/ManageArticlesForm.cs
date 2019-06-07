@@ -8,12 +8,11 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
-using System.Security.Policy;
 using System.Windows.Forms;
 
 namespace InfokioskAdministrationDesktopApplication
 {
-    public partial class ManageArticlesForm : Form
+    public partial class ManageArticlesForm : Form, IAuthorizedForm
     {
         private MainForm mainForm;
 
@@ -22,6 +21,7 @@ namespace InfokioskAdministrationDesktopApplication
         private BackgroundWorker fetchArticlesBackgroundWorker;
         private BackgroundWorker deleteArticleBackgroundWorker;
 
+        public Guid? UserId { get; set; }
 
         public ManageArticlesForm()
         {
@@ -41,6 +41,7 @@ namespace InfokioskAdministrationDesktopApplication
         public ManageArticlesForm(MainForm mainForm) : this()
         {
             this.mainForm = mainForm;
+            this.UserId = mainForm.UserId;
         }
 
         private void FetchingArticlesInProgress(object sender, DoWorkEventArgs e)
@@ -114,12 +115,6 @@ namespace InfokioskAdministrationDesktopApplication
             this.Close();
         }
 
-        private void ManageArticlesForm_Load(object sender, EventArgs e)
-        {
-            pbLoading.Visible = true;
-            fetchArticlesBackgroundWorker.RunWorkerAsync();
-        }
-
         private void GvArticles_DataSourceChanged(object sender, EventArgs e)
         {
             for (int i = 0; i < gvArticles.Columns.Count; i++)
@@ -166,6 +161,12 @@ namespace InfokioskAdministrationDesktopApplication
             var manageArticleForm = new ManageArticleForm(this);
             manageArticleForm.Show();
             this.Hide();
+        }
+
+        private void ManageArticlesForm_Paint(object sender, PaintEventArgs e)
+        {
+            pbLoading.Visible = true;
+            fetchArticlesBackgroundWorker.RunWorkerAsync();
         }
     }
 }
