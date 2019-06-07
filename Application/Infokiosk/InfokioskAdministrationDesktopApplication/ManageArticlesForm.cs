@@ -88,7 +88,7 @@ namespace InfokioskAdministrationDesktopApplication
 
         private void DeleteArticleInProgress(object sender, DoWorkEventArgs e)
         {
-            e.Result = controller.DeleteArticle((ArticleGridViewModel)e.Argument);
+            e.Result = controller.DeleteArticle((ArticlePreviewModel)e.Argument);
         }
 
         private void DeleteArticleComplete(object sender, RunWorkerCompletedEventArgs e)
@@ -142,7 +142,7 @@ namespace InfokioskAdministrationDesktopApplication
                 if (gvArticles.SelectedRows.Count > 0)
                 {
                     var selectedArticle = (ArticleGridViewModel)gvArticles.SelectedRows[0].DataBoundItem;
-                    fetchArticlesBackgroundWorker.RunWorkerAsync(new ArticlePreviewModel
+                    deleteArticleBackgroundWorker.RunWorkerAsync(new ArticlePreviewModel
                     {
                         CategoryName = selectedArticle.CategoryName,
                         HasDocument = selectedArticle.HasDocument,
