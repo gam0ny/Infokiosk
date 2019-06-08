@@ -68,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAuthorizedForm.cs" />
+    <Compile Include="ManageBasicTagForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageBasicTagForm.Designer.cs">
+      <DependentUpon>ManageBasicTagForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UiModels\ArticleGridViewModel.cs" />
     <Compile Include="Constants.cs" />
     <Compile Include="LoginForm.cs">
@@ -116,6 +122,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageArticlesForm.resx">
       <DependentUpon>ManageArticlesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageBasicTagForm.resx">
+      <DependentUpon>ManageBasicTagForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageContentCategoriesForm.resx">
       <DependentUpon>ManageContentCategoriesForm.cs</DependentUpon>

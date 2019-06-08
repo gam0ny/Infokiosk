@@ -316,7 +316,7 @@ namespace InfokioskAdministrationDesktopApplication
                 }
             }
 
-            if (webBrowser1.Document == null || 
+            if (webBrowser1.Document == null ||
                 webBrowser1.Document.Body != null &&
                 webBrowser1.DocumentText != articleModel.Content)
             {
@@ -326,52 +326,55 @@ namespace InfokioskAdministrationDesktopApplication
 
         private void BtnH1_Click(object sender, EventArgs e)
         {
-            var strBegin = "<h1>";
-            var strEnd = "</h1>";
-            int start = rtbxContent.SelectionStart;
-            int end = rtbxContent.SelectionStart + rtbxContent.SelectionLength;
-            InsertBegin(ref start, ref end, strBegin, Constants.TagColor);
-            InsertEnd(end, strEnd, Constants.TagColor);
-        }
-
-        /// <summary>
-        /// insert Part of current Tag in the Begin of Selection
-        /// </summary>
-        /// <param name="start"></param>
-        /// <param name="strBegin"></param>
-        /// <param name="color"></param>
-        private void InsertBegin(ref int start, ref int end, String strBegin, Color color)
-        {
-            if (rtbxContent.Visible)
+            var manageBasicTagForm = new ManageBasicTagForm();
+            manageBasicTagForm.TagName = "h1";
+            manageBasicTagForm.TagText = rtbxContent.SelectedText;
+            var dialogResult = manageBasicTagForm.ShowDialog();
+            
+            if (dialogResult == DialogResult.OK)
             {
-                rtbxContent.Select(start, 0);
-                rtbxContent.SelectedText = strBegin;
-                start += strBegin.Length;
-                end += strBegin.Length;
-                rtbxContent.Select(start - strBegin.Length, strBegin.Length);
-                rtbxContent.SelectionColor = color;
-                rtbxContent.DeselectAll();
-                rtbxContent.SelectionColor = Color.Black;
+                rtbxContent.SelectedText = manageBasicTagForm.ResultHtml;
+                highlighter.FindAndHighlight(rtbxContent, rtbxContent.SelectionStart, manageBasicTagForm.ResultHtml.Length);
             }
         }
 
-        /// <summary>
-        /// insert End Part of current Tag in the End of Selecting
-        /// </summary>
-        /// <param name="end"></param>
-        /// <param name="strEnd"></param>
-        /// <param name="color"></param>
-        private void InsertEnd(int end, String strEnd, Color color)
+        private void SetupBasicTagAndInsert(string tagName)
         {
-            if (rtbxContent.Visible)
+            var manageBasicTagForm = new ManageBasicTagForm();
+            manageBasicTagForm.TagName = tagName;
+            manageBasicTagForm.TagText = rtbxContent.SelectedText;
+            var dialogResult = manageBasicTagForm.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
             {
-                rtbxContent.Select(end, 0);
-                rtbxContent.SelectedText = strEnd;
-                rtbxContent.Select(end, strEnd.Length);
-                rtbxContent.SelectionColor = color;
-                rtbxContent.DeselectAll();
-                rtbxContent.SelectionColor = Color.Black;
+                rtbxContent.SelectedText = manageBasicTagForm.ResultHtml;
+                highlighter.FindAndHighlight(rtbxContent, rtbxContent.SelectionStart, manageBasicTagForm.ResultHtml.Length);
             }
+        }
+
+        private void BtnH2_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("h2");
+        }
+
+        private void BtnH3_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("h3");
+        }
+
+        private void BtnH4_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("h4");
+        }
+
+        private void BtnH5_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("h5");
+        }
+
+        private void BtnH6_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("h6");
         }
 
         private void RtbxContent_KeyPress(object sender, KeyPressEventArgs e)
@@ -412,6 +415,28 @@ namespace InfokioskAdministrationDesktopApplication
                 rtbxContent.Select(selectionStart, 0);
                 rtbxContent.SelectionColor = Color.Black;
             }
+        }
+
+        private void BtnBR_Click(object sender, EventArgs e)
+        {
+            var html = "<br>";
+            rtbxContent.SelectedText = html;
+            highlighter.FindAndHighlight(rtbxContent, rtbxContent.SelectionStart, html.Length);
+        }
+
+        private void BtnI_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("i");
+        }
+
+        private void BtnStrong_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("strong");
+        }
+
+        private void BtnP_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("p");
         }
     }
 }

@@ -26,52 +26,51 @@
     <Tag>
       <TagName>I</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>B</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>U</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>S</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>H1</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>H2</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>H3</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>H4</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>H5</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>H6</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>DIV</TagName>
@@ -84,7 +83,9 @@
     <Tag>
       <TagName>SPAN</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
+      <Parameters>
+        <string>style</string>
+      </Parameters>
     </Tag>
     <Tag>
       <TagName>VIDEO</TagName>
@@ -104,60 +105,10 @@
       </Parameters>
     </Tag>
     <Tag>
-      <TagName>EM</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
       <TagName>STRONG</TagName>
       <TagEnd>true</TagEnd>
       <Parameters>
         <string>style</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>PRE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>LI</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>type</string>
-        <string>value</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>OL</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>start</string>
-        <string>type</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>UL</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>type</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>DL</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>DD</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag> 
-    <Tag>
-      <TagName>BASE</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters>
-        <string>href</string>
       </Parameters>
     </Tag>
     <Tag>
@@ -173,132 +124,6 @@
         <string>clear</string>
         <string>border</string>
       </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>A</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>href</string>
-        <string>name</string>
-        <string>target</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>AREA</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters>
-        <string>shape</string>
-        <string>nohref</string>
-        <string>href</string>
-        <string>target</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>TABLE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>caption</string>
-        <string>border</string>
-        <string>align</string>
-        <string>valign</string>
-        <string>width</string>
-        <string>height</string>
-        <string>bgcolor</string>
-        <string>cellpadding</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>TD</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>border</string>
-        <string>align</string>
-        <string>valign</string>
-        <string>width</string>
-        <string>height</string>
-        <string>bgcolor</string>
-        <string>cellpadding</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>TR</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>border</string>
-        <string>align</string>
-        <string>valign</string>
-        <string>width</string>
-        <string>height</string>
-        <string>bgcolor</string>
-        <string>cellpadding</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>TH</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>FRAMESET</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>cols</string>
-        <string>frameborder</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>FRAME</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters>
-        <string>src</string>
-        <string>name</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>FORM</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>action</string>
-        <string>enctype</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>INPUT</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters>
-        <string>text</string>
-        <string>value</string>
-        <string>size</string>
-        <string>name</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>TEXTAREA</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>HTML</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>BODY</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>bgcolor</string>
-        <string>bakground</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>HEAD</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>TITLE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
     </Tag>
   </TagList>
 </Tags>
