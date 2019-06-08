@@ -9,6 +9,7 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Text.RegularExpressions;
+using System.Threading;
 using System.Windows.Forms;
 
 namespace InfokioskAdministrationDesktopApplication
@@ -309,13 +310,18 @@ namespace InfokioskAdministrationDesktopApplication
             {
                 var document = (System.Windows.Forms.HtmlDocument)webBrowser1.Document;
                 var elements = document.GetElementsByTagName("HTML");
-                if(elements.Count > 0)
+                if (elements.Count > 0)
                 {
                     beforeUpdateScrollPosition = elements[0].ScrollTop;
                 }
             }
-            
-            webBrowser1.DocumentText = articleModel.Content;
+
+            if (webBrowser1.Document == null || 
+                webBrowser1.Document.Body != null &&
+                webBrowser1.DocumentText != articleModel.Content)
+            {
+                webBrowser1.DocumentText = articleModel.Content;
+            }
         }
 
         private void BtnH1_Click(object sender, EventArgs e)
