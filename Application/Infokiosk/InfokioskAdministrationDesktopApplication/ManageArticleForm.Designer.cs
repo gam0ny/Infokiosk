@@ -287,6 +287,7 @@
             this.btnDiv.TabIndex = 10;
             this.btnDiv.Text = "<div>";
             this.btnDiv.UseVisualStyleBackColor = true;
+            this.btnDiv.Click += new System.EventHandler(this.BtnDiv_Click);
             // 
             // btnP
             // 

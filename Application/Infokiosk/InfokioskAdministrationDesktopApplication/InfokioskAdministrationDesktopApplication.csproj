@@ -68,6 +68,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IAuthorizedForm.cs" />
+    <Compile Include="ManageDivTagForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ManageDivTagForm.Designer.cs">
+      <DependentUpon>ManageDivTagForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="ManageBasicTagForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -122,6 +128,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="ManageArticlesForm.resx">
       <DependentUpon>ManageArticlesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ManageDivTagForm.resx">
+      <DependentUpon>ManageDivTagForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ManageBasicTagForm.resx">
       <DependentUpon>ManageBasicTagForm.cs</DependentUpon>

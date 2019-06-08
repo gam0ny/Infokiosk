@@ -438,5 +438,19 @@ namespace InfokioskAdministrationDesktopApplication
         {
             SetupBasicTagAndInsert("p");
         }
+
+        private void BtnDiv_Click(object sender, EventArgs e)
+        {
+            var manageDivTagForm = new ManageDivTagForm();
+            manageDivTagForm.TagName = "div";
+            manageDivTagForm.TagText = rtbxContent.SelectedText;
+            var dialogResult = manageDivTagForm.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                rtbxContent.SelectedText = manageDivTagForm.ResultHtml;
+                highlighter.FindAndHighlight(rtbxContent, rtbxContent.SelectionStart, manageDivTagForm.ResultHtml.Length);
+            }
+        }
     }
 }
