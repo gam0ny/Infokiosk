@@ -103,18 +103,18 @@ namespace DatabaseLayer.Repositories
                 {
                     return new Article
                     {
-                        Id = Guid.Parse((string)rdr[0]),
-                        Title = (string)rdr[1],
-                        TitleImageName = (string)rdr[2],
+                        Id = rdr[0] is DBNull ? Guid.Empty : Guid.Parse((string)rdr[0]),
+                        Title = rdr[1] is DBNull ? null : (string)rdr[1],
+                        TitleImageName = rdr[2] is DBNull ? null : (string)rdr[2],
                         HasVideo = Convert.ToBoolean(rdr[3]),
                         HasDocument = Convert.ToBoolean(rdr[4]),
                         ContentCategory = new ContentCategory
                         {
-                            Id = (int)rdr[5],
-                            Name = (string)rdr[6],
+                            Id = rdr[5] is DBNull ? 0 : (int)rdr[5],
+                            Name = rdr[6] is DBNull ? null : (string)rdr[6],
                         },
-                        Content = (string)rdr[7],
-                        UserId = Guid.Parse((string)rdr[8]),
+                        Content = rdr[7] is DBNull ? null : (string)rdr[7],
+                        UserId = rdr[8] is DBNull ? Guid.Empty : Guid.Parse((string)rdr[8]),
                         CreationDate = (DateTime)rdr[9],
                         EditingDate = (DateTime)rdr[10],
                     };
@@ -217,15 +217,15 @@ namespace DatabaseLayer.Repositories
             {
                 var article = new ArticleShort
                 {
-                    Id = Guid.Parse((string)rdr[0]),
-                    Title = (string)rdr[1],
-                    TitleImageName = (string)rdr[2],
+                    Id = rdr[0] is DBNull ? Guid.Empty : Guid.Parse((string)rdr[0]),
+                    Title = rdr[1] is DBNull ? null : (string)rdr[1],
+                    TitleImageName = rdr[2] is DBNull ? null : (string)rdr[2],
                     HasVideo = Convert.ToBoolean(rdr[3]),
                     HasDocument = Convert.ToBoolean(rdr[4]),
                     ContentCategory = new ContentCategory
                     {
-                        Id = (int)rdr[5],
-                        Name = (string)rdr[6],
+                        Id = rdr[5] is DBNull ? 0 : (int)rdr[5],
+                        Name = rdr[6] is DBNull ? null : (string)rdr[6],
                     }
                 };
                 articles.Add(article);
@@ -257,40 +257,41 @@ namespace DatabaseLayer.Repositories
 
         public bool Save(Article article)
         {
-            var sqlStatement = "INSERT INTO Article (" +
-                "Id" +
-                ", Title" +
-                ", TitleImageName" +
-                ", Content" +
-                ", HasVideo" +
-                ", HasDocument" +
-                ", ContentCategoryId" +
-                ", UserId" +
-                ", CreationDate" +
-                ", EditDate" +
-                ", IsPublished" +
-                ", PublishingDate) " +
-                "VALUES (" +
-                "@articleId" +
-                ", @articleTitle" +
-                ", @articleTitleImageName" +
-                ", @articleContent" +
-                ", @articleHasVideo" +
-                ", @articleHasDocument" +
-                ", @articleContentCategoryId" +
-                ", @articleUserId" +
-                ", @articleCreationDate" +
-                ", @articleEditDate" +
-                ", @articleIsPublished" +
-                ", @articlePublishingDate) ";
+            var foundArticle = GetArticleById(article.Id);
+            var sqlStatement = string.Empty;
+            DateTime timeStamp = DateTime.Now;
+            DatabaseParameter[] parameters;
 
-            bool result;
-            try
+            if (foundArticle == null)
             {
-                DateTime timeStamp = DateTime.Now;
+                sqlStatement = "INSERT INTO Article (" +
+               "Id" +
+               ", Title" +
+               ", TitleImageName" +
+               ", Content" +
+               ", HasVideo" +
+               ", HasDocument" +
+               ", ContentCategoryId" +
+               ", UserId" +
+               ", CreationDate" +
+               ", EditDate" +
+               ", IsPublished" +
+               ", PublishingDate) " +
+               "VALUES (" +
+               "@articleId" +
+               ", @articleTitle" +
+               ", @articleTitleImageName" +
+               ", @articleContent" +
+               ", @articleHasVideo" +
+               ", @articleHasDocument" +
+               ", @articleContentCategoryId" +
+               ", @articleUserId" +
+               ", @articleCreationDate" +
+               ", @articleEditDate" +
+               ", @articleIsPublished" +
+               ", @articlePublishingDate) ";
 
-                MySqlDataReader rdr = DbManager.Execute(sqlStatement,
-                    new DatabaseParameter[] {
+                parameters = new DatabaseParameter[] {
                         new DatabaseParameter() { Name = "@articleId", Value = article.Id.ToString() },
                         new DatabaseParameter() { Name = "@articleTitle", Value = article.Title },
                         new DatabaseParameter() { Name = "@articleTitleImageName", Value = article.TitleImageName },
@@ -303,7 +304,45 @@ namespace DatabaseLayer.Repositories
                         new DatabaseParameter() { Name = "@articleEditDate", Value = timeStamp.ToString("yyyy-MM-dd HH:mm:ss") },
                         new DatabaseParameter() { Name = "@articleIsPublished", Value = Convert.ToInt32(article.IsPublished).ToString() },
                         new DatabaseParameter() { Name = "@articlePublishingDate", Value = article.IsPublished ? timeStamp.ToString("yyyy-MM-dd HH:mm:ss") : null},
-                    });
+                    };
+            }
+            else
+            {
+                sqlStatement = "UPDATE Article SET" +
+                " Title = @articleTitle" +
+                ", TitleImageName = @articleTitleImageName" +
+                ", Content = @articleContent" +
+                ", HasVideo = @articleHasVideo" +
+                ", HasDocument = @articleHasDocument" +
+                ", ContentCategoryId = @articleContentCategoryId" +
+                ", UserId = @articleUserId" +
+                ", EditDate = @articleEditDate" +
+                ", IsPublished = @articleIsPublished" +
+                ", PublishingDate = @articlePublishingDate" +
+                " WHERE Id = @articleId";
+
+
+                parameters = new DatabaseParameter[] {
+                        new DatabaseParameter() { Name = "@articleId", Value = article.Id.ToString() },
+                        new DatabaseParameter() { Name = "@articleTitle", Value = article.Title },
+                        new DatabaseParameter() { Name = "@articleTitleImageName", Value = article.TitleImageName },
+                        new DatabaseParameter() { Name = "@articleContent", Value = article.Content },
+                        new DatabaseParameter() { Name = "@articleHasVideo", Value = Convert.ToInt32(article.HasVideo).ToString() },
+                        new DatabaseParameter() { Name = "@articleHasDocument", Value = Convert.ToInt32(article.HasDocument).ToString() },
+                        new DatabaseParameter() { Name = "@articleContentCategoryId", Value = article.ContentCategory.Id.ToString() },
+                        new DatabaseParameter() { Name = "@articleUserId", Value = article.UserId.ToString() },
+                        new DatabaseParameter() { Name = "@articleEditDate", Value = timeStamp.ToString("yyyy-MM-dd HH:mm:ss") },
+                        new DatabaseParameter() { Name = "@articleIsPublished", Value = Convert.ToInt32(article.IsPublished).ToString() },
+                        new DatabaseParameter() { Name = "@articlePublishingDate", Value = article.IsPublished ? timeStamp.ToString("yyyy-MM-dd HH:mm:ss") : null},
+                    };
+            }
+
+
+            bool result;
+            try
+            {
+
+                MySqlDataReader rdr = DbManager.Execute(sqlStatement, parameters);
 
                 result = rdr.RecordsAffected > 0;
             }

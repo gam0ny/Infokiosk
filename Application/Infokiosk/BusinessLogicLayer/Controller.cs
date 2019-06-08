@@ -46,7 +46,7 @@ namespace BusinessLogicLayer
 
                 articlesByCategoryPreviewModel.Articles = Converter.FromArticleShortCollectionToArticlePreviewModelCollection(articlesCollection);
 
-                if(articlesByCategoryPreviewModel.Articles.Count > 0 || (articlesByCategoryPreviewModel.Articles.Count == 0 && includeEmptyCategories))
+                if (articlesByCategoryPreviewModel.Articles.Count > 0 || (articlesByCategoryPreviewModel.Articles.Count == 0 && includeEmptyCategories))
                 {
                     articlesByCategoryPreviewModelCollection.Add(articlesByCategoryPreviewModel);
                 }
@@ -196,7 +196,9 @@ namespace BusinessLogicLayer
 
         public bool SaveArticle(ArticleModel articleModel)
         {
-            var articleDirectory = string.Empty;
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+
+            var articleDirectory = string.Format("{0}{1}", contentPath, articleModel.Id);
 
             if (articleModel.Id == Guid.Empty)
             {
@@ -207,7 +209,11 @@ namespace BusinessLogicLayer
 
             if (articleModel.ImageUrl != null && articleModel.TitleFileName != null)
             {
-                File.Copy(articleModel.ImageUrl, string.Format("{0}/{1}", articleDirectory, articleModel.TitleFileName));
+                var destinationPath = string.Format("{0}/{1}", articleDirectory, articleModel.TitleFileName);
+                if (!File.Exists(destinationPath))
+                {
+                    File.Copy(articleModel.ImageUrl, destinationPath);
+                }
             }
 
             articleModel.HasVideo = articleModel.Content.Contains("<video>");
@@ -243,7 +249,7 @@ namespace BusinessLogicLayer
             doc.LoadHtml(htmlString);
             var imageTags = doc.DocumentNode.SelectNodes("//img");
 
-            if(imageTags != null)
+            if (imageTags != null)
             {
                 foreach (var imageTag in imageTags)
                 {

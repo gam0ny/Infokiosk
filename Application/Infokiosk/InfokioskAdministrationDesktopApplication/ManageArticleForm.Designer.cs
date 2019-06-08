@@ -31,16 +31,16 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ManageArticleForm));
             this.panelToolbar = new System.Windows.Forms.Panel();
             this.btnCancel = new System.Windows.Forms.Button();
+            this.btnSave = new System.Windows.Forms.Button();
             this.lblBack = new System.Windows.Forms.Label();
             this.lblExit = new System.Windows.Forms.Label();
-            this.btnSave = new System.Windows.Forms.Button();
             this.panelMain = new System.Windows.Forms.Panel();
             this.panelManageContent = new System.Windows.Forms.Panel();
             this.tableLayoutPanelContentEditing = new System.Windows.Forms.TableLayoutPanel();
-            this.tbxContent = new System.Windows.Forms.TextBox();
-            this.tbxFooter = new System.Windows.Forms.TextBox();
             this.tbxHeader = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
+            this.tbxFooter = new System.Windows.Forms.TextBox();
+            this.rtbxContent = new System.Windows.Forms.RichTextBox();
             this.panelManagePreview = new System.Windows.Forms.Panel();
             this.tableLayoutPanelPreviewControls = new System.Windows.Forms.TableLayoutPanel();
             this.label4 = new System.Windows.Forms.Label();
@@ -88,6 +88,18 @@
             this.btnCancel.UseVisualStyleBackColor = true;
             this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
+            // btnSave
+            // 
+            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSave.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSave.Location = new System.Drawing.Point(0, 131);
+            this.btnSave.Name = "btnSave";
+            this.btnSave.Size = new System.Drawing.Size(200, 70);
+            this.btnSave.TabIndex = 0;
+            this.btnSave.Text = " Сохранить";
+            this.btnSave.UseVisualStyleBackColor = true;
+            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
+            // 
             // lblBack
             // 
             this.lblBack.BackColor = System.Drawing.Color.Transparent;
@@ -118,18 +130,6 @@
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
-            // btnSave
-            // 
-            this.btnSave.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnSave.Font = new System.Drawing.Font("FontAwesome", 14.15029F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSave.Location = new System.Drawing.Point(0, 131);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(200, 70);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = " Сохранить";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.BtnSave_Click);
-            // 
             // panelMain
             // 
             this.panelMain.Controls.Add(this.panelManageContent);
@@ -158,10 +158,10 @@
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
-            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxContent, 2, 1);
-            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxFooter, 2, 2);
             this.tableLayoutPanelContentEditing.Controls.Add(this.tbxHeader, 2, 0);
             this.tableLayoutPanelContentEditing.Controls.Add(this.webBrowser1, 4, 0);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.tbxFooter, 2, 2);
+            this.tableLayoutPanelContentEditing.Controls.Add(this.rtbxContent, 2, 1);
             this.tableLayoutPanelContentEditing.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanelContentEditing.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanelContentEditing.Name = "tableLayoutPanelContentEditing";
@@ -169,31 +169,9 @@
             this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
+            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelContentEditing.Size = new System.Drawing.Size(1200, 361);
             this.tableLayoutPanelContentEditing.TabIndex = 3;
-            // 
-            // tbxContent
-            // 
-            this.tbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxContent.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxContent.Location = new System.Drawing.Point(113, 353);
-            this.tbxContent.Multiline = true;
-            this.tbxContent.Name = "tbxContent";
-            this.tbxContent.Size = new System.Drawing.Size(406, 1);
-            this.tbxContent.TabIndex = 2;
-            this.tbxContent.TextChanged += new System.EventHandler(this.TbxContent_TextChanged);
-            // 
-            // tbxFooter
-            // 
-            this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tbxFooter.Enabled = false;
-            this.tbxFooter.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxFooter.Location = new System.Drawing.Point(113, 264);
-            this.tbxFooter.Multiline = true;
-            this.tbxFooter.Name = "tbxFooter";
-            this.tbxFooter.Size = new System.Drawing.Size(406, 94);
-            this.tbxFooter.TabIndex = 1;
-            this.tbxFooter.Text = "</body>\r\n</html>";
             // 
             // tbxHeader
             // 
@@ -218,6 +196,28 @@
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Visible = false;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebBrowser1_DocumentCompleted);
+            // 
+            // tbxFooter
+            // 
+            this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.tbxFooter.Enabled = false;
+            this.tbxFooter.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.tbxFooter.Location = new System.Drawing.Point(113, 264);
+            this.tbxFooter.Multiline = true;
+            this.tbxFooter.Name = "tbxFooter";
+            this.tbxFooter.Size = new System.Drawing.Size(406, 94);
+            this.tbxFooter.TabIndex = 1;
+            this.tbxFooter.Text = "</body>\r\n</html>";
+            // 
+            // rtbxContent
+            // 
+            this.rtbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.rtbxContent.Location = new System.Drawing.Point(113, 353);
+            this.rtbxContent.Name = "rtbxContent";
+            this.rtbxContent.Size = new System.Drawing.Size(406, 1);
+            this.rtbxContent.TabIndex = 3;
+            this.rtbxContent.Text = "";
+            this.rtbxContent.TextChanged += new System.EventHandler(this.RtbxContent_TextChanged);
             // 
             // panelManagePreview
             // 
@@ -458,9 +458,9 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.CheckBox cbxIsPublish;
         private System.Windows.Forms.WebBrowser webBrowser1;
-        private System.Windows.Forms.TextBox tbxContent;
         private System.Windows.Forms.TextBox tbxFooter;
         private System.Windows.Forms.TextBox tbxHeader;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelContentEditing;
+        private System.Windows.Forms.RichTextBox rtbxContent;
     }
 }

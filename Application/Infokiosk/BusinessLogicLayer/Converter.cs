@@ -17,11 +17,11 @@ namespace BusinessLogicLayer
             {
                 Id = articleShort.Id,
                 Title = articleShort.Title,
-                ImageUrl = string.Format("{0}/{1}/{2}", contentPath, articleShort.Id, articleShort.TitleImageName),
+                ImageUrl = string.Format("{0}{1}\\{2}", contentPath, articleShort.Id, articleShort.TitleImageName),
                 HasDocument = articleShort.HasDocument,
                 HasVideo = articleShort.HasVideo,
                 CategoryId = articleShort.ContentCategory.Id,
-                CategoryName = articleShort.ContentCategory.Name
+                CategoryName = articleShort.ContentCategory.Name,
             };
         }
 
@@ -73,14 +73,15 @@ namespace BusinessLogicLayer
             {
                 Id = article.Id,
                 Title = article.Title,
-                ImageUrl = string.Format("{0}/{1}/{2}", contentPath, article.Id, article.TitleImageName),
+                ImageUrl = string.Format("{0}{1}\\{2}", contentPath, article.Id, article.TitleImageName),
                 HasDocument = article.HasDocument,
                 HasVideo = article.HasVideo,
                 CategoryId = article.ContentCategory.Id,
                 CategoryName = article.ContentCategory.Name,
                 Content = article.Content,
                 IsPublishing = article.IsPublished,
-                UserId = article.UserId
+                UserId = article.UserId,
+                TitleFileName = article.TitleImageName,
             };
         }
 

@@ -91,6 +91,7 @@
             this.lblExit.Size = new System.Drawing.Size(60, 800);
             this.lblExit.TabIndex = 6;
             this.lblExit.Text = "";
+            this.lblExit.VisibleChanged += new System.EventHandler(this.LblExit_VisibleChanged);
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
             // 
             // panelMainContent
@@ -227,7 +228,6 @@
             this.Name = "ManageArticlesForm";
             this.Text = "ManageArticlesForm";
             this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
-            this.Shown += new System.EventHandler(this.ManageArticlesForm_Shown);
             this.panelToolbar.ResumeLayout(false);
             this.panelMainContent.ResumeLayout(false);
             this.panelContent.ResumeLayout(false);

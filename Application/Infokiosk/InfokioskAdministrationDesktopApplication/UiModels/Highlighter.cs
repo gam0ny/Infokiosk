@@ -13,10 +13,6 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
         public Highlighter()
         {
             Tags = new Tags();
-            XmlSerializer serializer = new XmlSerializer(typeof(Tags));
-            FileStream fs = new FileStream("Tags.xml", FileMode.Open);
-            Tags = (Tags)serializer.Deserialize(fs);
-            fs.Close();
         }
 
         public void FindAndHighlight(RichTextBox textBox, int selectionStart, int selectionLength)

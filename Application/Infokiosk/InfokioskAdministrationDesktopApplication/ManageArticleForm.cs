@@ -1,6 +1,7 @@
 ﻿using BusinessLogicLayer;
 using BusinessLogicLayer.Interfaces;
 using BusinessLogicLayer.ViewModels;
+using InfokioskAdministrationDesktopApplication.UiModels;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -8,6 +9,7 @@ using System.Configuration;
 using System.Drawing;
 using System.IO;
 using System.Windows.Forms;
+using ComboBoxItem = System.Windows.Controls.ComboBoxItem;
 
 namespace InfokioskAdministrationDesktopApplication
 {
@@ -26,6 +28,10 @@ namespace InfokioskAdministrationDesktopApplication
         private IController controller;
 
         private string localPreviewImagePath;
+
+        private Highlighter highlighter;
+
+        private Image noFileImage;
 
         public Guid? UserId { get; set; }
 
@@ -47,6 +53,8 @@ namespace InfokioskAdministrationDesktopApplication
             this.fetchArticleBackgroundWorker.RunWorkerCompleted += new RunWorkerCompletedEventHandler(FetchingArticleComplete);
 
             this.controller = new Controller();
+
+            this.highlighter = new Highlighter();
         }
 
         public ManageArticleForm(ManageArticlesForm manageArticlesForm, Guid? articleId = null) : this()
@@ -72,6 +80,15 @@ namespace InfokioskAdministrationDesktopApplication
                 cbCategories.DisplayMember = "Name";
                 cbCategories.Items.Add(contentCategory);
             }
+
+            if (articleModel.Id != Guid.Empty)
+            {
+                fetchArticleBackgroundWorker.RunWorkerAsync();
+            }
+            else
+            {
+                articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, rtbxContent.Text, tbxFooter.Text);
+            }
         }
 
         private void FetchingArticleInProgress(object sender, DoWorkEventArgs e)
@@ -81,18 +98,37 @@ namespace InfokioskAdministrationDesktopApplication
 
         private void FetchingArticleComplete(object sender, RunWorkerCompletedEventArgs e)
         {
-            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
             this.articleModel = (ArticleModel)e.Result;
 
             this.tbxTitle.Text = this.articleModel.Title;
+            foreach (ContentCategoryViewModel contentCategory in cbCategories.Items)
+            {
+                if(contentCategory.Id == articleModel.CategoryId)
+                {
+                    cbCategories.SelectedItem = contentCategory;
+                    break;
+                }
+            }
+
             this.cbCategories.SelectedItem = new ContentCategoryViewModel { Id = this.articleModel.CategoryId, Name = this.articleModel.CategoryName };
             this.tbxFileUpload.Text = this.articleModel.ImageUrl;
             this.cbxIsPublish.Checked = this.articleModel.IsPublishing;
 
-            this.ibArticlePreview.Image = Image.FromFile(this.articleModel.ImageUrl);
+            if (File.Exists(this.articleModel.ImageUrl))
+            {
+                this.ibArticlePreview.Image = Image.FromFile(this.articleModel.ImageUrl);
+            }
+            else
+            {
+                this.ibArticlePreview.Image = this.noFileImage;
+            }
 
-            this.tbxContent.Text = controller.ExtractHtmlBody(this.articleModel.Content);
-            if (string.IsNullOrEmpty(this.tbxContent.Text)) webBrowser1.DocumentText = this.articleModel.Content;
+            this.rtbxContent.Text = controller.ExtractHtmlBody(this.articleModel.Content);
+
+            this.rtbxContent.SelectAll();
+            highlighter.FindAndHighlight(this.rtbxContent, 0, this.rtbxContent.TextLength);
+
+            if (string.IsNullOrEmpty(this.rtbxContent.Text)) webBrowser1.DocumentText = this.articleModel.Content;
         }
 
         private void SaveArticleInProgress(object sender, DoWorkEventArgs e)
@@ -174,34 +210,26 @@ namespace InfokioskAdministrationDesktopApplication
             //init default data
             ibArticlePreview.Category = "Категория";
             ibArticlePreview.Title = "Название";
-            ibArticlePreview.Image = Image.FromFile(ConfigurationManager.AppSettings["NoFileImagePath"]);
+            var noFileImagePath = ConfigurationManager.AppSettings["NoFileImagePath"];
+
+            if (File.Exists(noFileImagePath))
+            {
+                this.noFileImage = Image.FromFile(noFileImagePath);
+            }
+            else
+            {
+                throw new FileNotFoundException("'NoFileImagePath' key in App.config is wrong");
+            }
         }
 
         private void ManageArticleForm_Load(object sender, EventArgs e)
         {
             getContentCategoriesBackgroundWorker.RunWorkerAsync();
-
-            //webBrowser1.DocumentText = articleModel.Content;
-
-            if (articleModel.Id != Guid.Empty)
-            {
-                fetchArticleBackgroundWorker.RunWorkerAsync();
-            }
-            else
-            {
-                articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, tbxContent.Text, tbxFooter.Text);
-            }
         }
 
         private void CbxIsPublish_CheckedChanged(object sender, EventArgs e)
         {
             articleModel.IsPublishing = ((CheckBox)sender).Checked;
-        }
-
-        private void TbxContent_TextChanged(object sender, EventArgs e)
-        {
-            articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, tbxContent.Text, tbxFooter.Text);
-            webBrowser1.DocumentText = articleModel.Content;
         }
 
         private void BtnSave_Click(object sender, EventArgs e)
@@ -269,6 +297,12 @@ namespace InfokioskAdministrationDesktopApplication
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             this.webBrowser1.Visible = true;
+        }
+
+        private void RtbxContent_TextChanged(object sender, EventArgs e)
+        {
+            articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, rtbxContent.Text, tbxFooter.Text);
+            webBrowser1.DocumentText = articleModel.Content;
         }
     }
 }

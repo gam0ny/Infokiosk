@@ -186,10 +186,13 @@ namespace InfokioskAdministrationDesktopApplication
 
         }
 
-        private void ManageArticlesForm_Shown(object sender, EventArgs e)
+        private void LblExit_VisibleChanged(object sender, EventArgs e)
         {
-            pbLoading.Visible = true;
-            fetchArticlesBackgroundWorker.RunWorkerAsync();
+            if(this.Visible)
+            {
+                pbLoading.Visible = true;
+                fetchArticlesBackgroundWorker.RunWorkerAsync();
+            }
         }
     }
 }
