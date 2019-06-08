@@ -8,9 +8,9 @@ namespace InfokioskAdministrationDesktopApplication
 
         public static Color TagColor = Color.Purple;
 
-        public static Color ParameterColor = Color.Red;
+        public static Color ParameterColor = Color.DarkOrange;
 
-        public static Color TextColor = Color.DarkGray;
+        public static Color TextColor = Color.DarkSlateGray;
 
         public static Color CommentColor = Color.Green;
 

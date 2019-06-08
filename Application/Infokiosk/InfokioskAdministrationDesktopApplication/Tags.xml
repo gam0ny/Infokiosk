@@ -15,25 +15,11 @@
       <TagName>P</TagName>
       <TagEnd>true</TagEnd>
       <Parameters>
-        <string>align</string>
+        <string>style</string>
       </Parameters>
     </Tag>
     <Tag>
       <TagName>BR</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>FONT</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>face</string>
-        <string>size</string>
-        <string>color</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>BASEFONT</TagName>
       <TagEnd>false</TagEnd>
       <Parameters />
     </Tag>
@@ -56,30 +42,6 @@
       <TagName>S</TagName>
       <TagEnd>true</TagEnd>
       <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>NOBR</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>WBR</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>STRIKE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>BASEFONT</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters>
-        <string>face</string>
-        <string>size</string>
-        <string>color</string>
-      </Parameters>
     </Tag>
     <Tag>
       <TagName>H1</TagName>
@@ -112,6 +74,36 @@
       <Parameters />
     </Tag>
     <Tag>
+      <TagName>DIV</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>style</string>
+        <string>class</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>SPAN</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>VIDEO</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>style</string>
+        <string>width</string>
+        <string>controls</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>SOURCE</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>src</string>
+        <string>type</string>
+      </Parameters>
+    </Tag>
+    <Tag>
       <TagName>EM</TagName>
       <TagEnd>true</TagEnd>
       <Parameters />
@@ -119,77 +111,12 @@
     <Tag>
       <TagName>STRONG</TagName>
       <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>DFN</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>CITE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>DLOCKQUOTE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>SUP</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>SUB</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>DEL</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>INS</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>ACRONYM</TagName>
-      <TagEnd>true</TagEnd>
       <Parameters>
-        <string>TITLE</string>
+        <string>style</string>
       </Parameters>
     </Tag>
     <Tag>
-      <TagName>ADDRESS</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>CODE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
       <TagName>PRE</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>VAR</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>KBD</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>SAMP</TagName>
       <TagEnd>true</TagEnd>
       <Parameters />
     </Tag>
@@ -225,17 +152,7 @@
       <TagName>DD</TagName>
       <TagEnd>true</TagEnd>
       <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>DIR</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
-    <Tag>
-      <TagName>MENU</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters />
-    </Tag>
+    </Tag> 
     <Tag>
       <TagName>BASE</TagName>
       <TagEnd>false</TagEnd>
@@ -264,13 +181,6 @@
         <string>href</string>
         <string>name</string>
         <string>target</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>MAP</TagName>
-      <TagEnd>true</TagEnd>
-      <Parameters>
-        <string>name</string>
       </Parameters>
     </Tag>
     <Tag>

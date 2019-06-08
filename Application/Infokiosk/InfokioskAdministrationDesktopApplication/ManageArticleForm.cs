@@ -130,7 +130,7 @@ namespace InfokioskAdministrationDesktopApplication
 
             this.rtbxContent.Text = controller.ExtractHtmlBody(fixedHtmlContent);
 
-            //highlighter.FindAndHighlight(this.rtbxContent, 0, this.rtbxContent.TextLength);
+            highlighter.FindAndHighlight(this.rtbxContent, 0, this.rtbxContent.TextLength);
 
             this.cbxIsPublish.Checked = this.articleModel.IsPublishing;
         }
@@ -308,7 +308,11 @@ namespace InfokioskAdministrationDesktopApplication
             if (this.webBrowser1.Document != null)
             {
                 var document = (System.Windows.Forms.HtmlDocument)webBrowser1.Document;
-                beforeUpdateScrollPosition = (int)document.GetElementsByTagName("HTML")[0].ScrollTop;
+                var elements = document.GetElementsByTagName("HTML");
+                if(elements.Count > 0)
+                {
+                    beforeUpdateScrollPosition = elements[0].ScrollTop;
+                }
             }
             
             webBrowser1.DocumentText = articleModel.Content;
