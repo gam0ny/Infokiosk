@@ -8,8 +8,8 @@ using System.ComponentModel;
 using System.Configuration;
 using System.Drawing;
 using System.IO;
+using System.Text.RegularExpressions;
 using System.Windows.Forms;
-using ComboBoxItem = System.Windows.Controls.ComboBoxItem;
 
 namespace InfokioskAdministrationDesktopApplication
 {
@@ -34,6 +34,9 @@ namespace InfokioskAdministrationDesktopApplication
         private Image noFileImage;
 
         public Guid? UserId { get; set; }
+
+
+        private int beforeUpdateScrollPosition = 0;
 
         public ManageArticleForm()
         {
@@ -103,7 +106,7 @@ namespace InfokioskAdministrationDesktopApplication
             this.tbxTitle.Text = this.articleModel.Title;
             foreach (ContentCategoryViewModel contentCategory in cbCategories.Items)
             {
-                if(contentCategory.Id == articleModel.CategoryId)
+                if (contentCategory.Id == articleModel.CategoryId)
                 {
                     cbCategories.SelectedItem = contentCategory;
                     break;
@@ -123,17 +126,20 @@ namespace InfokioskAdministrationDesktopApplication
                 this.ibArticlePreview.Image = this.noFileImage;
             }
 
-            this.rtbxContent.Text = controller.ExtractHtmlBody(this.articleModel.Content);
+            var fixedHtmlContent = controller.FixImageUrlsBeforeShow(this.articleModel.Content, this.articleModel.Id);
 
-            this.rtbxContent.SelectAll();
-            highlighter.FindAndHighlight(this.rtbxContent, 0, this.rtbxContent.TextLength);
+            this.rtbxContent.Text = controller.ExtractHtmlBody(fixedHtmlContent);
 
-            if (string.IsNullOrEmpty(this.rtbxContent.Text)) webBrowser1.DocumentText = this.articleModel.Content;
+            //highlighter.FindAndHighlight(this.rtbxContent, 0, this.rtbxContent.TextLength);
+
+            this.cbxIsPublish.Checked = this.articleModel.IsPublishing;
         }
 
         private void SaveArticleInProgress(object sender, DoWorkEventArgs e)
         {
-            e.Result = controller.SaveArticle((ArticleModel)e.Argument);
+            var articleModel = (ArticleModel)e.Argument;
+            articleModel.Content = controller.FixImageUrlsBeforeSave(articleModel.Content, articleModel.Id);
+            e.Result = controller.SaveArticle(articleModel);
         }
 
         private void SaveArticleComplete(object sender, RunWorkerCompletedEventArgs e)
@@ -159,11 +165,6 @@ namespace InfokioskAdministrationDesktopApplication
         {
             manageArticlesForm.Show();
             this.Close();
-        }
-
-        private void TableLayoutPanelPreviewControls_Paint(object sender, PaintEventArgs e)
-        {
-
         }
 
         private void TbxTitle_TextChanged(object sender, EventArgs e)
@@ -297,12 +298,110 @@ namespace InfokioskAdministrationDesktopApplication
         private void WebBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
         {
             this.webBrowser1.Visible = true;
+            webBrowser1.Document.Window.ScrollTo(new Point(0, beforeUpdateScrollPosition));
         }
 
         private void RtbxContent_TextChanged(object sender, EventArgs e)
         {
             articleModel.Content = string.Format("{0}{1}{2}", tbxHeader.Text, rtbxContent.Text, tbxFooter.Text);
+
+            if (this.webBrowser1.Document != null)
+            {
+                var document = (System.Windows.Forms.HtmlDocument)webBrowser1.Document;
+                beforeUpdateScrollPosition = (int)document.GetElementsByTagName("HTML")[0].ScrollTop;
+            }
+            
             webBrowser1.DocumentText = articleModel.Content;
+        }
+
+        private void BtnH1_Click(object sender, EventArgs e)
+        {
+            var strBegin = "<h1>";
+            var strEnd = "</h1>";
+            int start = rtbxContent.SelectionStart;
+            int end = rtbxContent.SelectionStart + rtbxContent.SelectionLength;
+            InsertBegin(ref start, ref end, strBegin, Constants.TagColor);
+            InsertEnd(end, strEnd, Constants.TagColor);
+        }
+
+        /// <summary>
+        /// insert Part of current Tag in the Begin of Selection
+        /// </summary>
+        /// <param name="start"></param>
+        /// <param name="strBegin"></param>
+        /// <param name="color"></param>
+        private void InsertBegin(ref int start, ref int end, String strBegin, Color color)
+        {
+            if (rtbxContent.Visible)
+            {
+                rtbxContent.Select(start, 0);
+                rtbxContent.SelectedText = strBegin;
+                start += strBegin.Length;
+                end += strBegin.Length;
+                rtbxContent.Select(start - strBegin.Length, strBegin.Length);
+                rtbxContent.SelectionColor = color;
+                rtbxContent.DeselectAll();
+                rtbxContent.SelectionColor = Color.Black;
+            }
+        }
+
+        /// <summary>
+        /// insert End Part of current Tag in the End of Selecting
+        /// </summary>
+        /// <param name="end"></param>
+        /// <param name="strEnd"></param>
+        /// <param name="color"></param>
+        private void InsertEnd(int end, String strEnd, Color color)
+        {
+            if (rtbxContent.Visible)
+            {
+                rtbxContent.Select(end, 0);
+                rtbxContent.SelectedText = strEnd;
+                rtbxContent.Select(end, strEnd.Length);
+                rtbxContent.SelectionColor = color;
+                rtbxContent.DeselectAll();
+                rtbxContent.SelectionColor = Color.Black;
+            }
+        }
+
+        private void RtbxContent_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (e.KeyChar == ' ')
+            {
+                int selectionStart = rtbxContent.SelectionStart;
+                Regex rx = new Regex(@"<.*?", RegexOptions.RightToLeft);
+                Match match = rx.Match(rtbxContent.Text, selectionStart);
+                if (match.Success)
+                    highlighter.FindAndHighlight(rtbxContent, match.Index, match.Length);
+                rtbxContent.Select(selectionStart, 0);
+                rtbxContent.SelectionColor = Color.Black;
+
+                rx = new Regex(@"&.*?", RegexOptions.RightToLeft);
+                match = rx.Match(rtbxContent.Text, selectionStart);
+                if (match.Success)
+                {
+                    rtbxContent.Select(match.Index, match.Length);
+                    rtbxContent.SelectionColor = Color.Black;
+                    highlighter.FindAndHighlight(rtbxContent, match.Index, match.Length);
+                }
+                rtbxContent.Select(selectionStart, 0);
+                rtbxContent.SelectionColor = Color.Black;
+            }
+            if (e.KeyChar == '\b')
+            {
+
+                int selectionStart = rtbxContent.SelectionStart;
+                Regex rx = new Regex(@"<.*?", RegexOptions.RightToLeft);
+                Match match = rx.Match(rtbxContent.Text, selectionStart);
+                if (match.Success)
+                {
+                    rtbxContent.Select(match.Index, match.Length);
+                    rtbxContent.SelectionColor = Color.Black;
+                    highlighter.FindAndHighlight(rtbxContent, match.Index, match.Length);
+                }
+                rtbxContent.Select(selectionStart, 0);
+                rtbxContent.SelectionColor = Color.Black;
+            }
         }
     }
 }

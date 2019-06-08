@@ -55,10 +55,10 @@
             this.panelToolbar.Controls.Add(this.lblBack);
             this.panelToolbar.Controls.Add(this.lblExit);
             this.panelToolbar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelToolbar.Location = new System.Drawing.Point(1000, 0);
+            this.panelToolbar.Location = new System.Drawing.Point(1700, 0);
             this.panelToolbar.Margin = new System.Windows.Forms.Padding(0);
             this.panelToolbar.Name = "panelToolbar";
-            this.panelToolbar.Size = new System.Drawing.Size(200, 800);
+            this.panelToolbar.Size = new System.Drawing.Size(200, 1200);
             this.panelToolbar.TabIndex = 15;
             // 
             // lblBack
@@ -72,7 +72,7 @@
             this.lblBack.Margin = new System.Windows.Forms.Padding(0);
             this.lblBack.Name = "lblBack";
             this.lblBack.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.lblBack.Size = new System.Drawing.Size(80, 800);
+            this.lblBack.Size = new System.Drawing.Size(80, 1200);
             this.lblBack.TabIndex = 7;
             this.lblBack.Text = "";
             this.lblBack.Click += new System.EventHandler(this.LblBack_Click);
@@ -88,7 +88,7 @@
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
             this.lblExit.Padding = new System.Windows.Forms.Padding(0, 50, 0, 0);
-            this.lblExit.Size = new System.Drawing.Size(60, 800);
+            this.lblExit.Size = new System.Drawing.Size(60, 1200);
             this.lblExit.TabIndex = 6;
             this.lblExit.Text = "";
             this.lblExit.VisibleChanged += new System.EventHandler(this.LblExit_VisibleChanged);
@@ -102,7 +102,7 @@
             this.panelMainContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMainContent.Location = new System.Drawing.Point(0, 0);
             this.panelMainContent.Name = "panelMainContent";
-            this.panelMainContent.Size = new System.Drawing.Size(1000, 800);
+            this.panelMainContent.Size = new System.Drawing.Size(1700, 1200);
             this.panelMainContent.TabIndex = 16;
             // 
             // panelContent
@@ -111,7 +111,7 @@
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Location = new System.Drawing.Point(0, 135);
             this.panelContent.Name = "panelContent";
-            this.panelContent.Size = new System.Drawing.Size(1000, 665);
+            this.panelContent.Size = new System.Drawing.Size(1700, 1065);
             this.panelContent.TabIndex = 6;
             // 
             // gvArticles
@@ -128,7 +128,7 @@
             this.gvArticles.RowHeadersWidth = 40;
             this.gvArticles.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.DisableResizing;
             this.gvArticles.RowTemplate.Height = 100;
-            this.gvArticles.Size = new System.Drawing.Size(1000, 665);
+            this.gvArticles.Size = new System.Drawing.Size(1700, 1065);
             this.gvArticles.TabIndex = 0;
             this.gvArticles.DataSourceChanged += new System.EventHandler(this.GvArticles_DataSourceChanged);
             this.gvArticles.SelectionChanged += new System.EventHandler(this.GvArticles_SelectionChanged);
@@ -139,7 +139,7 @@
             this.panelActions.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelActions.Location = new System.Drawing.Point(0, 0);
             this.panelActions.Name = "panelActions";
-            this.panelActions.Size = new System.Drawing.Size(1000, 135);
+            this.panelActions.Size = new System.Drawing.Size(1700, 135);
             this.panelActions.TabIndex = 5;
             // 
             // tableLayoutPanel1
@@ -211,7 +211,7 @@
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
             this.pbLoading.Location = new System.Drawing.Point(0, 0);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(1000, 800);
+            this.pbLoading.Size = new System.Drawing.Size(1700, 1200);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 4;
             this.pbLoading.TabStop = false;
@@ -221,7 +221,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(1200, 800);
+            this.ClientSize = new System.Drawing.Size(1900, 1200);
             this.Controls.Add(this.panelMainContent);
             this.Controls.Add(this.panelToolbar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;

@@ -54,6 +54,21 @@
             this.tbxFileUpload = new System.Windows.Forms.TextBox();
             this.btnFileUpload = new System.Windows.Forms.Button();
             this.cbxIsPublish = new System.Windows.Forms.CheckBox();
+            this.btnH1 = new System.Windows.Forms.Button();
+            this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnH2 = new System.Windows.Forms.Button();
+            this.btnH3 = new System.Windows.Forms.Button();
+            this.btnH4 = new System.Windows.Forms.Button();
+            this.btnH5 = new System.Windows.Forms.Button();
+            this.btnH6 = new System.Windows.Forms.Button();
+            this.btnDiv = new System.Windows.Forms.Button();
+            this.btnP = new System.Windows.Forms.Button();
+            this.btnSpan = new System.Windows.Forms.Button();
+            this.btnImg = new System.Windows.Forms.Button();
+            this.btnVideo = new System.Windows.Forms.Button();
+            this.btnBR = new System.Windows.Forms.Button();
+            this.btnI = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.panelToolbar.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelManageContent.SuspendLayout();
@@ -61,6 +76,7 @@
             this.panelManagePreview.SuspendLayout();
             this.tableLayoutPanelPreviewControls.SuspendLayout();
             this.tableLayoutPanelUpload.SuspendLayout();
+            this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // panelToolbar
@@ -70,7 +86,7 @@
             this.panelToolbar.Controls.Add(this.lblBack);
             this.panelToolbar.Controls.Add(this.lblExit);
             this.panelToolbar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelToolbar.Location = new System.Drawing.Point(1000, 0);
+            this.panelToolbar.Location = new System.Drawing.Point(1700, 0);
             this.panelToolbar.Margin = new System.Windows.Forms.Padding(0);
             this.panelToolbar.Name = "panelToolbar";
             this.panelToolbar.Size = new System.Drawing.Size(200, 439);
@@ -137,7 +153,7 @@
             this.panelMain.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelMain.Location = new System.Drawing.Point(0, 0);
             this.panelMain.Name = "panelMain";
-            this.panelMain.Size = new System.Drawing.Size(1200, 800);
+            this.panelMain.Size = new System.Drawing.Size(1900, 1200);
             this.panelMain.TabIndex = 17;
             // 
             // panelManageContent
@@ -146,18 +162,19 @@
             this.panelManageContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelManageContent.Location = new System.Drawing.Point(0, 439);
             this.panelManageContent.Name = "panelManageContent";
-            this.panelManageContent.Size = new System.Drawing.Size(1200, 361);
+            this.panelManageContent.Size = new System.Drawing.Size(1900, 761);
             this.panelManageContent.TabIndex = 1;
             // 
             // tableLayoutPanelContentEditing
             // 
             this.tableLayoutPanelContentEditing.ColumnCount = 6;
-            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 120F));
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 40F));
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 60F));
             this.tableLayoutPanelContentEditing.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 30F));
+            this.tableLayoutPanelContentEditing.Controls.Add(this.flowLayoutPanel1, 1, 0);
             this.tableLayoutPanelContentEditing.Controls.Add(this.tbxHeader, 2, 0);
             this.tableLayoutPanelContentEditing.Controls.Add(this.webBrowser1, 4, 0);
             this.tableLayoutPanelContentEditing.Controls.Add(this.tbxFooter, 2, 2);
@@ -169,8 +186,7 @@
             this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 350F));
             this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelContentEditing.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanelContentEditing.Size = new System.Drawing.Size(1200, 361);
+            this.tableLayoutPanelContentEditing.Size = new System.Drawing.Size(1900, 761);
             this.tableLayoutPanelContentEditing.TabIndex = 3;
             // 
             // tbxHeader
@@ -178,21 +194,21 @@
             this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxHeader.Enabled = false;
             this.tbxHeader.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tbxHeader.Location = new System.Drawing.Point(113, 3);
+            this.tbxHeader.Location = new System.Drawing.Point(153, 3);
             this.tbxHeader.Multiline = true;
             this.tbxHeader.Name = "tbxHeader";
-            this.tbxHeader.Size = new System.Drawing.Size(406, 344);
+            this.tbxHeader.Size = new System.Drawing.Size(670, 344);
             this.tbxHeader.TabIndex = 0;
             this.tbxHeader.Text = resources.GetString("tbxHeader.Text");
             // 
             // webBrowser1
             // 
             this.webBrowser1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.webBrowser1.Location = new System.Drawing.Point(555, 3);
+            this.webBrowser1.Location = new System.Drawing.Point(859, 3);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser1.Name = "webBrowser1";
             this.tableLayoutPanelContentEditing.SetRowSpan(this.webBrowser1, 3);
-            this.webBrowser1.Size = new System.Drawing.Size(612, 355);
+            this.webBrowser1.Size = new System.Drawing.Size(1008, 755);
             this.webBrowser1.TabIndex = 0;
             this.webBrowser1.Visible = false;
             this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.WebBrowser1_DocumentCompleted);
@@ -202,22 +218,24 @@
             this.tbxFooter.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tbxFooter.Enabled = false;
             this.tbxFooter.Font = new System.Drawing.Font("Arial Unicode MS", 7.907515F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.tbxFooter.Location = new System.Drawing.Point(113, 264);
+            this.tbxFooter.Location = new System.Drawing.Point(153, 664);
             this.tbxFooter.Multiline = true;
             this.tbxFooter.Name = "tbxFooter";
-            this.tbxFooter.Size = new System.Drawing.Size(406, 94);
+            this.tbxFooter.Size = new System.Drawing.Size(670, 94);
             this.tbxFooter.TabIndex = 1;
             this.tbxFooter.Text = "</body>\r\n</html>";
             // 
             // rtbxContent
             // 
+            this.rtbxContent.AcceptsTab = true;
             this.rtbxContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.rtbxContent.Location = new System.Drawing.Point(113, 353);
+            this.rtbxContent.Location = new System.Drawing.Point(153, 353);
             this.rtbxContent.Name = "rtbxContent";
-            this.rtbxContent.Size = new System.Drawing.Size(406, 1);
+            this.rtbxContent.Size = new System.Drawing.Size(670, 305);
             this.rtbxContent.TabIndex = 3;
             this.rtbxContent.Text = "";
             this.rtbxContent.TextChanged += new System.EventHandler(this.RtbxContent_TextChanged);
+            this.rtbxContent.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.RtbxContent_KeyPress);
             // 
             // panelManagePreview
             // 
@@ -226,7 +244,7 @@
             this.panelManagePreview.Dock = System.Windows.Forms.DockStyle.Top;
             this.panelManagePreview.Location = new System.Drawing.Point(0, 0);
             this.panelManagePreview.Name = "panelManagePreview";
-            this.panelManagePreview.Size = new System.Drawing.Size(1200, 439);
+            this.panelManagePreview.Size = new System.Drawing.Size(1900, 439);
             this.panelManagePreview.TabIndex = 0;
             // 
             // tableLayoutPanelPreviewControls
@@ -260,9 +278,8 @@
             this.tableLayoutPanelPreviewControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanelPreviewControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanelPreviewControls.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanelPreviewControls.Size = new System.Drawing.Size(1200, 439);
+            this.tableLayoutPanelPreviewControls.Size = new System.Drawing.Size(1900, 439);
             this.tableLayoutPanelPreviewControls.TabIndex = 0;
-            this.tableLayoutPanelPreviewControls.Paint += new System.Windows.Forms.PaintEventHandler(this.TableLayoutPanelPreviewControls_Paint);
             // 
             // label4
             // 
@@ -290,7 +307,7 @@
             this.ibArticlePreview.Margin = new System.Windows.Forms.Padding(0);
             this.ibArticlePreview.Name = "ibArticlePreview";
             this.tableLayoutPanelPreviewControls.SetRowSpan(this.ibArticlePreview, 6);
-            this.ibArticlePreview.Size = new System.Drawing.Size(400, 290);
+            this.ibArticlePreview.Size = new System.Drawing.Size(530, 290);
             this.ibArticlePreview.TabIndex = 0;
             this.ibArticlePreview.Title = null;
             // 
@@ -408,12 +425,176 @@
             this.cbxIsPublish.UseVisualStyleBackColor = true;
             this.cbxIsPublish.CheckedChanged += new System.EventHandler(this.CbxIsPublish_CheckedChanged);
             // 
+            // btnH1
+            // 
+            this.btnH1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnH1.Location = new System.Drawing.Point(3, 3);
+            this.btnH1.Name = "btnH1";
+            this.btnH1.Size = new System.Drawing.Size(120, 40);
+            this.btnH1.TabIndex = 4;
+            this.btnH1.Text = "<h1>";
+            this.btnH1.UseVisualStyleBackColor = true;
+            this.btnH1.Click += new System.EventHandler(this.BtnH1_Click);
+            // 
+            // flowLayoutPanel1
+            // 
+            this.flowLayoutPanel1.Controls.Add(this.btnH1);
+            this.flowLayoutPanel1.Controls.Add(this.btnH2);
+            this.flowLayoutPanel1.Controls.Add(this.btnH3);
+            this.flowLayoutPanel1.Controls.Add(this.btnH4);
+            this.flowLayoutPanel1.Controls.Add(this.btnH5);
+            this.flowLayoutPanel1.Controls.Add(this.btnH6);
+            this.flowLayoutPanel1.Controls.Add(this.btnDiv);
+            this.flowLayoutPanel1.Controls.Add(this.btnP);
+            this.flowLayoutPanel1.Controls.Add(this.btnSpan);
+            this.flowLayoutPanel1.Controls.Add(this.btnImg);
+            this.flowLayoutPanel1.Controls.Add(this.btnVideo);
+            this.flowLayoutPanel1.Controls.Add(this.btnBR);
+            this.flowLayoutPanel1.Controls.Add(this.btnI);
+            this.flowLayoutPanel1.Controls.Add(this.button1);
+            this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.flowLayoutPanel1.Location = new System.Drawing.Point(33, 3);
+            this.flowLayoutPanel1.Name = "flowLayoutPanel1";
+            this.tableLayoutPanelContentEditing.SetRowSpan(this.flowLayoutPanel1, 3);
+            this.flowLayoutPanel1.Size = new System.Drawing.Size(114, 755);
+            this.flowLayoutPanel1.TabIndex = 8;
+            // 
+            // btnH2
+            // 
+            this.btnH2.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnH2.Location = new System.Drawing.Point(3, 49);
+            this.btnH2.Name = "btnH2";
+            this.btnH2.Size = new System.Drawing.Size(120, 40);
+            this.btnH2.TabIndex = 5;
+            this.btnH2.Text = "<h2>";
+            this.btnH2.UseVisualStyleBackColor = true;
+            // 
+            // btnH3
+            // 
+            this.btnH3.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnH3.Location = new System.Drawing.Point(3, 95);
+            this.btnH3.Name = "btnH3";
+            this.btnH3.Size = new System.Drawing.Size(120, 40);
+            this.btnH3.TabIndex = 6;
+            this.btnH3.Text = "<h3>";
+            this.btnH3.UseVisualStyleBackColor = true;
+            // 
+            // btnH4
+            // 
+            this.btnH4.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnH4.Location = new System.Drawing.Point(3, 141);
+            this.btnH4.Name = "btnH4";
+            this.btnH4.Size = new System.Drawing.Size(120, 40);
+            this.btnH4.TabIndex = 7;
+            this.btnH4.Text = "<h4>";
+            this.btnH4.UseVisualStyleBackColor = true;
+            // 
+            // btnH5
+            // 
+            this.btnH5.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnH5.Location = new System.Drawing.Point(3, 187);
+            this.btnH5.Name = "btnH5";
+            this.btnH5.Size = new System.Drawing.Size(120, 40);
+            this.btnH5.TabIndex = 8;
+            this.btnH5.Text = "<h5>";
+            this.btnH5.UseVisualStyleBackColor = true;
+            // 
+            // btnH6
+            // 
+            this.btnH6.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnH6.Location = new System.Drawing.Point(3, 233);
+            this.btnH6.Name = "btnH6";
+            this.btnH6.Size = new System.Drawing.Size(120, 40);
+            this.btnH6.TabIndex = 9;
+            this.btnH6.Text = "<h6>";
+            this.btnH6.UseVisualStyleBackColor = true;
+            // 
+            // btnDiv
+            // 
+            this.btnDiv.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnDiv.Location = new System.Drawing.Point(3, 279);
+            this.btnDiv.Name = "btnDiv";
+            this.btnDiv.Size = new System.Drawing.Size(120, 40);
+            this.btnDiv.TabIndex = 10;
+            this.btnDiv.Text = "<div>";
+            this.btnDiv.UseVisualStyleBackColor = true;
+            // 
+            // btnP
+            // 
+            this.btnP.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnP.Location = new System.Drawing.Point(3, 325);
+            this.btnP.Name = "btnP";
+            this.btnP.Size = new System.Drawing.Size(120, 40);
+            this.btnP.TabIndex = 11;
+            this.btnP.Text = "<p>";
+            this.btnP.UseVisualStyleBackColor = true;
+            // 
+            // btnSpan
+            // 
+            this.btnSpan.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnSpan.Location = new System.Drawing.Point(3, 371);
+            this.btnSpan.Name = "btnSpan";
+            this.btnSpan.Size = new System.Drawing.Size(120, 40);
+            this.btnSpan.TabIndex = 12;
+            this.btnSpan.Text = "<span>";
+            this.btnSpan.UseVisualStyleBackColor = true;
+            // 
+            // btnImg
+            // 
+            this.btnImg.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnImg.Location = new System.Drawing.Point(3, 417);
+            this.btnImg.Name = "btnImg";
+            this.btnImg.Size = new System.Drawing.Size(120, 40);
+            this.btnImg.TabIndex = 13;
+            this.btnImg.Text = "<img>";
+            this.btnImg.UseVisualStyleBackColor = true;
+            // 
+            // btnVideo
+            // 
+            this.btnVideo.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnVideo.Location = new System.Drawing.Point(3, 463);
+            this.btnVideo.Name = "btnVideo";
+            this.btnVideo.Size = new System.Drawing.Size(120, 40);
+            this.btnVideo.TabIndex = 14;
+            this.btnVideo.Text = "<video>";
+            this.btnVideo.UseVisualStyleBackColor = true;
+            // 
+            // btnBR
+            // 
+            this.btnBR.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnBR.Location = new System.Drawing.Point(3, 509);
+            this.btnBR.Name = "btnBR";
+            this.btnBR.Size = new System.Drawing.Size(120, 40);
+            this.btnBR.TabIndex = 15;
+            this.btnBR.Text = "<br>";
+            this.btnBR.UseVisualStyleBackColor = true;
+            // 
+            // btnI
+            // 
+            this.btnI.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnI.Location = new System.Drawing.Point(3, 555);
+            this.btnI.Name = "btnI";
+            this.btnI.Size = new System.Drawing.Size(120, 40);
+            this.btnI.TabIndex = 16;
+            this.btnI.Text = "<i>";
+            this.btnI.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.button1.Location = new System.Drawing.Point(3, 601);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 40);
+            this.button1.TabIndex = 17;
+            this.button1.Text = "<strong>";
+            this.button1.UseVisualStyleBackColor = true;
+            // 
             // ManageArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(1200, 800);
+            this.ClientSize = new System.Drawing.Size(1900, 1200);
             this.Controls.Add(this.panelMain);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "ManageArticleForm";
@@ -431,6 +612,7 @@
             this.tableLayoutPanelPreviewControls.PerformLayout();
             this.tableLayoutPanelUpload.ResumeLayout(false);
             this.tableLayoutPanelUpload.PerformLayout();
+            this.flowLayoutPanel1.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -462,5 +644,20 @@
         private System.Windows.Forms.TextBox tbxHeader;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanelContentEditing;
         private System.Windows.Forms.RichTextBox rtbxContent;
+        private System.Windows.Forms.Button btnH1;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
+        private System.Windows.Forms.Button btnH2;
+        private System.Windows.Forms.Button btnH3;
+        private System.Windows.Forms.Button btnH4;
+        private System.Windows.Forms.Button btnH5;
+        private System.Windows.Forms.Button btnH6;
+        private System.Windows.Forms.Button btnDiv;
+        private System.Windows.Forms.Button btnP;
+        private System.Windows.Forms.Button btnSpan;
+        private System.Windows.Forms.Button btnImg;
+        private System.Windows.Forms.Button btnVideo;
+        private System.Windows.Forms.Button btnBR;
+        private System.Windows.Forms.Button btnI;
+        private System.Windows.Forms.Button button1;
     }
 }

@@ -7,14 +7,21 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
 {
     public class Highlighter
     {
-        public Tags Tags { get; set; }
+        public Tags tags { get; set; }
         public bool InTag { get; set; }
 
         public Highlighter()
         {
-            Tags = new Tags();
+            this.tags = new Tags();
+            var serializer = new XmlSerializer(typeof(Tags));
+            var fs = new FileStream("Tags.xml", FileMode.Open);
+            tags = (Tags)serializer.Deserialize(fs);
+            fs.Close();
         }
-
+        /// <summary>
+        /// Highlight the full current text
+        /// </summary>
+        /// <param name="mainText"></param>
         public void FindAndHighlight(RichTextBox textBox, int selectionStart, int selectionLength)
         {
 
@@ -33,7 +40,7 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
                 Regex tmpRx = null;
                 Match tmpMatch = null;
                 //looking for TagName in TagString
-                foreach (Tag t in Tags.TagList)
+                foreach (Tag t in tags.TagList)
                 {
 
                     tmpRx = new Regex(@"[<,/]" + t.TagName + @"[\s,>]", RegexOptions.IgnoreCase);
@@ -54,11 +61,11 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
                         //highlight of TagName
                         if (tmp[1] == '/') textBox.Select(match.Index + selectionStart, tmpMatch.Length + 2);
                         else textBox.Select(match.Index + selectionStart, tmpMatch.Length);
-                        textBox.SelectionColor = Settings.Instance.TagColor;
+                        textBox.SelectionColor = Constants.TagColor;
 
                         //highlight of TagEnd
                         textBox.Select(match.Index + selectionStart + match.Length - 1, 1);
-                        textBox.SelectionColor = Settings.Instance.TagColor;
+                        textBox.SelectionColor = Constants.TagColor;
 
                         //highlight of Parameters
                         if (tmp[1] != '/') //if Tag is not CloseTag
@@ -73,7 +80,7 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
                                 if (tmpMatch.Success)
                                 {
                                     textBox.Select(match.Index + selectionStart + tmpMatch.Index + 1, tmpMatch.Length - 2);
-                                    textBox.SelectionColor = Settings.Instance.ParameterColor;
+                                    textBox.SelectionColor = Constants.ParameterColor;
                                 }
                                 //find text in " " 
                                 tmpRx = new Regex(@""".*?""");
@@ -81,7 +88,7 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
                                 foreach (Match tmpMat in mcol)
                                 {
                                     textBox.Select(match.Index + selectionStart + tmpMat.Index, tmpMat.Length);
-                                    textBox.SelectionColor = Settings.Instance.TextColor;
+                                    textBox.SelectionColor = Constants.TextColor;
                                 }
                             }
                         }
@@ -95,11 +102,11 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
             foreach (Match match in matches)
             {
                 textBox.Select(match.Index + selectionStart, match.Length);
-                textBox.SelectionBackColor = Settings.Instance.CommentColor;
+                textBox.SelectionBackColor = Constants.CommentColor;
             }
 
             //highlight of special symbols
-            foreach (var symbol in Tags.SpecSymbolList)
+            foreach (var symbol in tags.SpecSymbolList)
             {
                 rx = new Regex(symbol);
                 textBox.Select(selectionStart, selectionLength);
@@ -107,7 +114,7 @@ namespace InfokioskAdministrationDesktopApplication.UiModels
                 foreach (Match match in matches)
                 {
                     textBox.Select(match.Index + selectionStart, match.Length);
-                    textBox.SelectionColor = Settings.Instance.ChangeColor;
+                    textBox.SelectionColor = Constants.ChangeColor;
                 }
             }
         }

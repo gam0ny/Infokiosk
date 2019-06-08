@@ -1,0 +1,394 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Tags xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <SpecSymbolList>
+    <string>&amp;lt</string>
+    <string>&amp;gt</string>
+    <string>&amp;nbsp</string>
+    <string>&amp;amp</string>
+    <string>&amp;laquo</string>
+    <string>&amp;raquo</string>
+    <string>&amp;ldquo</string>
+    <string>&amp;rdquo</string>
+  </SpecSymbolList>
+  <TagList>
+    <Tag>
+      <TagName>P</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>align</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>BR</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>FONT</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>face</string>
+        <string>size</string>
+        <string>color</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>BASEFONT</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>I</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>B</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>U</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>S</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>NOBR</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>WBR</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>STRIKE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>BASEFONT</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>face</string>
+        <string>size</string>
+        <string>color</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>H1</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>H2</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>H3</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>H4</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>H5</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>H6</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>EM</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>STRONG</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>DFN</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>CITE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>DLOCKQUOTE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>SUP</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>SUB</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>DEL</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>INS</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>ACRONYM</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>TITLE</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>ADDRESS</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>CODE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>PRE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>VAR</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>KBD</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>SAMP</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>LI</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>type</string>
+        <string>value</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>OL</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>start</string>
+        <string>type</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>UL</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>type</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>DL</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>DD</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>DIR</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>MENU</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>BASE</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>href</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>IMG</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>src</string>
+        <string>height</string>
+        <string>width</string>
+        <string>lowsrc</string>
+        <string>alt</string>
+        <string>align</string>
+        <string>clear</string>
+        <string>border</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>A</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>href</string>
+        <string>name</string>
+        <string>target</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>MAP</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>name</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>AREA</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>shape</string>
+        <string>nohref</string>
+        <string>href</string>
+        <string>target</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>TABLE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>caption</string>
+        <string>border</string>
+        <string>align</string>
+        <string>valign</string>
+        <string>width</string>
+        <string>height</string>
+        <string>bgcolor</string>
+        <string>cellpadding</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>TD</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>border</string>
+        <string>align</string>
+        <string>valign</string>
+        <string>width</string>
+        <string>height</string>
+        <string>bgcolor</string>
+        <string>cellpadding</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>TR</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>border</string>
+        <string>align</string>
+        <string>valign</string>
+        <string>width</string>
+        <string>height</string>
+        <string>bgcolor</string>
+        <string>cellpadding</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>TH</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>FRAMESET</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>cols</string>
+        <string>frameborder</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>FRAME</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>src</string>
+        <string>name</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>FORM</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>action</string>
+        <string>enctype</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>INPUT</TagName>
+      <TagEnd>false</TagEnd>
+      <Parameters>
+        <string>text</string>
+        <string>value</string>
+        <string>size</string>
+        <string>name</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>TEXTAREA</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>HTML</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>BODY</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters>
+        <string>bgcolor</string>
+        <string>bakground</string>
+      </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>HEAD</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+    <Tag>
+      <TagName>TITLE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters />
+    </Tag>
+  </TagList>
+</Tags>

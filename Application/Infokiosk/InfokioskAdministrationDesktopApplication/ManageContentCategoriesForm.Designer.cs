@@ -54,10 +54,10 @@
             this.panelToolbar.Controls.Add(this.lblBack);
             this.panelToolbar.Controls.Add(this.lblExit);
             this.panelToolbar.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panelToolbar.Location = new System.Drawing.Point(1018, 0);
+            this.panelToolbar.Location = new System.Drawing.Point(1718, 0);
             this.panelToolbar.Margin = new System.Windows.Forms.Padding(0);
             this.panelToolbar.Name = "panelToolbar";
-            this.panelToolbar.Size = new System.Drawing.Size(182, 800);
+            this.panelToolbar.Size = new System.Drawing.Size(182, 1200);
             this.panelToolbar.TabIndex = 14;
             // 
             // lblBack
@@ -71,7 +71,7 @@
             this.lblBack.Margin = new System.Windows.Forms.Padding(0);
             this.lblBack.Name = "lblBack";
             this.lblBack.Padding = new System.Windows.Forms.Padding(0, 42, 0, 0);
-            this.lblBack.Size = new System.Drawing.Size(72, 800);
+            this.lblBack.Size = new System.Drawing.Size(72, 1200);
             this.lblBack.TabIndex = 7;
             this.lblBack.Text = "";
             this.lblBack.Click += new System.EventHandler(this.LblBack_Click);
@@ -87,7 +87,7 @@
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
             this.lblExit.Padding = new System.Windows.Forms.Padding(0, 42, 0, 0);
-            this.lblExit.Size = new System.Drawing.Size(54, 800);
+            this.lblExit.Size = new System.Drawing.Size(54, 1200);
             this.lblExit.TabIndex = 6;
             this.lblExit.Text = "";
             this.lblExit.Click += new System.EventHandler(this.LblExit_Click);
@@ -101,7 +101,7 @@
             this.panelMainContent.Location = new System.Drawing.Point(0, 0);
             this.panelMainContent.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.panelMainContent.Name = "panelMainContent";
-            this.panelMainContent.Size = new System.Drawing.Size(1018, 800);
+            this.panelMainContent.Size = new System.Drawing.Size(1718, 1200);
             this.panelMainContent.TabIndex = 15;
             // 
             // tableLayoutPanel1
@@ -238,16 +238,17 @@
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
             this.pbLoading.Location = new System.Drawing.Point(0, 0);
             this.pbLoading.Name = "pbLoading";
-            this.pbLoading.Size = new System.Drawing.Size(1018, 800);
+            this.pbLoading.Size = new System.Drawing.Size(1718, 1200);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
             this.pbLoading.TabIndex = 3;
+            this.pbLoading.TabStop = false;
             // 
             // ManageContentCategoriesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(10F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
-            this.ClientSize = new System.Drawing.Size(1200, 800);
+            this.ClientSize = new System.Drawing.Size(1900, 1200);
             this.Controls.Add(this.panelMainContent);
             this.Controls.Add(this.panelToolbar);
             this.Font = new System.Drawing.Font("Microsoft Sans Serif", 7.15029F);

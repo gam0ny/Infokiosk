@@ -103,7 +103,6 @@
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="UiModels\Highlighter.cs" />
-    <Compile Include="UiModels\Settings.cs" />
     <Compile Include="UiModels\Tag.cs" />
     <Compile Include="UiModels\Tags.cs" />
     <EmbeddedResource Include="LoginForm.resx">
@@ -156,6 +155,11 @@
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Tags.xml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

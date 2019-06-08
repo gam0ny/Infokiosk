@@ -59,9 +59,6 @@ namespace BusinessLogicLayer
         {
             var dbArticle = articleRepository.GetArticleById(articleId);
             var articleModel = Converter.FromArticleToArticleModel(dbArticle);
-
-            articleModel.Content = FixImageUrls(articleModel.Content, articleId);
-
             return articleModel;
         }
 
@@ -218,7 +215,11 @@ namespace BusinessLogicLayer
 
             articleModel.HasVideo = articleModel.Content.Contains("<video>");
 
-            return articleRepository.Save(Converter.FromArticleModelToArticle(articleModel));
+            var article = Converter.FromArticleModelToArticle(articleModel);
+
+            article.Content = FixImageUrlsBeforeSave(article.Content, article.Id);
+
+            return articleRepository.Save(article);
         }
 
         private string CreateFolderStrucure(ArticleModel articleModel)
@@ -241,7 +242,7 @@ namespace BusinessLogicLayer
             return bodyNode.InnerHtml;
         }
 
-        public string FixImageUrls(string htmlString, Guid articleId)
+        public string FixImageUrlsBeforeShow(string htmlString, Guid articleId)
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
 
@@ -256,6 +257,28 @@ namespace BusinessLogicLayer
                     string imageTagValue = imageTag.Attributes["src"].Value;
 
                     imageTag.SetAttributeValue("src", string.Format("{0}{1}\\{2}", contentPath, articleId.ToString(), imageTagValue));
+
+                }
+            }
+
+            return doc.DocumentNode.InnerHtml;
+        }
+
+        public string FixImageUrlsBeforeSave(string htmlString, Guid articleId)
+        {
+            var contentPath = ConfigurationManager.AppSettings["ContentPath"];
+
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(htmlString);
+            var imageTags = doc.DocumentNode.SelectNodes("//img");
+
+            if (imageTags != null)
+            {
+                foreach (var imageTag in imageTags)
+                {
+                    string imageTagValue = imageTag.Attributes["src"].Value;
+
+                    imageTag.SetAttributeValue("src", string.Format("{1}", articleId.ToString(), Path.GetFileName(imageTagValue)));
 
                 }
             }
