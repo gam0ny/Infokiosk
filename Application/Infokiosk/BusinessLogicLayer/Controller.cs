@@ -204,6 +204,19 @@ namespace BusinessLogicLayer
                 articleDirectory = CreateFolderStrucure(articleModel);
             }
 
+            SaveArticleImages(articleModel, articleDirectory);
+
+            articleModel.HasVideo = articleModel.Content.Contains("<video>");
+
+            var article = Converter.FromArticleModelToArticle(articleModel);
+
+            article.Content = FixImageUrlsBeforeSave(article.Content, article.Id);
+
+            return articleRepository.Save(article);
+        }
+
+        private void SaveArticleImages(ArticleModel articleModel, string articleDirectory)
+        {
             if (articleModel.ImageUrl != null && articleModel.TitleFileName != null)
             {
                 var destinationPath = string.Format("{0}/{1}", articleDirectory, articleModel.TitleFileName);
@@ -213,13 +226,25 @@ namespace BusinessLogicLayer
                 }
             }
 
-            articleModel.HasVideo = articleModel.Content.Contains("<video>");
+            HtmlDocument doc = new HtmlDocument();
+            doc.LoadHtml(articleModel.Content);
+            var imageTags = doc.DocumentNode.SelectNodes("//img");
 
-            var article = Converter.FromArticleModelToArticle(articleModel);
+            if (imageTags != null)
+            {
+                foreach (var imageTag in imageTags)
+                {
+                    string imageTagValue = imageTag.Attributes["src"].Value;
+                    var imageTagValueFileName = Path.GetFileName(imageTagValue);
 
-            article.Content = FixImageUrlsBeforeSave(article.Content, article.Id);
+                    var destinationPath = string.Format("{0}/{1}", articleDirectory, imageTagValueFileName);
+                    if (!File.Exists(destinationPath))
+                    {
+                        File.Copy(imageTagValue, destinationPath);
+                    }
+                }
+            }
 
-            return articleRepository.Save(article);
         }
 
         private string CreateFolderStrucure(ArticleModel articleModel)

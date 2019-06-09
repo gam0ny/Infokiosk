@@ -116,13 +116,10 @@
       <TagEnd>false</TagEnd>
       <Parameters>
         <string>src</string>
-        <string>height</string>
         <string>width</string>
-        <string>lowsrc</string>
-        <string>alt</string>
-        <string>align</string>
-        <string>clear</string>
-        <string>border</string>
+        <string>height</string>
+        <string>class</string>
+        <string>style</string>
       </Parameters>
     </Tag>
   </TagList>

@@ -139,7 +139,6 @@ namespace InfokioskAdministrationDesktopApplication
         private void SaveArticleInProgress(object sender, DoWorkEventArgs e)
         {
             var articleModel = (ArticleModel)e.Argument;
-            articleModel.Content = controller.FixImageUrlsBeforeSave(articleModel.Content, articleModel.Id);
             e.Result = controller.SaveArticle(articleModel);
         }
 
@@ -451,6 +450,25 @@ namespace InfokioskAdministrationDesktopApplication
                 rtbxContent.SelectedText = manageDivTagForm.ResultHtml;
                 highlighter.FindAndHighlight(rtbxContent, rtbxContent.SelectionStart, manageDivTagForm.ResultHtml.Length);
             }
+        }
+
+        private void BtnImg_Click(object sender, EventArgs e)
+        {
+            var manageImgTagForm = new ManageImgTagForm();
+            manageImgTagForm.TagName = "img";
+            rtbxContent.DeselectAll();
+            var dialogResult = manageImgTagForm.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                rtbxContent.SelectedText = manageImgTagForm.ResultHtml;
+                highlighter.FindAndHighlight(rtbxContent, rtbxContent.SelectionStart, manageImgTagForm.ResultHtml.Length);
+            }
+        }
+
+        private void BtnSpan_Click(object sender, EventArgs e)
+        {
+            SetupBasicTagAndInsert("span");
         }
     }
 }

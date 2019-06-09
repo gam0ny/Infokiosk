@@ -309,6 +309,7 @@
             this.btnSpan.TabIndex = 12;
             this.btnSpan.Text = "<span>";
             this.btnSpan.UseVisualStyleBackColor = true;
+            this.btnSpan.Click += new System.EventHandler(this.BtnSpan_Click);
             // 
             // btnImg
             // 
@@ -319,6 +320,7 @@
             this.btnImg.TabIndex = 13;
             this.btnImg.Text = "<img>";
             this.btnImg.UseVisualStyleBackColor = true;
+            this.btnImg.Click += new System.EventHandler(this.BtnImg_Click);
             // 
             // btnVideo
             // 
