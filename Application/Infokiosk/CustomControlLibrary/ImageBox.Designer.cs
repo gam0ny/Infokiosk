@@ -36,7 +36,10 @@ namespace CustomControlLibrary
             this.lblHasVideo = new System.Windows.Forms.Label();
             this.lblHasDocuments = new System.Windows.Forms.Label();
             this.lblTitle = new System.Windows.Forms.Label();
+            this.flowLayoutPanelIcons = new System.Windows.Forms.FlowLayoutPanel();
+            this.lblShadow = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).BeginInit();
+            this.flowLayoutPanelIcons.SuspendLayout();
             this.SuspendLayout();
             // 
             // pbCover
@@ -69,7 +72,8 @@ namespace CustomControlLibrary
             this.lblHasVideo.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.lblHasVideo.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHasVideo.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(85)))));
-            this.lblHasVideo.Location = new System.Drawing.Point(19, 103);
+            this.lblHasVideo.Location = new System.Drawing.Point(0, 0);
+            this.lblHasVideo.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.lblHasVideo.Name = "lblHasVideo";
             this.lblHasVideo.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.lblHasVideo.Size = new System.Drawing.Size(59, 35);
@@ -83,7 +87,8 @@ namespace CustomControlLibrary
             this.lblHasDocuments.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(230)))), ((int)(((byte)(230)))), ((int)(((byte)(230)))));
             this.lblHasDocuments.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblHasDocuments.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(5)))), ((int)(((byte)(85)))));
-            this.lblHasDocuments.Location = new System.Drawing.Point(265, 15);
+            this.lblHasDocuments.Location = new System.Drawing.Point(64, 0);
+            this.lblHasDocuments.Margin = new System.Windows.Forms.Padding(0, 0, 5, 0);
             this.lblHasDocuments.Name = "lblHasDocuments";
             this.lblHasDocuments.Padding = new System.Windows.Forms.Padding(10, 5, 10, 5);
             this.lblHasDocuments.Size = new System.Drawing.Size(52, 35);
@@ -97,20 +102,46 @@ namespace CustomControlLibrary
             this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("FontAwesome", 17.89595F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(24, 64);
+            this.lblTitle.Location = new System.Drawing.Point(-2, -2);
+            this.lblTitle.MaximumSize = new System.Drawing.Size(320, 0);
+            this.lblTitle.MinimumSize = new System.Drawing.Size(0, 43);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(100, 43);
             this.lblTitle.TabIndex = 4;
             this.lblTitle.Text = "Тема";
             // 
+            // flowLayoutPanelIcons
+            // 
+            this.flowLayoutPanelIcons.BackColor = System.Drawing.Color.Transparent;
+            this.flowLayoutPanelIcons.Controls.Add(this.lblHasVideo);
+            this.flowLayoutPanelIcons.Controls.Add(this.lblHasDocuments);
+            this.flowLayoutPanelIcons.Location = new System.Drawing.Point(24, 109);
+            this.flowLayoutPanelIcons.Name = "flowLayoutPanelIcons";
+            this.flowLayoutPanelIcons.Size = new System.Drawing.Size(200, 35);
+            this.flowLayoutPanelIcons.TabIndex = 5;
+            // 
+            // lblShadow
+            // 
+            this.lblShadow.AutoSize = true;
+            this.lblShadow.BackColor = System.Drawing.Color.Transparent;
+            this.lblShadow.Font = new System.Drawing.Font("FontAwesome", 17.89595F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblShadow.ForeColor = System.Drawing.Color.Black;
+            this.lblShadow.Location = new System.Drawing.Point(24, 64);
+            this.lblShadow.MaximumSize = new System.Drawing.Size(320, 0);
+            this.lblShadow.MinimumSize = new System.Drawing.Size(0, 43);
+            this.lblShadow.Name = "lblShadow";
+            this.lblShadow.Size = new System.Drawing.Size(100, 43);
+            this.lblShadow.TabIndex = 6;
+            this.lblShadow.Text = "Тема";
+            // 
             // ImageBox
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.lblShadow);
             this.Controls.Add(this.lblTitle);
-            this.Controls.Add(this.lblHasDocuments);
-            this.Controls.Add(this.lblHasVideo);
             this.Controls.Add(this.lblCategory);
+            this.Controls.Add(this.flowLayoutPanelIcons);
             this.Controls.Add(this.pbCover);
             this.Margin = new System.Windows.Forms.Padding(0);
             this.Name = "ImageBox";
@@ -118,6 +149,8 @@ namespace CustomControlLibrary
             this.Load += new System.EventHandler(this.ImageBox_Load);
             this.Click += new System.EventHandler(this.ImageBox_Click);
             ((System.ComponentModel.ISupportInitialize)(this.pbCover)).EndInit();
+            this.flowLayoutPanelIcons.ResumeLayout(false);
+            this.flowLayoutPanelIcons.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,5 +164,7 @@ namespace CustomControlLibrary
         private System.Windows.Forms.Label lblHasVideo;
         private System.Windows.Forms.Label lblHasDocuments;
         private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.FlowLayoutPanel flowLayoutPanelIcons;
+        private System.Windows.Forms.Label lblShadow;
     }
 }

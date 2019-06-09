@@ -2,6 +2,7 @@
 using System;
 using System.ComponentModel;
 using System.Drawing;
+using System.Drawing.Drawing2D;
 using System.Windows.Forms;
 
 namespace CustomControlLibrary
@@ -35,12 +36,11 @@ namespace CustomControlLibrary
         public ImageBox()
         {
             InitializeComponent();
-            this.lblTitle.Parent = this.pbCover;
             foreach (Control control in this.Controls)
             {
                 control.Click += ImageBox_Click;
             }
-            foreach(Control control in this.pbCover.Controls)
+            foreach (Control control in this.pbCover.Controls)
             {
                 control.Click += ImageBox_Click;
             }
@@ -60,7 +60,14 @@ namespace CustomControlLibrary
         {
             switch (e.PropertyName)
             {
-                case "Title": lblTitle.Text = this.Title; break;
+                case "Title": {
+                        lblTitle.Text = this.Title;
+                        lblShadow.Text = this.Title;
+
+                        var coefficient = lblTitle.Size.Height % lblTitle.MinimumSize.Height;
+                        lblTitle.Font = new Font(lblTitle.Font.FontFamily, lblTitle.Font.Size - coefficient, lblTitle.Font.Style);
+                        lblShadow.Font = new Font(lblShadow.Font.FontFamily, lblShadow.Font.Size - coefficient, lblShadow.Font.Style);
+                    } break;
                 case "Image": pbCover.Image = this.Image; break;
                 case "Category": lblCategory.Text = this.Category != null ? this.Category.ToUpper() : lblCategory.Text; break;
             }
@@ -73,6 +80,9 @@ namespace CustomControlLibrary
             if (Image != null) pbCover.Image = Image;
             this.lblTitle.Text = this.Title;
             if (!string.IsNullOrWhiteSpace(this.Category)) this.lblCategory.Text = this.Category;
+            flowLayoutPanelIcons.Parent = pbCover;
+            this.lblShadow.Parent = this.pbCover;
+            lblTitle.Parent = lblShadow;
         }
 
         private void ImageBox_Click(object sender, EventArgs e)
