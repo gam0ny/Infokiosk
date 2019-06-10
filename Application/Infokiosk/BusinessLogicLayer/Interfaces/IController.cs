@@ -39,8 +39,8 @@ namespace BusinessLogicLayer.Interfaces
 
         string ExtractHtmlBody(string htmlString);
 
-        string FixImageUrlsBeforeShow(string htmlString, Guid articleId);
+        string FixImageAndVideoUrlsBeforeShow(string htmlString, Guid articleId);
 
-        string FixImageUrlsBeforeSave(string htmlString, Guid articleId);
+        string FixImageAndVideoUrlsBeforeSave(string htmlString, Guid articleId);
     }
 }

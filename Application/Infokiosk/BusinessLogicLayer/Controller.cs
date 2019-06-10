@@ -204,18 +204,18 @@ namespace BusinessLogicLayer
                 articleDirectory = CreateFolderStrucure(articleModel);
             }
 
-            SaveArticleImages(articleModel, articleDirectory);
+            SaveArticleImagesAndVideos(articleModel, articleDirectory);
 
-            articleModel.HasVideo = articleModel.Content.Contains("<video>");
+            articleModel.HasVideo = articleModel.Content.Contains("<video");
 
             var article = Converter.FromArticleModelToArticle(articleModel);
 
-            article.Content = FixImageUrlsBeforeSave(article.Content, article.Id);
+            article.Content = FixImageAndVideoUrlsBeforeSave(article.Content, article.Id);
 
             return articleRepository.Save(article);
         }
 
-        private void SaveArticleImages(ArticleModel articleModel, string articleDirectory)
+        private void SaveArticleImagesAndVideos(ArticleModel articleModel, string articleDirectory)
         {
             if (articleModel.ImageUrl != null && articleModel.TitleFileName != null)
             {
@@ -245,6 +245,22 @@ namespace BusinessLogicLayer
                 }
             }
 
+            var videoSourceTags = doc.DocumentNode.SelectNodes("//source");
+
+            if(videoSourceTags != null)
+            {
+                foreach (var sourceTag in videoSourceTags)
+                {
+                    string videoSrc = sourceTag.Attributes["src"].Value;
+                    var videoName = Path.GetFileName(videoSrc);
+
+                    var destinationPath = string.Format("{0}/{1}", articleDirectory, videoName);
+                    if (!File.Exists(destinationPath))
+                    {
+                        File.Copy(videoSrc, destinationPath);
+                    }
+                }
+            }
         }
 
         private string CreateFolderStrucure(ArticleModel articleModel)
@@ -267,7 +283,7 @@ namespace BusinessLogicLayer
             return bodyNode.InnerHtml;
         }
 
-        public string FixImageUrlsBeforeShow(string htmlString, Guid articleId)
+        public string FixImageAndVideoUrlsBeforeShow(string htmlString, Guid articleId)
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
 
@@ -286,10 +302,23 @@ namespace BusinessLogicLayer
                 }
             }
 
+            var videoSourceTags = doc.DocumentNode.SelectNodes("//source");
+
+            if (videoSourceTags != null)
+            {
+                foreach (var videoSourceTag in videoSourceTags)
+                {
+                    string videoSrc = videoSourceTag.Attributes["src"].Value;
+
+                    videoSourceTag.SetAttributeValue("src", string.Format("{0}{1}\\{2}", contentPath, articleId.ToString(), videoSrc));
+
+                }
+            }
+
             return doc.DocumentNode.InnerHtml;
         }
 
-        public string FixImageUrlsBeforeSave(string htmlString, Guid articleId)
+        public string FixImageAndVideoUrlsBeforeSave(string htmlString, Guid articleId)
         {
             var contentPath = ConfigurationManager.AppSettings["ContentPath"];
 
@@ -304,6 +333,19 @@ namespace BusinessLogicLayer
                     string imageTagValue = imageTag.Attributes["src"].Value;
 
                     imageTag.SetAttributeValue("src", string.Format("{1}", articleId.ToString(), Path.GetFileName(imageTagValue)));
+
+                }
+            }
+
+            var videoSourceTags = doc.DocumentNode.SelectNodes("//source");
+
+            if (videoSourceTags != null)
+            {
+                foreach (var videoSourceTag in videoSourceTags)
+                {
+                    string videoSrc = videoSourceTag.Attributes["src"].Value;
+
+                    videoSourceTag.SetAttributeValue("src", string.Format("{1}", articleId.ToString(), Path.GetFileName(videoSrc)));
 
                 }
             }

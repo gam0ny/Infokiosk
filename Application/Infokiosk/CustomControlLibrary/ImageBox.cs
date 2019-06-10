@@ -15,8 +15,12 @@ namespace CustomControlLibrary
 
         private string category;
 
+        private bool hasVideo;
+
         public Guid Id { get; set; }
-        public bool HasVideo { get; set; }
+
+        [NotifyParentProperty(true)]
+        public bool HasVideo { get { return hasVideo; } set { hasVideo = value; OnPropertyChanged("HasVideo"); } }
 
         public bool HasDocuments { get; set; }
 
@@ -70,6 +74,7 @@ namespace CustomControlLibrary
                     } break;
                 case "Image": pbCover.Image = this.Image; break;
                 case "Category": lblCategory.Text = this.Category != null ? this.Category.ToUpper() : lblCategory.Text; break;
+                case "HasVideo": lblHasVideo.Visible = this.HasVideo; break;
             }
         }
 

@@ -127,7 +127,7 @@ namespace InfokioskAdministrationDesktopApplication
                 this.ibArticlePreview.Image = this.noFileImage;
             }
 
-            var fixedHtmlContent = controller.FixImageUrlsBeforeShow(this.articleModel.Content, this.articleModel.Id);
+            var fixedHtmlContent = controller.FixImageAndVideoUrlsBeforeShow(this.articleModel.Content, this.articleModel.Id);
 
             this.rtbxContent.Text = controller.ExtractHtmlBody(fixedHtmlContent);
 
@@ -321,6 +321,9 @@ namespace InfokioskAdministrationDesktopApplication
             {
                 webBrowser1.DocumentText = articleModel.Content;
             }
+
+            articleModel.HasVideo = articleModel.Content.Contains("<video");
+            ibArticlePreview.HasVideo = articleModel.HasVideo;
         }
 
         private void BtnH1_Click(object sender, EventArgs e)

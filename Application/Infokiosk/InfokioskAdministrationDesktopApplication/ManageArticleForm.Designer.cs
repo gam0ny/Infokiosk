@@ -52,6 +52,7 @@
             this.btnBR = new System.Windows.Forms.Button();
             this.btnI = new System.Windows.Forms.Button();
             this.btnStrong = new System.Windows.Forms.Button();
+            this.btnStyle = new System.Windows.Forms.Button();
             this.tbxHeader = new System.Windows.Forms.TextBox();
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.tbxFooter = new System.Windows.Forms.TextBox();
@@ -69,7 +70,6 @@
             this.tbxFileUpload = new System.Windows.Forms.TextBox();
             this.btnFileUpload = new System.Windows.Forms.Button();
             this.cbxIsPublish = new System.Windows.Forms.CheckBox();
-            this.btnStyle = new System.Windows.Forms.Button();
             this.panelToolbar.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelManageContent.SuspendLayout();
@@ -368,6 +368,17 @@
             this.btnStrong.UseVisualStyleBackColor = true;
             this.btnStrong.Click += new System.EventHandler(this.BtnStrong_Click);
             // 
+            // btnStyle
+            // 
+            this.btnStyle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStyle.Location = new System.Drawing.Point(3, 647);
+            this.btnStyle.Name = "btnStyle";
+            this.btnStyle.Size = new System.Drawing.Size(120, 40);
+            this.btnStyle.TabIndex = 18;
+            this.btnStyle.Text = "<style>";
+            this.btnStyle.UseVisualStyleBackColor = true;
+            this.btnStyle.Click += new System.EventHandler(this.BtnStyle_Click);
+            // 
             // tbxHeader
             // 
             this.tbxHeader.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -603,17 +614,6 @@
             this.cbxIsPublish.TabIndex = 4;
             this.cbxIsPublish.UseVisualStyleBackColor = true;
             this.cbxIsPublish.CheckedChanged += new System.EventHandler(this.CbxIsPublish_CheckedChanged);
-            // 
-            // btnStyle
-            // 
-            this.btnStyle.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnStyle.Location = new System.Drawing.Point(3, 647);
-            this.btnStyle.Name = "btnStyle";
-            this.btnStyle.Size = new System.Drawing.Size(120, 40);
-            this.btnStyle.TabIndex = 18;
-            this.btnStyle.Text = "<style>";
-            this.btnStyle.UseVisualStyleBackColor = true;
-            this.btnStyle.Click += new System.EventHandler(this.BtnStyle_Click);
             // 
             // ManageArticleForm
             // 
