@@ -69,6 +69,7 @@
             this.tbxFileUpload = new System.Windows.Forms.TextBox();
             this.btnFileUpload = new System.Windows.Forms.Button();
             this.cbxIsPublish = new System.Windows.Forms.CheckBox();
+            this.btnStyle = new System.Windows.Forms.Button();
             this.panelToolbar.SuspendLayout();
             this.panelMain.SuspendLayout();
             this.panelManageContent.SuspendLayout();
@@ -205,6 +206,7 @@
             this.flowLayoutPanel1.Controls.Add(this.btnBR);
             this.flowLayoutPanel1.Controls.Add(this.btnI);
             this.flowLayoutPanel1.Controls.Add(this.btnStrong);
+            this.flowLayoutPanel1.Controls.Add(this.btnStyle);
             this.flowLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.flowLayoutPanel1.Location = new System.Drawing.Point(33, 3);
             this.flowLayoutPanel1.Name = "flowLayoutPanel1";
@@ -331,6 +333,7 @@
             this.btnVideo.TabIndex = 14;
             this.btnVideo.Text = "<video>";
             this.btnVideo.UseVisualStyleBackColor = true;
+            this.btnVideo.Click += new System.EventHandler(this.BtnVideo_Click);
             // 
             // btnBR
             // 
@@ -601,6 +604,17 @@
             this.cbxIsPublish.UseVisualStyleBackColor = true;
             this.cbxIsPublish.CheckedChanged += new System.EventHandler(this.CbxIsPublish_CheckedChanged);
             // 
+            // btnStyle
+            // 
+            this.btnStyle.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnStyle.Location = new System.Drawing.Point(3, 647);
+            this.btnStyle.Name = "btnStyle";
+            this.btnStyle.Size = new System.Drawing.Size(120, 40);
+            this.btnStyle.TabIndex = 18;
+            this.btnStyle.Text = "<style>";
+            this.btnStyle.UseVisualStyleBackColor = true;
+            this.btnStyle.Click += new System.EventHandler(this.BtnStyle_Click);
+            // 
             // ManageArticleForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
@@ -671,5 +685,6 @@
         private System.Windows.Forms.Button btnBR;
         private System.Windows.Forms.Button btnI;
         private System.Windows.Forms.Button btnStrong;
+        private System.Windows.Forms.Button btnStyle;
     }
 }

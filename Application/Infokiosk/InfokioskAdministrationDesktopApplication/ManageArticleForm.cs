@@ -470,5 +470,24 @@ namespace InfokioskAdministrationDesktopApplication
         {
             SetupBasicTagAndInsert("span");
         }
+
+        private void BtnStyle_Click(object sender, EventArgs e)
+        {
+            rtbxContent.SelectedText = string.Format("<style>{0}</style>", rtbxContent.SelectedText);
+        }
+
+        private void BtnVideo_Click(object sender, EventArgs e)
+        {
+            var manageVideoTagForm = new ManageVideoTagForm();
+            manageVideoTagForm.TagName = "video";
+            rtbxContent.DeselectAll();
+            var dialogResult = manageVideoTagForm.ShowDialog();
+
+            if (dialogResult == DialogResult.OK)
+            {
+                rtbxContent.SelectedText = manageVideoTagForm.ResultHtml;
+                highlighter.FindAndHighlight(rtbxContent, rtbxContent.SelectionStart, manageVideoTagForm.ResultHtml.Length);
+            }
+        }
     }
 }

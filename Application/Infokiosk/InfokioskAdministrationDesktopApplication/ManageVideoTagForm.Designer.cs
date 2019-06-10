@@ -1,6 +1,6 @@
 ﻿namespace InfokioskAdministrationDesktopApplication
 {
-    partial class ManageImgTagForm
+    partial class ManageVideoTagForm
     {
         /// <summary>
         /// Required designer variable.
@@ -43,7 +43,11 @@
             this.label4 = new System.Windows.Forms.Label();
             this.btnBrowse = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
+            this.cbxControls = new System.Windows.Forms.CheckBox();
+            this.cbxMediaType = new System.Windows.Forms.ComboBox();
             this.mtbxWidth = new System.Windows.Forms.MaskedTextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             this.mtbxHeight = new System.Windows.Forms.MaskedTextBox();
             this.panelPreview.SuspendLayout();
             this.flowLayoutPanelButtons.SuspendLayout();
@@ -55,9 +59,9 @@
             this.panelPreview.AutoScroll = true;
             this.panelPreview.Controls.Add(this.lblPreview);
             this.panelPreview.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panelPreview.Location = new System.Drawing.Point(0, 553);
+            this.panelPreview.Location = new System.Drawing.Point(0, 805);
             this.panelPreview.Name = "panelPreview";
-            this.panelPreview.Size = new System.Drawing.Size(826, 250);
+            this.panelPreview.Size = new System.Drawing.Size(826, 198);
             this.panelPreview.TabIndex = 2;
             // 
             // lblPreview
@@ -79,7 +83,7 @@
             this.flowLayoutPanelButtons.Controls.Add(this.btnAdd);
             this.flowLayoutPanelButtons.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.flowLayoutPanelButtons.FlowDirection = System.Windows.Forms.FlowDirection.RightToLeft;
-            this.flowLayoutPanelButtons.Location = new System.Drawing.Point(0, 803);
+            this.flowLayoutPanelButtons.Location = new System.Drawing.Point(0, 1003);
             this.flowLayoutPanelButtons.Name = "flowLayoutPanelButtons";
             this.flowLayoutPanelButtons.Padding = new System.Windows.Forms.Padding(30, 30, 0, 30);
             this.flowLayoutPanelButtons.Size = new System.Drawing.Size(826, 134);
@@ -117,7 +121,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 70F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 100F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 24F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 26F));
             this.tableLayoutPanel1.Controls.Add(this.tbxSrc, 3, 1);
             this.tableLayoutPanel1.Controls.Add(this.label1, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.label2, 1, 1);
@@ -127,12 +131,16 @@
             this.tableLayoutPanel1.Controls.Add(this.label4, 1, 7);
             this.tableLayoutPanel1.Controls.Add(this.btnBrowse, 4, 1);
             this.tableLayoutPanel1.Controls.Add(this.label5, 1, 9);
-            this.tableLayoutPanel1.Controls.Add(this.mtbxWidth, 3, 7);
-            this.tableLayoutPanel1.Controls.Add(this.mtbxHeight, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.cbxControls, 3, 7);
+            this.tableLayoutPanel1.Controls.Add(this.cbxMediaType, 3, 9);
+            this.tableLayoutPanel1.Controls.Add(this.mtbxWidth, 3, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label6, 1, 11);
+            this.tableLayoutPanel1.Controls.Add(this.label7, 1, 13);
+            this.tableLayoutPanel1.Controls.Add(this.mtbxHeight, 3, 13);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 11;
+            this.tableLayoutPanel1.RowCount = 15;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
@@ -144,7 +152,11 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(826, 553);
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 70F));
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(826, 805);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
             // tbxSrc
@@ -155,7 +167,7 @@
             this.tbxSrc.Location = new System.Drawing.Point(241, 23);
             this.tbxSrc.Multiline = true;
             this.tbxSrc.Name = "tbxSrc";
-            this.tbxSrc.Size = new System.Drawing.Size(457, 64);
+            this.tbxSrc.Size = new System.Drawing.Size(456, 64);
             this.tbxSrc.TabIndex = 1;
             this.tbxSrc.TextChanged += new System.EventHandler(this.TbxSrc_TextChanged);
             // 
@@ -192,7 +204,7 @@
             this.tbxStyle.Location = new System.Drawing.Point(241, 113);
             this.tbxStyle.Multiline = true;
             this.tbxStyle.Name = "tbxStyle";
-            this.tbxStyle.Size = new System.Drawing.Size(457, 64);
+            this.tbxStyle.Size = new System.Drawing.Size(456, 64);
             this.tbxStyle.TabIndex = 3;
             this.tbxStyle.TextChanged += new System.EventHandler(this.TbxStyle_TextChanged);
             // 
@@ -216,7 +228,7 @@
             this.tbxClass.Location = new System.Drawing.Point(241, 203);
             this.tbxClass.Multiline = true;
             this.tbxClass.Name = "tbxClass";
-            this.tbxClass.Size = new System.Drawing.Size(457, 64);
+            this.tbxClass.Size = new System.Drawing.Size(456, 64);
             this.tbxClass.TabIndex = 5;
             this.tbxClass.TextChanged += new System.EventHandler(this.TbxClass_TextChanged);
             // 
@@ -230,14 +242,14 @@
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(192, 70);
             this.label4.TabIndex = 6;
-            this.label4.Text = "width =";
+            this.label4.Text = "controls";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
             // btnBrowse
             // 
             this.btnBrowse.Cursor = System.Windows.Forms.Cursors.Hand;
             this.btnBrowse.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnBrowse.Location = new System.Drawing.Point(704, 23);
+            this.btnBrowse.Location = new System.Drawing.Point(703, 23);
             this.btnBrowse.Name = "btnBrowse";
             this.btnBrowse.Size = new System.Drawing.Size(94, 64);
             this.btnBrowse.TabIndex = 7;
@@ -255,46 +267,100 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(192, 70);
             this.label5.TabIndex = 8;
-            this.label5.Text = "height =";
+            this.label5.Text = "type =";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // cbxControls
+            // 
+            this.cbxControls.AutoSize = true;
+            this.cbxControls.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.cbxControls.Dock = System.Windows.Forms.DockStyle.Left;
+            this.cbxControls.Location = new System.Drawing.Point(241, 293);
+            this.cbxControls.Name = "cbxControls";
+            this.cbxControls.Size = new System.Drawing.Size(22, 64);
+            this.cbxControls.TabIndex = 11;
+            this.cbxControls.UseVisualStyleBackColor = true;
+            this.cbxControls.CheckedChanged += new System.EventHandler(this.CbxControls_CheckedChanged);
+            // 
+            // cbxMediaType
+            // 
+            this.cbxMediaType.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.cbxMediaType.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cbxMediaType.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.82081F);
+            this.cbxMediaType.FormattingEnabled = true;
+            this.cbxMediaType.Items.AddRange(new object[] {
+            "video/mp4",
+            "video/webm",
+            "video/ogg"});
+            this.cbxMediaType.Location = new System.Drawing.Point(241, 383);
+            this.cbxMediaType.Name = "cbxMediaType";
+            this.cbxMediaType.Size = new System.Drawing.Size(456, 38);
+            this.cbxMediaType.TabIndex = 12;
+            this.cbxMediaType.SelectedIndexChanged += new System.EventHandler(this.CbxMediaType_SelectedIndexChanged);
             // 
             // mtbxWidth
             // 
-            this.mtbxWidth.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mtbxWidth.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mtbxWidth.Location = new System.Drawing.Point(241, 293);
+            this.mtbxWidth.Location = new System.Drawing.Point(241, 473);
             this.mtbxWidth.Mask = "00000";
             this.mtbxWidth.Name = "mtbxWidth";
-            this.mtbxWidth.Size = new System.Drawing.Size(457, 51);
-            this.mtbxWidth.TabIndex = 9;
+            this.mtbxWidth.Size = new System.Drawing.Size(456, 51);
+            this.mtbxWidth.TabIndex = 14;
             this.mtbxWidth.ValidatingType = typeof(int);
             this.mtbxWidth.TextChanged += new System.EventHandler(this.MtbxWidth_TextChanged);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06936F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label6.ForeColor = System.Drawing.Color.White;
+            this.label6.Location = new System.Drawing.Point(23, 470);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(192, 70);
+            this.label6.TabIndex = 13;
+            this.label6.Text = "width =";
+            this.label6.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06936F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label7.ForeColor = System.Drawing.Color.White;
+            this.label7.Location = new System.Drawing.Point(23, 560);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(192, 70);
+            this.label7.TabIndex = 15;
+            this.label7.Text = "height =";
+            this.label7.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // mtbxHeight
             // 
-            this.mtbxHeight.Dock = System.Windows.Forms.DockStyle.Fill;
             this.mtbxHeight.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.mtbxHeight.Location = new System.Drawing.Point(241, 383);
+            this.mtbxHeight.Location = new System.Drawing.Point(241, 563);
             this.mtbxHeight.Mask = "00000";
             this.mtbxHeight.Name = "mtbxHeight";
-            this.mtbxHeight.Size = new System.Drawing.Size(457, 51);
-            this.mtbxHeight.TabIndex = 10;
+            this.mtbxHeight.Size = new System.Drawing.Size(456, 51);
+            this.mtbxHeight.TabIndex = 16;
             this.mtbxHeight.ValidatingType = typeof(int);
             this.mtbxHeight.TextChanged += new System.EventHandler(this.MtbxHeight_TextChanged);
             // 
-            // ManageImgTagForm
+            // ManageVideoTagForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoSize = true;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
-            this.ClientSize = new System.Drawing.Size(826, 937);
+            this.ClientSize = new System.Drawing.Size(826, 1137);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelPreview);
             this.Controls.Add(this.flowLayoutPanelButtons);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
-            this.Name = "ManageImgTagForm";
+            this.MinimumSize = new System.Drawing.Size(0, 900);
+            this.Name = "ManageVideoTagForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Редактирование";
             this.panelPreview.ResumeLayout(false);
@@ -322,7 +388,11 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnBrowse;
         private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.CheckBox cbxControls;
+        private System.Windows.Forms.ComboBox cbxMediaType;
+        private System.Windows.Forms.Label label6;
         private System.Windows.Forms.MaskedTextBox mtbxWidth;
+        private System.Windows.Forms.Label label7;
         private System.Windows.Forms.MaskedTextBox mtbxHeight;
     }
 }

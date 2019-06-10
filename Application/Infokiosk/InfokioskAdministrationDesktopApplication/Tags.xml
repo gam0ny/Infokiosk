@@ -89,17 +89,13 @@
     </Tag>
     <Tag>
       <TagName>VIDEO</TagName>
-      <TagEnd>false</TagEnd>
+      <TagEnd>true</TagEnd>
       <Parameters>
         <string>style</string>
+        <string>class</string>
         <string>width</string>
+        <string>height</string>
         <string>controls</string>
-      </Parameters>
-    </Tag>
-    <Tag>
-      <TagName>SOURCE</TagName>
-      <TagEnd>false</TagEnd>
-      <Parameters>
         <string>src</string>
         <string>type</string>
       </Parameters>
@@ -121,6 +117,11 @@
         <string>class</string>
         <string>style</string>
       </Parameters>
+    </Tag>
+    <Tag>
+      <TagName>STYLE</TagName>
+      <TagEnd>true</TagEnd>
+      <Parameters/>
     </Tag>
   </TagList>
 </Tags>
