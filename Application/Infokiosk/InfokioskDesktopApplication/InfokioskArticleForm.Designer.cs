@@ -55,8 +55,9 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
+            this.lblTitle.BackColor = System.Drawing.Color.Transparent;
             this.lblTitle.Font = new System.Drawing.Font("FontAwesome", 24.13873F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.ForeColor = System.Drawing.Color.White;
+            this.lblTitle.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.lblTitle.Location = new System.Drawing.Point(3, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(245, 59);
@@ -77,6 +78,7 @@
             this.lblCategory.AutoSize = true;
             this.lblCategory.BackColor = System.Drawing.Color.Yellow;
             this.lblCategory.Font = new System.Drawing.Font("FontAwesome", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCategory.ForeColor = System.Drawing.Color.Black;
             this.lblCategory.Location = new System.Drawing.Point(261, 10);
             this.lblCategory.Margin = new System.Windows.Forms.Padding(10);
             this.lblCategory.Name = "lblCategory";
@@ -101,6 +103,7 @@
             this.flowLayoutTitlePanel.AutoSize = true;
             this.flowLayoutTitlePanel.Controls.Add(this.lblTitle);
             this.flowLayoutTitlePanel.Controls.Add(this.lblCategory);
+            this.flowLayoutTitlePanel.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.flowLayoutTitlePanel.Location = new System.Drawing.Point(0, 0);
             this.flowLayoutTitlePanel.Name = "flowLayoutTitlePanel";
             this.flowLayoutTitlePanel.Size = new System.Drawing.Size(419, 100);
@@ -123,7 +126,7 @@
             this.lblBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBack.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblBack.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBack.ForeColor = System.Drawing.Color.Yellow;
+            this.lblBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.lblBack.Location = new System.Drawing.Point(60, 0);
             this.lblBack.Margin = new System.Windows.Forms.Padding(0);
             this.lblBack.Name = "lblBack";
@@ -139,7 +142,7 @@
             this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblExit.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblExit.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExit.ForeColor = System.Drawing.Color.Yellow;
+            this.lblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.lblExit.Location = new System.Drawing.Point(140, 0);
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
@@ -221,7 +224,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("FontAwesome", 15.81503F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.Color.White;
+            this.label1.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.label1.Location = new System.Drawing.Point(18, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(681, 39);
@@ -233,7 +236,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1176, 737);
             this.Controls.Add(this.panelEmail);
             this.Controls.Add(this.panelContent);

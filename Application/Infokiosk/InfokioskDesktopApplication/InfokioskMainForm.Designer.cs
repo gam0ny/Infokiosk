@@ -44,7 +44,7 @@
             this.pbLoading.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pbLoading.Image = ((System.Drawing.Image)(resources.GetObject("pbLoading.Image")));
             this.pbLoading.Location = new System.Drawing.Point(0, 0);
-            this.pbLoading.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.pbLoading.Margin = new System.Windows.Forms.Padding(2);
             this.pbLoading.Name = "pbLoading";
             this.pbLoading.Size = new System.Drawing.Size(976, 737);
             this.pbLoading.SizeMode = System.Windows.Forms.PictureBoxSizeMode.CenterImage;
@@ -69,7 +69,7 @@
             this.lblSearch.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblSearch.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblSearch.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblSearch.ForeColor = System.Drawing.Color.Yellow;
+            this.lblSearch.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.lblSearch.Location = new System.Drawing.Point(80, 0);
             this.lblSearch.Margin = new System.Windows.Forms.Padding(0);
             this.lblSearch.Name = "lblSearch";
@@ -85,7 +85,7 @@
             this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblExit.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblExit.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExit.ForeColor = System.Drawing.Color.Yellow;
+            this.lblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.lblExit.Location = new System.Drawing.Point(140, 0);
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
@@ -102,7 +102,7 @@
             this.panelContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelContent.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.panelContent.Location = new System.Drawing.Point(0, 0);
-            this.panelContent.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panelContent.Margin = new System.Windows.Forms.Padding(2);
             this.panelContent.Name = "panelContent";
             this.panelContent.Size = new System.Drawing.Size(1176, 737);
             this.panelContent.TabIndex = 15;
@@ -111,11 +111,11 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 19F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1176, 737);
             this.Controls.Add(this.panelContent);
             this.Font = new System.Drawing.Font("FontAwesome", 7.81503F);
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "InfokioskMainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Инфокиоск";

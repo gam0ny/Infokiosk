@@ -93,8 +93,9 @@ namespace InfokioskDesktopApplication
             latestArticlesImageBoxView.MaximumSize = new Size(this.panelContent.Size.Width - 200, 0);
             latestArticlesImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(this.LatestArticles);
             latestArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
+            latestArticlesImageBoxView.TitleForeColor = ColorTranslator.FromHtml("#910707");
 
-            foreach(var articlesByCategory in this.ArticlesByCategoies)
+            foreach (var articlesByCategory in this.ArticlesByCategoies)
             {
                 var articlesByCategoryImageBoxView = new ImageBoxListView();
                 this.flowLayoutMainPanel.Controls.Add(articlesByCategoryImageBoxView);
@@ -104,6 +105,7 @@ namespace InfokioskDesktopApplication
                 articlesByCategoryImageBoxView.MaximumSize = new Size(this.panelContent.Size.Width - 200, 0);
                 articlesByCategoryImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
                 articlesByCategoryImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(articlesByCategory.Articles);
+                articlesByCategoryImageBoxView.TitleForeColor = ColorTranslator.FromHtml("#910707");
             }
 
             this.flowLayoutMainPanel.Focus();

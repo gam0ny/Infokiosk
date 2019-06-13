@@ -95,6 +95,7 @@ namespace InfokioskDesktopApplication
             foundArticlesImageBoxView.MaximumSize = new Size(this.Size.Width - 200, 0);
             foundArticlesImageBoxView.ImageBoxItemList = Converter.FromArticlePreviewModelCollectionToImageBoxItemCollection(this.FoundArticles);
             foundArticlesImageBoxView.ImageBoxItemClick += HandleImageBoxItemClick;
+            foundArticlesImageBoxView.TitleForeColor = ColorTranslator.FromHtml("#910707");
         }
 
         private void HandleImageBoxItemClick(object sender, EventArgs e)

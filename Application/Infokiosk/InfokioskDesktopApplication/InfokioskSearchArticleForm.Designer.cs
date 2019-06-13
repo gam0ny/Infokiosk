@@ -31,10 +31,10 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(InfokioskSearchArticleForm));
             this.tableLayoutPanelSearchCriteria = new System.Windows.Forms.TableLayoutPanel();
             this.tbxSearch = new System.Windows.Forms.TextBox();
-            this.btnSearch = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.rbContent = new System.Windows.Forms.RadioButton();
             this.rbName = new System.Windows.Forms.RadioButton();
+            this.btnSearch = new System.Windows.Forms.Button();
             this.panelSearchResult = new System.Windows.Forms.Panel();
             this.pbLoading = new System.Windows.Forms.PictureBox();
             this.panelToolbar = new System.Windows.Forms.Panel();
@@ -76,28 +76,17 @@
             this.tbxSearch.Location = new System.Drawing.Point(3, 53);
             this.tbxSearch.Multiline = true;
             this.tbxSearch.Name = "tbxSearch";
-            this.tbxSearch.Size = new System.Drawing.Size(827, 64);
+            this.tbxSearch.Size = new System.Drawing.Size(1457, 64);
             this.tbxSearch.TabIndex = 0;
             this.tbxSearch.TextChanged += new System.EventHandler(this.TbxSearch_TextChanged);
             // 
-            // btnSearch
-            // 
-            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.btnSearch.Font = new System.Drawing.Font("FontAwesome", 15.81503F);
-            this.btnSearch.Location = new System.Drawing.Point(836, 53);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(87, 64);
-            this.btnSearch.TabIndex = 1;
-            this.btnSearch.Text = "Искать";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
-            // 
             // groupBox1
             // 
+            this.groupBox1.BackColor = System.Drawing.Color.Transparent;
             this.groupBox1.Controls.Add(this.rbContent);
             this.groupBox1.Controls.Add(this.rbName);
             this.groupBox1.Font = new System.Drawing.Font("FontAwesome", 15.81503F);
-            this.groupBox1.ForeColor = System.Drawing.Color.White;
+            this.groupBox1.ForeColor = System.Drawing.Color.Black;
             this.groupBox1.Location = new System.Drawing.Point(3, 173);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(625, 122);
@@ -108,7 +97,7 @@
             // rbContent
             // 
             this.rbContent.AutoSize = true;
-            this.rbContent.ForeColor = System.Drawing.Color.White;
+            this.rbContent.ForeColor = System.Drawing.Color.Black;
             this.rbContent.Location = new System.Drawing.Point(260, 53);
             this.rbContent.Name = "rbContent";
             this.rbContent.Size = new System.Drawing.Size(263, 43);
@@ -120,7 +109,7 @@
             // 
             this.rbName.AutoSize = true;
             this.rbName.Checked = true;
-            this.rbName.ForeColor = System.Drawing.Color.White;
+            this.rbName.ForeColor = System.Drawing.Color.Black;
             this.rbName.Location = new System.Drawing.Point(24, 52);
             this.rbName.Name = "rbName";
             this.rbName.Size = new System.Drawing.Size(142, 43);
@@ -128,6 +117,18 @@
             this.rbName.TabStop = true;
             this.rbName.Text = "имени";
             this.rbName.UseVisualStyleBackColor = true;
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.btnSearch.Font = new System.Drawing.Font("FontAwesome", 15.81503F);
+            this.btnSearch.Location = new System.Drawing.Point(1466, 53);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(157, 64);
+            this.btnSearch.TabIndex = 1;
+            this.btnSearch.Text = "Искать";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.BtnSearch_Click);
             // 
             // panelSearchResult
             // 
@@ -168,7 +169,7 @@
             this.lblBack.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblBack.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblBack.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblBack.ForeColor = System.Drawing.Color.Yellow;
+            this.lblBack.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.lblBack.Location = new System.Drawing.Point(60, 0);
             this.lblBack.Margin = new System.Windows.Forms.Padding(0);
             this.lblBack.Name = "lblBack";
@@ -184,7 +185,7 @@
             this.lblExit.Cursor = System.Windows.Forms.Cursors.Hand;
             this.lblExit.Dock = System.Windows.Forms.DockStyle.Right;
             this.lblExit.Font = new System.Drawing.Font("FontAwesome", 14.98266F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblExit.ForeColor = System.Drawing.Color.Yellow;
+            this.lblExit.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(145)))), ((int)(((byte)(7)))), ((int)(((byte)(7)))));
             this.lblExit.Location = new System.Drawing.Point(140, 0);
             this.lblExit.Margin = new System.Windows.Forms.Padding(0);
             this.lblExit.Name = "lblExit";
@@ -208,7 +209,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(46)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(1876, 1137);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panelToolbar);

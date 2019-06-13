@@ -14,6 +14,8 @@ namespace CustomControlLibrary
 
         private string title;
 
+        private Color titleForeColor;
+
         [NotifyParentProperty(true)]
         public string Title { get { return title; } set { title = value; OnPropertyChanged("Title"); } }
 
@@ -24,7 +26,13 @@ namespace CustomControlLibrary
             set { imageBoxItemList = value; OnPropertyChanged("ImageBoxItemList"); }
         }
 
-        public Image NoFileImage { get; set; } 
+        public Image NoFileImage { get; set; }
+
+        [NotifyParentProperty(true)]
+        public Color TitleForeColor {
+            get { return titleForeColor; }
+            set { titleForeColor = value; OnPropertyChanged("TitleForeColor"); }
+        }
 
         public event EventHandler ImageBoxItemClick;
 
@@ -51,6 +59,7 @@ namespace CustomControlLibrary
             {
                 case "ImageBoxItemList": DrawImageBoxItemCollection(); break;
                 case "Title": DrawTitle(); break;
+                case "TitleForeColor": lblTitle.ForeColor = TitleForeColor; break;
             }
         }
 
