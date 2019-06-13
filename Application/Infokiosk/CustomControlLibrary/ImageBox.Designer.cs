@@ -143,7 +143,7 @@ namespace CustomControlLibrary
             this.Controls.Add(this.lblCategory);
             this.Controls.Add(this.flowLayoutPanelIcons);
             this.Controls.Add(this.pbCover);
-            this.Margin = new System.Windows.Forms.Padding(0, 0, 10, 0);
+            this.Margin = new System.Windows.Forms.Padding(0, 0, 10, 10);
             this.Name = "ImageBox";
             this.Size = new System.Drawing.Size(320, 150);
             this.Load += new System.EventHandler(this.ImageBox_Load);
