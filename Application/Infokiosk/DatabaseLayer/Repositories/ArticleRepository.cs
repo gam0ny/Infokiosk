@@ -89,7 +89,7 @@ namespace DatabaseLayer.Repositories
 
         public Article GetArticleById(Guid articleId)
         {
-            var sqlStatement = "SELECT t1.Id, t1.Title, t1.TitleImageName, t1.HasVideo, t1.HasDocument, t2.Id, t2.Name, t1.Content, t1.UserId, t1.CreationDate, t1.EditDate " +
+            var sqlStatement = "SELECT t1.Id, t1.Title, t1.TitleImageName, t1.HasVideo, t1.HasDocument, t2.Id, t2.Name, t1.Content, t1.UserId, t1.CreationDate, t1.EditDate, IsPublished " +
                "FROM Article t1 " +
                "INNER JOIN ContentCategory t2 ON t1.ContentCategoryId = t2.Id " +
                "WHERE t1.Id = @articleId";
@@ -117,6 +117,7 @@ namespace DatabaseLayer.Repositories
                         UserId = rdr[8] is DBNull ? Guid.Empty : Guid.Parse((string)rdr[8]),
                         CreationDate = (DateTime)rdr[9],
                         EditingDate = (DateTime)rdr[10],
+                        IsPublished = Convert.ToBoolean(rdr[11]),
                     };
                 }
             }
