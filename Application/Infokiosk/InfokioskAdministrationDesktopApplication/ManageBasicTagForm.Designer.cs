@@ -29,13 +29,13 @@
         private void InitializeComponent()
         {
             this.panelPreview = new System.Windows.Forms.Panel();
+            this.lblPreview = new System.Windows.Forms.Label();
             this.flowLayoutPanelButtons = new System.Windows.Forms.FlowLayoutPanel();
+            this.btnCancel = new System.Windows.Forms.Button();
             this.btnAdd = new System.Windows.Forms.Button();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
-            this.btnCancel = new System.Windows.Forms.Button();
-            this.lblPreview = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.tbxText = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.tbxStyle = new System.Windows.Forms.TextBox();
             this.panelPreview.SuspendLayout();
@@ -52,6 +52,17 @@
             this.panelPreview.Size = new System.Drawing.Size(800, 100);
             this.panelPreview.TabIndex = 2;
             // 
+            // lblPreview
+            // 
+            this.lblPreview.AutoSize = true;
+            this.lblPreview.Font = new System.Drawing.Font("Arial Unicode MS", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.lblPreview.ForeColor = System.Drawing.Color.Black;
+            this.lblPreview.Location = new System.Drawing.Point(12, 33);
+            this.lblPreview.Name = "lblPreview";
+            this.lblPreview.Size = new System.Drawing.Size(253, 34);
+            this.lblPreview.TabIndex = 0;
+            this.lblPreview.Text = "<h1>SomeText</h1>";
+            // 
             // flowLayoutPanelButtons
             // 
             this.flowLayoutPanelButtons.Controls.Add(this.btnCancel);
@@ -63,6 +74,18 @@
             this.flowLayoutPanelButtons.Padding = new System.Windows.Forms.Padding(30, 30, 0, 30);
             this.flowLayoutPanelButtons.Size = new System.Drawing.Size(800, 134);
             this.flowLayoutPanelButtons.TabIndex = 3;
+            // 
+            // btnCancel
+            // 
+            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btnCancel.Font = new System.Drawing.Font("FontAwesome", 14.15029F);
+            this.btnCancel.Location = new System.Drawing.Point(567, 33);
+            this.btnCancel.Name = "btnCancel";
+            this.btnCancel.Size = new System.Drawing.Size(200, 70);
+            this.btnCancel.TabIndex = 1;
+            this.btnCancel.Text = " Отмена";
+            this.btnCancel.UseVisualStyleBackColor = true;
+            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
             // 
             // btnAdd
             // 
@@ -100,42 +123,6 @@
             this.tableLayoutPanel1.Size = new System.Drawing.Size(800, 216);
             this.tableLayoutPanel1.TabIndex = 4;
             // 
-            // btnCancel
-            // 
-            this.btnCancel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnCancel.Font = new System.Drawing.Font("FontAwesome", 14.15029F);
-            this.btnCancel.Location = new System.Drawing.Point(567, 33);
-            this.btnCancel.Name = "btnCancel";
-            this.btnCancel.Size = new System.Drawing.Size(200, 70);
-            this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = " Отмена";
-            this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.BtnCancel_Click);
-            // 
-            // lblPreview
-            // 
-            this.lblPreview.AutoSize = true;
-            this.lblPreview.Font = new System.Drawing.Font("Arial Unicode MS", 9.98844F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.lblPreview.ForeColor = System.Drawing.Color.White;
-            this.lblPreview.Location = new System.Drawing.Point(12, 33);
-            this.lblPreview.Name = "lblPreview";
-            this.lblPreview.Size = new System.Drawing.Size(253, 34);
-            this.lblPreview.TabIndex = 0;
-            this.lblPreview.Text = "<h1>SomeText</h1>";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06936F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label1.ForeColor = System.Drawing.Color.White;
-            this.label1.Location = new System.Drawing.Point(23, 118);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(216, 78);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "style = ";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
             // tbxText
             // 
             this.tbxText.Dock = System.Windows.Forms.DockStyle.Fill;
@@ -147,12 +134,25 @@
             this.tbxText.TabIndex = 1;
             this.tbxText.TextChanged += new System.EventHandler(this.TbxText_TextChanged);
             // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06936F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.Black;
+            this.label1.Location = new System.Drawing.Point(23, 118);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(216, 78);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "style = ";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12.06936F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.label2.ForeColor = System.Drawing.Color.White;
+            this.label2.ForeColor = System.Drawing.Color.Black;
             this.label2.Location = new System.Drawing.Point(23, 20);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(216, 78);
@@ -175,11 +175,12 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(11F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(31)))), ((int)(((byte)(34)))), ((int)(((byte)(55)))));
+            this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.panelPreview);
             this.Controls.Add(this.flowLayoutPanelButtons);
+            this.ForeColor = System.Drawing.Color.Black;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.MinimizeBox = false;

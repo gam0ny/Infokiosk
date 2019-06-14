@@ -194,5 +194,10 @@ namespace InfokioskAdministrationDesktopApplication
                 fetchArticlesBackgroundWorker.RunWorkerAsync();
             }
         }
+
+        private void PanelActions_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
